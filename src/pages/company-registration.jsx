@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from './Header';
 import {
   IonContent,
@@ -23,6 +23,8 @@ const memo = [
   {name:"昇給制度"}
 ];
 
+const stars = [1, 1, 1, 1, 1];
+
 
 const Tab2 = () => {
   return (
@@ -33,13 +35,11 @@ const Tab2 = () => {
           {memo.map((data) => 
             <IonCard>
               <IonCardHeader>
-                <IonCardTitle>
-                  {data.name} 
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
+                <IonCardTitle>     
+                  {data.name+"　"} 
+                  {stars.map(() => {
+                    return <IonIcon icon={star}>aiuro</IonIcon>;
+                  })}
                 </IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
