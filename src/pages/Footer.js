@@ -5,7 +5,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
 
-const Fotter = (props) => {
+const Footer = (props) => {
     return (
         <IonTabBar slot="bottom">
             <IonTabButton tab="tab1" href="/tab1">
@@ -20,4 +20,4 @@ const Fotter = (props) => {
     )
 };
 
-export default Fotter;
+export default Footer;

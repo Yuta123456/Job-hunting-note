@@ -1,7 +1,6 @@
-
 import React, { useState } from "react";
 import Header from './Header';
-import Fotter from './Fotter';
+import Footer from './Footer';
 import {
   IonContent,
   IonHeader,
@@ -67,7 +66,7 @@ const CompanyInformation = () => {
         );
       })}
     </IonContent>
-    <Fotter />
+    <Footer />
     </IonPage>
   );
 };

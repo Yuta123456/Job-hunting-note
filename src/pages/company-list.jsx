@@ -1,6 +1,6 @@
 import React from "react";
 import Header from './Header';
-import Fotter from './Fotter';
+import Footer from './Footer';
 import {
   IonContent,
   IonHeader,
@@ -37,7 +37,7 @@ const Tab1 = () => {
             </IonCard>
           )}
       </IonContent>
-      <Fotter />
+      <Footer />
     </IonPage>
   );
 };
