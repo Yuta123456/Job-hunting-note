@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Header from './Header';
 import {
@@ -19,7 +20,7 @@ import {
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
-import "./company-information.css";
+// import "./company-information.css";
 
 const propose="interview"
 const data = [
@@ -34,19 +35,12 @@ const CompanyInformation = () => {
   return (
     <IonContent fullscreen>
       <ion-toolbar  color="success">
-      {stars.map(() => {
-                return (
-                  <ion-buttons slot="start"  size="small">
-                    
-                  <IonButton>
-                    <IonIcon slot="icon-only" icon={star} />
-                  </IonButton>
-                </ion-buttons>
-              
-                );
-              })} 
-              
-
+        <ion-buttons slot="primary">
+          <ion-button>
+            <ion-icon slot="icon-only" color="dark" icon={ellipsisHorizontal}></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>企業情報</ion-title>
       </ion-toolbar>
 
       
@@ -77,6 +71,60 @@ const CompanyInformation = () => {
 export default CompanyInformation;
 
 
+// import React from "react";
+// import Header from './Header';
+// import {
+//   IonContent,
+//   IonHeader,
+//   IonPage,
+//   IonTitle,
+//   IonToolbar,
+//   IonCard,
+//   IonCardContent,
+//   IonCardTitle,
+//   IonInput,
+//   IonCardHeader,
+//   IonIcon
+// } from "@ionic/react";
+// import { star } from 'ionicons/icons';
+// import "./Tab2.css";
+
+// const memo = [ 
+//   {name:"企業理念"},
+//   {name:"福利厚生"},
+//   {name:"年収月収"},
+//   {name:"昇給制度"}
+// ];
+
+
+// const CompanyInformation = () => {
+//   return (
+//     <IonPage>
+//     <Header name={"企業登録"}/>
+
+//     <IonContent fullscreen>   
+//           {memo.map((data) => 
+//             <IonCard>
+//               <IonCardHeader>
+//                 <IonCardTitle>
+//                   {data.name} 
+//                   <IonIcon icon={star}>aiuro</IonIcon>
+//                   <IonIcon icon={star}>aiuro</IonIcon>
+//                   <IonIcon icon={star}>aiuro</IonIcon>
+//                   <IonIcon icon={star}>aiuro</IonIcon>
+//                   <IonIcon icon={star}>aiuro</IonIcon>
+//                 </IonCardTitle>
+//               </IonCardHeader>
+//               <IonCardContent>
+//                 <IonInput placeholder="説明を入力"></IonInput>
+//               </IonCardContent>
+//             </IonCard>
+//           )}
+//       </IonContent>
+//   </IonPage>
+//   );
+// };
+// export default CompanyInformation;
                 {/* <ion-toolbar>
               {stars.map(() => {
                 return (
