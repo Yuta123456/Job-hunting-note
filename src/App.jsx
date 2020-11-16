@@ -54,26 +54,14 @@ const App = () => {
     return (
       <IonApp>
         <IonReactRouter>
-          <IonTabs>
-            <IonRouterOutlet>
-              <Route path="/tab1" render={()=>{
-               return visited 
-               ? <Route path="/tab1" component={Tab1} exact={true} />
-               : <SetObjectiveModal setVisit={setVisit} setObj={setObjective}/>}} exact={true} />
-              <Route path="/tab2" component={Tab2} exact={true} />
-              <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
-            </IonRouterOutlet>
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="tab1" href="/tab1">
-                <IonIcon icon={list} />
-                <IonLabel>企業一覧</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab2" href="/tab2">
-                <IonIcon icon={create} />
-                <IonLabel>企業登録</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
+          <IonRouterOutlet>
+            <Route path="/tab1" render={()=>{
+              return visited 
+              ? <Route path="/tab1" component={Tab1} exact={true} />
+              : <SetObjectiveModal setVisit={setVisit} setObj={setObjective}/>}} exact={true} />
+            <Route path="/tab2" component={Tab2} exact={true} />
+            <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+          </IonRouterOutlet>
         </IonReactRouter>
       </IonApp>
     );

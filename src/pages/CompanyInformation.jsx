@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import Header from './Header';
+import Fotter from './Fotter';
 import {
   IonContent,
   IonHeader,
@@ -33,6 +34,7 @@ const data = [
 const CompanyInformation = () => {
   const stars = [1, 1, 1, 1, 1];
   return (
+    <IonPage>
     <IonContent fullscreen>
       <ion-toolbar  color="success">
         <ion-buttons slot="primary">
@@ -65,6 +67,8 @@ const CompanyInformation = () => {
         );
       })}
     </IonContent>
+    <Fotter />
+    </IonPage>
   );
 };
 
