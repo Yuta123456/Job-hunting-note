@@ -12,7 +12,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { list, create } from 'ionicons/icons';
 import Tab1 from './pages/company-list.jsx';
-import Tab2 from './pages/Tab2';
+import Tab2 from './pages/company-registration';
 import Tab3 from './pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
