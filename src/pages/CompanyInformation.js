@@ -1,54 +1,48 @@
 import React, { useState } from "react";
 import {
-  //   IonContent,
-  //   IonHeader,
-  //   IonPage,
-  //   IonTitle,
-  //   IonToolbar,
-  //   IonCard,
-  //   IonCardHeader,
-  //   IonCardTitle,
-  //   IonCardSubtitle,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
   IonButton,
   IonItem,
   IonLabel,
   IonInput,
+  IonIcon,
 } from "@ionic/react";
+import { star } from "ionicons/icons";
 import "./Tab3.css";
 
 const CompanyInformation = () => {
-  const [text, setText] = useState(
-    "企業理念の〇〇というところにとても共感できた"
-  );
-  const [number, setNumber] = useState();
-
+  const data = [
+    { item: "企業理念", memo: "御社の企業理念に！！" },
+    { item: "福利厚生", memo: "良き" },
+    { item: "年収月収", memo: "" },
+    { item: "昇給制度", memo: "" },
+  ];
+  const stars = [1, 1, 1, 1, 1];
   return (
-    //   {data.map((value)=>{})}
-    <IonItem>
-      <IonLabel position="stacked">企業理念</IonLabel>
-      {/* <IonButton expand="block" onClick={() => setActionAlert(true)}>
-        単語を追加
-      </IonButton>
-      <IonButton expand="block" onClick={() => setSerchActionAlert(true)}>
-        IDで検索
-      </IonButton>
-      <IonButton
-        expand="full"
-        onClick={() => {
-          setKey("");
-        }}
-      >
-        リセット
-      </IonButton> */}
+    <IonContent fullscreen>
+      {data.map((data) => {
+        return (
+          <IonItem>
+            <IonLabel position="stacked">
+              {data.item}
+              {stars.map(() => {
+                return <IonIcon icon={star}>aiuro</IonIcon>;
+              })}
+            </IonLabel>
 
-      <IonInput value={text} placeholder=""></IonInput>
-      <IonLabel position="stacked">福利厚生</IonLabel>
-      <IonInput value={text} placeholder="説明を入力"></IonInput>
-      <IonLabel position="stacked">年収月収</IonLabel>
-      <IonInput value={text} placeholder="説明を入力"></IonInput>
-      <IonLabel position="stacked">昇給制度</IonLabel>
-      <IonInput value={text} placeholder="説明を入力"></IonInput>
-    </IonItem>
+            <IonInput value={data.memo} placeholder=""></IonInput>
+          </IonItem>
+        );
+      })}
+    </IonContent>
   );
 };
 
