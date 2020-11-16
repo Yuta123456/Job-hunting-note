@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from './Header';
 import {
   IonContent,
@@ -7,53 +7,45 @@ import {
   IonTitle,
   IonToolbar,
   IonCard,
-  IonCardContent,
-  IonCardTitle,
-  IonInput,
   IonCardHeader,
-  IonIcon
+  IonCardTitle,
+  IonCardSubtitle,
+  IonButton,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonIcon,
 } from "@ionic/react";
-import { star } from 'ionicons/icons';
-import "./Tab2.css";
+import { star } from "ionicons/icons";
+import "./Tab3.css";
 
-const memo = [ 
-  {name:"企業理念"},
-  {name:"福利厚生"},
-  {name:"年収月収"},
-  {name:"昇給制度"}
-];
-
-
-const Tab2 = () => {
+const CompanyInformation = () => {
+  const data = [
+    { item: "企業理念", memo: "御社の企業理念に！！" },
+    { item: "福利厚生", memo: "良き" },
+    { item: "年収月収", memo: "" },
+    { item: "昇給制度", memo: "" },
+  ];
+  const stars = [1, 1, 1, 1, 1];
   return (
-    <IonPage>
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>企業登録</IonTitle>
-      </IonToolbar>
-    </IonHeader>
+    <IonContent fullscreen>
+      <Header name={"企業情報"}/>
+      {data.map((data) => {
+        return (
+          <IonItem>
+            <IonLabel position="stacked">
+              {data.item}
+              {stars.map(() => {
+                return <IonIcon icon={star}>aiuro</IonIcon>;
+              })}
+            </IonLabel>
 
-    <IonContent fullscreen>   
-          {memo.map((data) => 
-            <IonCard>
-              <IonCardHeader>
-                <IonCardTitle>
-                  {data.name} 
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                  <IonIcon icon={star}>aiuro</IonIcon>
-                </IonCardTitle>
-              </IonCardHeader>
-              <IonCardContent>
-                <IonInput placeholder="説明を入力"></IonInput>
-              </IonCardContent>
-            </IonCard>
-          )}
-      </IonContent>
-  </IonPage>
+            <IonInput value={data.memo} placeholder=""></IonInput>
+          </IonItem>
+        );
+      })}
+    </IonContent>
   );
 };
 
-export default Tab2;
+export default CompanyInformation;
