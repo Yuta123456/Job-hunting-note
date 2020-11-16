@@ -37,7 +37,7 @@ const Tab2 = () => {
             <IonCard>
               <IonCardHeader>
                 <IonCardTitle>
-                  {data.name}    
+                  {data.name} 
                   <IonIcon icon={star}>aiuro</IonIcon>
                   <IonIcon icon={star}>aiuro</IonIcon>
                   <IonIcon icon={star}>aiuro</IonIcon>
