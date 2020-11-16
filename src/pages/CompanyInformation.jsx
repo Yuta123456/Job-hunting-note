@@ -15,33 +15,59 @@ import {
   IonLabel,
   IonInput,
   IonIcon,
+  IonText,
 } from "@ionic/react";
-import { star } from "ionicons/icons";
+import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
+import "./company-information.css";
+
+const propose="interview"
+const data = [
+  { item: "企業理念", memo: "御社の企業理念に！！" ,evalution: "5"},
+  { item: "福利厚生", memo: "良き" ,evalution: "0"},
+  { item: "年収月収", memo: "" ,evalution: "0"},
+  { item: "昇給制度", memo: "" ,evalution: "0"},
+];
 
 const CompanyInformation = () => {
-  const data = [
-    { item: "企業理念", memo: "御社の企業理念に！！" },
-    { item: "福利厚生", memo: "良き" },
-    { item: "年収月収", memo: "" },
-    { item: "昇給制度", memo: "" },
-  ];
   const stars = [1, 1, 1, 1, 1];
   return (
     <IonContent fullscreen>
-      <Header name={"企業情報"}/>
+      <ion-toolbar  color="success">
+      {stars.map(() => {
+                return (
+                  <ion-buttons slot="start"  size="small">
+                    
+                  <IonButton>
+                    <IonIcon slot="icon-only" icon={star} />
+                  </IonButton>
+                </ion-buttons>
+              
+                );
+              })} 
+              
+
+      </ion-toolbar>
+
+      
       {data.map((data) => {
         return (
-          <IonItem>
-            <IonLabel position="stacked">
+          <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>
               {data.item}
-              {stars.map(() => {
-                return <IonIcon icon={star}>aiuro</IonIcon>;
-              })}
-            </IonLabel>
-
-            <IonInput value={data.memo} placeholder=""></IonInput>
-          </IonItem>
+              <ion-item>
+              <IonIcon icon={star}>aiuro</IonIcon>
+          <ion-range min="1" max="5" step="1" value="1" snaps color="danger">
+            {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
+            {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
+          </ion-range>
+        </ion-item>
+              </IonCardTitle>
+            <IonText >{data.memo}</IonText>
+            
+            </IonCardHeader>
+            </IonCard>
         );
       })}
     </IonContent>
@@ -49,3 +75,18 @@ const CompanyInformation = () => {
 };
 
 export default CompanyInformation;
+
+
+                {/* <ion-toolbar>
+              {stars.map(() => {
+                return (
+                  <ion-buttons slot="start"  size="small">
+                    
+                  <IonButton size="small">
+                    <IonIcon slot="icon-only" icon={star} />
+                  </IonButton>
+                </ion-buttons>
+              
+                );
+              })}
+              </ion-toolbar> */}
