@@ -43,6 +43,7 @@ const companyRegistration = () => {
         {data.map((data) => {
           return (
             <IonCard>
+
             <IonCardHeader>
               <IonCardTitle>
                 {data.item}
@@ -53,6 +54,7 @@ const companyRegistration = () => {
               {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
             </ion-range>
           </ion-item>
+
                 </IonCardTitle>
                 <IonInput placeholder="説明を入力"></IonInput>
               </IonCardHeader>
