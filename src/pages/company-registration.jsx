@@ -1,4 +1,5 @@
 import React from "react";
+import Header from './Header';
 import {
   IonContent,
   IonHeader,
@@ -26,11 +27,7 @@ const memo = [
 const Tab2 = () => {
   return (
     <IonPage>
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>企業登録</IonTitle>
-      </IonToolbar>
-    </IonHeader>
+    <Header name={"企業登録"}/>
 
     <IonContent fullscreen>   
           {memo.map((data) => 

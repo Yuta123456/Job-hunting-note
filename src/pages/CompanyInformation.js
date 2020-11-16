@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from './Header';
 import {
   IonContent,
   IonHeader,
@@ -28,6 +29,7 @@ const CompanyInformation = () => {
   const stars = [1, 1, 1, 1, 1];
   return (
     <IonContent fullscreen>
+      <Header name={"企業情報"}/>
       {data.map((data) => {
         return (
           <IonItem>

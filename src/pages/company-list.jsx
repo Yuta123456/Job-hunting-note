@@ -1,4 +1,5 @@
 import React from "react";
+import Header from './Header';
 import {
   IonContent,
   IonHeader,
@@ -21,11 +22,7 @@ const companyData = [ {name:"三菱UFJ", value:3.5},
 const Tab1 = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>企業一覧</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header name={"企業一覧"}/>
       <IonContent fullscreen>
         
           {companyData.map( (data) => 
