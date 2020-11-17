@@ -13,7 +13,6 @@ import {
 } from "@ionic/react";
 import { star } from 'ionicons/icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import test from '../components/test'
 const Tab1 = (props) => {
   //localStorage.clear()
   //localStorage.companyData = JSON.stringify(props.data)
