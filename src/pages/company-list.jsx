@@ -21,7 +21,7 @@ import { isConstructorDeclaration } from "typescript";
 const Tab1 = (props) => {
   //localStorage.clear()
   const companyData = props.data
-  console.log(companyData)
+  console.log(companyData, props)
   return (
     <IonPage>
       <Header name={"企業一覧"} />
