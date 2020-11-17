@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import {
   IonButtons,
@@ -32,7 +31,6 @@ const Header = (props) => {
       <IonTitle>{props.name}</IonTitle>
     </IonToolbar>
   );
-
 };
 
 export default Header;
