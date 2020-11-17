@@ -20,7 +20,7 @@ import SetObjectiveModal from './components/SetObjectiveModal'
 import Tab1 from './pages/company-list.jsx';
 import Tab2 from './pages/company-registration';
 import Tab3 from './pages/Tab3';
-
+import jsonObject from './data/companydata'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -40,16 +40,19 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import { useState } from 'react';
-
 const App = () => {
   const [objective, setObjective] = useState();
   useEffect(() => {localStorageLoading()},[]);
+  const [companyData, setCompanyData] = useState(jsonObject);
   {/*ここでuseIonViewWillEnterを使いたいんだけど、だめっぽい。なぜ？ */}
   function localStorageLoading(){
     if ('visited' in localStorage){
-      console.log("visited in localStorage")
+      console.log("visited in localStorage");
+      setCompanyData(localStorage.getItem("companyData"));
+      console.log(companyData);
     }else{
       console.log("No item named visited");
+      localStorage.setItem("companyData", companyData);
     }
   }
     return (
@@ -58,7 +61,7 @@ const App = () => {
           <IonRouterOutlet>
             <Route path="/tab1" render={()=>{
               return ('visited' in localStorage)
-              ? <Route path="/tab1" component={Tab1} exact={true} />
+              ? <Tab1 data={companyData}/>
               : <SetObjectiveModal setObj={setObjective}/>}} exact={true} />
             <Route path="/tab2" component={Tab2} exact={true} />
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
