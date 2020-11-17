@@ -12,6 +12,8 @@ import {
   IonIcon
 } from "@ionic/react";
 import { star } from 'ionicons/icons';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import test from '../components/test'
 const Tab1 = (props) => {
   //localStorage.clear()
   //localStorage.companyData = JSON.stringify(props.data)
@@ -24,7 +26,8 @@ const Tab1 = (props) => {
       <IonContent fullscreen>
         {Object.keys(companyData).map(key => {
           return (
-            <IonCard>
+            
+            <IonCard button routerLink={"/detail/:"+ key}>
               <IonCardHeader>
                 <IonCardTitle>{key}</IonCardTitle>
               </IonCardHeader>
@@ -41,4 +44,3 @@ const Tab1 = (props) => {
 };
 
 export default Tab1;
-
