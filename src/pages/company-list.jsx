@@ -4,37 +4,33 @@ import Header from './Header';
 import Footer from './Footer';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonCard,
   IonCardContent,
   IonCardTitle,
-  IonCardSubtitle,
   IonCardHeader,
   IonIcon
 } from "@ionic/react";
 import { star } from 'ionicons/icons';
-import ExploreContainer from "../components/ExploreContainer";
-import { isConstructorDeclaration } from "typescript";
 const Tab1 = (props) => {
   //localStorage.clear()
+  //localStorage.companyData = JSON.stringify(props.data)
   const companyData = props.data
-  console.log(companyData, props)
+  //console.log(typeof(props.data))
+  //console.log(typeof(companyData), companyData)
   return (
     <IonPage>
       <Header name={"企業一覧"} />
       <IonContent fullscreen>
-        {Object.entries(companyData).map((data) => {
-          {console.log(data)}
+        {Object.keys(companyData).map(key => {
+          {console.log(key)}
           return (
             <IonCard>
               <IonCardHeader>
-                <IonCardTitle>{data[0]}</IonCardTitle>
+                <IonCardTitle>{key}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <IonIcon icon={star}>aiuro</IonIcon> {data[1].value}
+                <IonIcon icon={star}>aiuro</IonIcon> {}
               </IonCardContent>
             </IonCard>
           )

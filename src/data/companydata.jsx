@@ -1,4 +1,4 @@
-const jsonData = {
+const companyDataList = {
     "ゆめみ":{
         "企業理念":["企業理念の〇〇というところに共感できた", 3],
         "福利厚生":["学習教材の補助が出てて良い", 2],
@@ -24,4 +24,4 @@ const jsonData = {
         "昇給制度":["年に三回",4]
     }
 }
-export default jsonData;
+export default companyDataList;
