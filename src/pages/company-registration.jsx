@@ -36,6 +36,7 @@ const data = {
 }
 const companyRegistration = () => {
   const stars = [1, 1, 1, 1, 1];
+  // const 
   return (
     <IonPage>
       <IonContent fullscreen>
