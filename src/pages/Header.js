@@ -5,24 +5,27 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
+  IonIcon,
+  IonButton
 } from "@ionic/react";
+import { ellipsisHorizontal } from 'ionicons/icons';
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route } from "react-router-dom";
 
 const Header = (props) => {
   return (
-    <ion-toolbar color="success">
-      {/* <ion-buttons slot="primary">
-        <ion-button>
-          <ion-icon
+    <IonToolbar color="success">
+      <IonButtons slot="primary">
+        <IonButton onClick={()=>{props.click()}}>
+          <IonIcon
             slot="icon-only"
             color="dark"
             icon={ellipsisHorizontal}
-          ></ion-icon>
-        </ion-button>
-      </ion-buttons> */}
-      <ion-title>{props.name}</ion-title>
-    </ion-toolbar>
+          ></IonIcon>
+        </IonButton>
+      </IonButtons>
+      <IonTitle>{props.name}</IonTitle>
+    </IonToolbar>
   );
 };
 

@@ -43,13 +43,11 @@ import { useState } from 'react';
 
 const App = () => {
   const [objective, setObjective] = useState();
-  const [visited, setVisit] = useState(false);
   useEffect(() => {localStorageLoading()},[]);
   {/*ここでuseIonViewWillEnterを使いたいんだけど、だめっぽい。なぜ？ */}
   function localStorageLoading(){
     if ('visited' in localStorage){
       console.log("visited in localStorage")
-      setVisit(true);
     }else{
       console.log("No item named visited");
     }
@@ -59,9 +57,9 @@ const App = () => {
         <IonReactRouter>
           <IonRouterOutlet>
             <Route path="/tab1" render={()=>{
-              return visited 
+              return ('visited' in localStorage)
               ? <Route path="/tab1" component={Tab1} exact={true} />
-              : <SetObjectiveModal setVisit={setVisit} setObj={setObjective}/>}} exact={true} />
+              : <SetObjectiveModal setObj={setObjective}/>}} exact={true} />
             <Route path="/tab2" component={Tab2} exact={true} />
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
           </IonRouterOutlet>

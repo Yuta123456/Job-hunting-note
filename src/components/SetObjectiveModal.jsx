@@ -14,7 +14,6 @@ import { Redirect, Route, Link } from 'react-router-dom';
 const SetObjectivePage = (props) => {
     const [selected, setSelected] = useState("");
     function setSubmitObjective(){
-        props.setVisit(true);
         props.setObj(selected);
         localStorage.setItem("visited","true");
     };
@@ -39,7 +38,7 @@ const SetObjectivePage = (props) => {
                 <IonItemDivider>Your Selection</IonItemDivider>
                 <IonItem>{selected ?? '(none selected'}</IonItem>
                 </IonList>
-                    <IonButton routerLink="./tab1" onClick={()=>{setSubmitObjective()}}>
+                    <IonButton routerLink="./tab1" onClick={()=>{setSubmitObjective()}} disabled={selected==""}>
                         就活ノートを始める
                     </IonButton>
             </IonContent>
