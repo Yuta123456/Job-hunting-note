@@ -22,27 +22,35 @@ import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
 // import "./company-information.css";
 const propose="interview"
-const data = [
-  { item: "企業理念", memo: "御社の企業理念に！！" ,evalution: "5"},
-  { item: "福利厚生", memo: "良き" ,evalution: "0"},
-  { item: "年収月収", memo: "" ,evalution: "0"},
-  { item: "昇給制度", memo: "" ,evalution: "0"},
-];
+const data = {
+  "contents":[
+      {"item":"企業理念"},
+      {"item":"福利厚生"},
+      {"item":"年収月収"},
+      {"item":"昇給制度"},
+      {"item":"男女比"},
+      {"item":"平均年齢"},
+      {"item":"ジョブローテーション"},
+      {"item":"勤務地"}
+  ]
+}
 const companyRegistration = () => {
   const stars = [1, 1, 1, 1, 1];
   return (
     <IonPage>
       <IonContent fullscreen>
-      <ion-toolbar  color="success">
-          <ion-buttons slot="primary">
+        <Header name="企業登録">
+        <ion-buttons slot="primary">
             <ion-button>
               <ion-icon slot="icon-only" color="dark" icon={ellipsisHorizontal}></ion-icon>
             </ion-button>
           </ion-buttons>
-          <ion-title>企業登録</ion-title>
-        </ion-toolbar>
-        {data.map((data) => {
+        </Header>
+      
+        <IonInput placeholder="企業名を入力"></IonInput>
+        {data.contents.map((data) => {
           return (
+            
             <IonCard>
 
             <IonCardHeader>
