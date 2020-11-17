@@ -13,12 +13,13 @@ import { Redirect, Route, Link } from 'react-router-dom';
 
 const SetObjectivePage = (props) => {
     const [selected, setSelected] = useState("");
-    useIonViewDidLeave(() => {
+    function setSubmitObjective(){
         props.setVisit(true);
         props.setObj(selected);
+        {/*ここでsetItem出来てない */}
         localStorage.setItem("visited","true");
         console.log("SetItem");
-    });
+    };
     return (
         <IonPage>
             <IonContent fullscreen>
@@ -27,7 +28,6 @@ const SetObjectivePage = (props) => {
                     <IonListHeader>
                     <IonLabel>あなたが就活ノートを作る目的は何ですか？</IonLabel>
                     </IonListHeader>
-
                     <IonItem>
                         <IonLabel>面接対策</IonLabel>
                         <IonRadio slot="start" value="面接対策" />
@@ -41,12 +41,9 @@ const SetObjectivePage = (props) => {
                 <IonItemDivider>Your Selection</IonItemDivider>
                 <IonItem>{selected ?? '(none selected'}</IonItem>
                 </IonList>
-                    <Link to="./Tab2">
-                        <IonButton>
-                            就活ノートを始める
-                        </IonButton>
-                    </Link>
-                
+                    <IonButton routerLink="./tab1" onClick={()=>{setSubmitObjective()}}>
+                        就活ノートを始める
+                    </IonButton>
             </IonContent>
         </IonPage>
     );
