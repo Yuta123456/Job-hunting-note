@@ -20,7 +20,7 @@ import SetObjectiveModal from './components/SetObjectiveModal'
 import Tab1 from './pages/company-list.jsx';
 import Tab2 from './pages/company-registration';
 import Tab3 from './pages/Tab3';
-import jsonObject from './data/companydata'
+import companyDataList from './data/companydata'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -43,7 +43,7 @@ import { useState } from 'react';
 const App = () => {
   const [objective, setObjective] = useState();
   useEffect(() => {localStorageLoading()},[]);
-  const [companyData, setCompanyData] = useState(jsonObject);
+  const [companyData, setCompanyData] = useState(companyDataList);
   {/*ここでuseIonViewWillEnterを使いたいんだけど、だめっぽい。なぜ？ */}
   function localStorageLoading(){
     if ('visited' in localStorage){
@@ -52,7 +52,8 @@ const App = () => {
       console.log(companyData);
     }else{
       console.log("No item named visited");
-      localStorage.setItem("companyData", companyData);
+      localStorage.setItem("companyData", JSON.stringify(companyData));
+      console.log(companyData);
     }
   }
     return (
