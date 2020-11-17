@@ -6,9 +6,9 @@ import {
   IonToolbar,
   IonTitle,
   IonIcon,
-  IonButton
+  IonButton,
 } from "@ionic/react";
-import { ellipsisHorizontal } from 'ionicons/icons';
+import { ellipsisHorizontal } from "ionicons/icons";
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route } from "react-router-dom";
 
@@ -16,7 +16,11 @@ const Header = (props) => {
   return (
     <IonToolbar color="success">
       <IonButtons slot="primary">
-        <IonButton onClick={()=>{props.click()}}>
+        <IonButton
+          onClick={() => {
+            props.click();
+          }}
+        >
           <IonIcon
             slot="icon-only"
             color="dark"

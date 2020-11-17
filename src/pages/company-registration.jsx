@@ -33,27 +33,20 @@ const data = {
       {"item":"ジョブローテーション"},
       {"item":"勤務地"}
   ]
-}
-const companyRegistration = () => {
+}//ここはimportできない
+const CompanyRegistration = (props) => {
   const stars = [1, 1, 1, 1, 1];
-  // const 
+ 
   return (
     <IonPage>
+    <Header name="企業登録"/>
       <IonContent fullscreen>
-        <Header name="企業登録">
-        <ion-buttons slot="primary">
-            <ion-button>
-              <ion-icon slot="icon-only" color="dark" icon={ellipsisHorizontal}></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </Header>
+        
       
         <IonInput placeholder="企業名を入力"></IonInput>
-        {data.contents.map((data) => {
+        {data.contents.map((data,i) => {
           return (
-            
             <IonCard>
-
             <IonCardHeader>
               <IonCardTitle>
                 {data.item}
@@ -66,15 +59,18 @@ const companyRegistration = () => {
           </ion-item>
 
                 </IonCardTitle>
-                <IonInput placeholder="説明を入力"></IonInput>
+                <IonInput placeholder="説明を入力"  ></IonInput>
+                
+              
               </IonCardHeader>
               </IonCard>
           );
         })}
       </IonContent>
+      <IonButton expand="block" >完了</IonButton>
       <Footer />
     </IonPage>
   );
 };
-export default companyRegistration;
+export default CompanyRegistration;
 
