@@ -37,21 +37,23 @@ const data = {
 }//ここはimportできない
 const CompanyRegistration = (props) => {
   const [inputData, setInputData] = useState({});
-  const [companyName, set] = useState("");
+  const [companyName, setCompanyData] = useState("");
   function setText(itemName, submitText){
     const newData = inputData;
     newData[itemName] = submitText;
     setInputData(newData);
   }
   function registCompany(){
-
+    console.log("registcompany")
+    const companyData = JSON.parse(localStorage.getItem("companyData"));
+    companyData[companyName] = inputData;
+    localStorage.setItem("companyData", JSON.stringify(companyData));
   }
   return (
     <IonPage>
     <Header name="企業登録"/>
       <IonContent fullscreen>
-
-        <IonInput placeholder="企業名を入力"></IonInput>
+        <IonInput placeholder="企業名を入力" onIonChange={(e) => {setCompanyData(e.detail.value)}}></IonInput>
         {data.contents.map((data,i) => {
           return (
             <IonCard>
@@ -71,8 +73,8 @@ const CompanyRegistration = (props) => {
               </IonCard>
           );
         })}
+        <IonButton expand="block" onClick={()=>{registCompany()}} disabled={companyName==""}>企業を登録</IonButton>
       </IonContent>
-      <IonButton expand="block" onClick={()=>{registCompany()}}>完了</IonButton>
       <Footer />
     </IonPage>
   );
