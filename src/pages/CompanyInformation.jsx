@@ -17,6 +17,7 @@ import {
   IonInput,
   IonIcon,
   IonText,
+  IonRange
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
@@ -46,23 +47,21 @@ const CompanyInformation = () => {
         </ion-buttons>
         <ion-title>企業情報</ion-title>
       </ion-toolbar>
-
-      
       {data.map((data) => {
         return (
           <IonCard>
           <IonCardHeader>
             <IonCardTitle>
               {data.item}
-              <ion-item>
+              <IonItem>
               <IonIcon icon={star}>aiuro</IonIcon>
-          <ion-range min="1" max="5" step="1" value="1" snaps color="danger">
+          <IonRange min="1" max="5" step="1" value="1" snaps color="danger">
             {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
             {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
-          </ion-range>
-        </ion-item>
+          </IonRange>
+        </IonItem>
               </IonCardTitle>
-            <IonText >{data.memo}</IonText>
+            <IonText>{data.memo}</IonText>
             
             </IonCardHeader>
             </IonCard>

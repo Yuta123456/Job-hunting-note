@@ -48,7 +48,7 @@ const App = () => {
   function localStorageLoading(){
     if ('visited' in localStorage){
       console.log("visited in localStorage");
-      setCompanyData(localStorage.getItem("companyData"));
+      setCompanyData(JSON.parse(localStorage.getItem("companyData")));
       console.log(companyData);
     }else{
       console.log("No item named visited");

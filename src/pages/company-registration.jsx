@@ -17,6 +17,7 @@ import {
   IonInput,
   IonIcon,
   IonText,
+  IonRange
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
@@ -33,47 +34,48 @@ const data = {
       {"item":"ジョブローテーション"},
       {"item":"勤務地"}
   ]
-}
-const companyRegistration = () => {
-  const stars = [1, 1, 1, 1, 1];
+}//ここはimportできない
+const CompanyRegistration = (props) => {
+  const [inputData, setInputData] = useState({});
+  const [companyName, set]
+  function setText(itemName, submitText){
+    const newData = inputData;
+    newData[itemName] = submitText;
+    setInputData(newData);
+  }
+  function registCompany(){
+
+  }
   return (
     <IonPage>
+    <Header name="企業登録"/>
       <IonContent fullscreen>
-        <Header name="企業登録">
-        <ion-buttons slot="primary">
-            <ion-button>
-              <ion-icon slot="icon-only" color="dark" icon={ellipsisHorizontal}></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </Header>
-      
-        <IonInput placeholder="企業名を入力"></IonInput>
-        {data.contents.map((data) => {
-          return (
-            
-            <IonCard>
 
+        <IonInput placeholder="企業名を入力"></IonInput>
+        {data.contents.map((data,i) => {
+          return (
+            <IonCard>
             <IonCardHeader>
               <IonCardTitle>
                 {data.item}
-                <ion-item>
+                <IonItem>
                 <IonIcon icon={star}>aiuro</IonIcon>
-            <ion-range min="1" max="5" step="1" value="1" snaps color="danger">
+            <IonRange min="1" max="5" step="1" value="1" snaps color="danger">
               {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
               {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
-            </ion-range>
-          </ion-item>
-
+            </IonRange>
+          </IonItem>
                 </IonCardTitle>
-                <IonInput placeholder="説明を入力"></IonInput>
+                <IonInput placeholder="説明を入力" onIonChange={(e)=>{setText(data.item, e.detail.value)}}></IonInput>
               </IonCardHeader>
               </IonCard>
           );
         })}
       </IonContent>
+      <IonButton expand="block" onClick={()=>{registCompany()}}>完了</IonButton>
       <Footer />
     </IonPage>
   );
 };
-export default companyRegistration;
+export default CompanyRegistration;
 
