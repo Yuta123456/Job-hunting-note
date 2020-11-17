@@ -21,17 +21,10 @@ import {
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
+import data from '../data/questionItem'
 // import "./company-information.css";
 const propose="interview"
-const data = ["企業理念",
-"福利厚生",
-"年収月収",
-"昇給制度",
- "男女比",
-"平均年齢",
-"ジョブローテーション",
-"勤務地"
-]//ここはimportできない
+//ここはimportできない
 const CompanyRegistration = (props) => {
   const dic = {};
   for(let i = 0;i < data.length;i++){
