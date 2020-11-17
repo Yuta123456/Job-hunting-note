@@ -16,19 +16,21 @@ import { Redirect, Route } from "react-router-dom";
 const Header = (props) => {
   return (
     <IonToolbar color="success">
-      <IonButtons slot="primary">
-        <IonButton
-          onClick={() => {
-            props.click();
-          }}
-        >
-          <IonIcon
-            slot="icon-only"
-            color="dark"
-            icon={ellipsisHorizontal}
-          ></IonIcon>
-        </IonButton>
-      </IonButtons>
+      {props.flag &&
+        <IonButtons slot="primary">
+          <IonButton
+            onClick={() => {
+              props.click(true);
+            }}
+          >
+            <IonIcon
+              slot="icon-only"
+              color="dark"
+              icon={ellipsisHorizontal}
+            ></IonIcon>
+          </IonButton>
+        </IonButtons>
+      }
       <IonTitle>{props.name}</IonTitle>
     </IonToolbar>
   );
