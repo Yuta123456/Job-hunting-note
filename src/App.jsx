@@ -46,7 +46,7 @@ const App = () => {
   const [visited, setVisit] = useState(false);
   useIonViewDidEnter(() => {
     if ('visited' in localStorage){
-      console.log("true")
+      console.log("visited in localStorage")
       setVisit(true);
     }}
   );
