@@ -9,16 +9,16 @@ import {
   IonCardContent,
   IonCardTitle,
   IonCardHeader,
-  IonIcon
+  IonIcon,
+  useIonViewWillEnter
 } from "@ionic/react";
 import { star } from 'ionicons/icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 const Tab1 = (props) => {
-  //localStorage.clear()
-  //localStorage.companyData = JSON.stringify(props.data)
   const companyData = props.data
-  //console.log(typeof(props.data))
-  //console.log(typeof(companyData), companyData)
+  useIonViewWillEnter(()=>{
+    props.setCompanyData(JSON.parse(localStorage.getItem("companyData")));
+  });
   return (
     <IonPage>
       <Header name={"企業一覧"} />

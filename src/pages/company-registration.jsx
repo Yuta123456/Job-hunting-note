@@ -21,24 +21,17 @@ import {
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
+import data from '../data/questionItem'
 // import "./company-information.css";
 const propose="interview"
-const data = ["企業理念",
-"福利厚生",
-"年収月収",
-"昇給制度",
- "男女比",
-"平均年齢",
-"ジョブローテーション",
-"勤務地"
-]//ここはimportできない
+//ここはimportできない
 const CompanyRegistration = (props) => {
   const dic = {};
   for(let i = 0;i < data.length;i++){
-    dic[data[i]] = ["", 0];
+    dic[data[i]] = ["", 1];
   }
   const [inputData, setInputData] = useState(dic);
-  const [companyName, setCompanyData] = useState("");
+  const [companyName, setCompanyName] = useState("");
   function setText(itemName, submitText){
     const newData = inputData;
     const oldData = newData[itemName];
@@ -58,12 +51,18 @@ const CompanyRegistration = (props) => {
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
+    //initializeData
+    for(let i = 0;i < data.length;i++){
+      dic[data[i]] = ["", 1];
+    }
+    setInputData(dic);
+    setCompanyName("");
   }
   return (
     <IonPage>
     <Header name="企業登録"/>
       <IonContent fullscreen>
-        <IonInput placeholder="企業名を入力" onIonChange={(e) => {setCompanyData(e.detail.value)}}></IonInput>
+        <IonInput placeholder="企業名を入力" onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true}></IonInput>
         {data.map((data) => {
           return (
             <IonCard>
@@ -83,7 +82,7 @@ const CompanyRegistration = (props) => {
               </IonCard>
           );
         })}
-        <IonButton expand="block" onClick={()=>{registCompany()}} disabled={companyName==""}>企業を登録</IonButton>
+        <IonButton expand="block" onClick={()=>{registCompany()}} disabled={companyName==""} routerLink="/tab1">企業を登録</IonButton>
       </IonContent>
       <Footer />
     </IonPage>
