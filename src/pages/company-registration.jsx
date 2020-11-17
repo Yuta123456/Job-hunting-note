@@ -39,14 +39,14 @@ const companyRegistration = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-      <ion-toolbar  color="success">
-          <ion-buttons slot="primary">
+        <Header name="企業登録">
+        <ion-buttons slot="primary">
             <ion-button>
               <ion-icon slot="icon-only" color="dark" icon={ellipsisHorizontal}></ion-icon>
             </ion-button>
           </ion-buttons>
-          <ion-title>企業登録</ion-title>
-        </ion-toolbar>
+        </Header>
+      
         <IonInput placeholder="企業名を入力"></IonInput>
         {data.contents.map((data) => {
           return (
