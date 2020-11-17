@@ -20,6 +20,7 @@ import SetObjectiveModal from './components/SetObjectiveModal'
 import Tab1 from './pages/company-list.jsx';
 import Tab2 from './pages/company-registration';
 import Tab3 from './pages/Tab3';
+import test from './components/test'
 import companyDataList from './data/companydata'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -65,6 +66,7 @@ const App = () => {
               ? <Tab1 data={companyData}/>
               : <SetObjectiveModal setObj={setObjective}/>}} exact={true} />
             <Route path="/tab2" component={Tab2} exact={true} />
+            <Route path="/test/:name" component={test}/>
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
           </IonRouterOutlet>
         </IonReactRouter>
