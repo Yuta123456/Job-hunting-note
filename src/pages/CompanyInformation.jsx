@@ -20,6 +20,8 @@ import {
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
+import CompanyData from "../../companydata.json"
+import InterviewData from "../../interview.json"
 // import "./company-information.css";
 
 const propose="interview"
@@ -32,6 +34,7 @@ const data = [
 
 const CompanyInformation = () => {
   const stars = [1, 1, 1, 1, 1];
+  const evalution
   return (
     <IonPage>
     <IonContent fullscreen>
