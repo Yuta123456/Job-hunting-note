@@ -37,7 +37,7 @@ const data = {
 }//ここはimportできない
 const CompanyRegistration = (props) => {
   const [inputData, setInputData] = useState({});
-  const [companyName, set]
+  const [companyName, set] = useState("");
   function setText(itemName, submitText){
     const newData = inputData;
     newData[itemName] = submitText;
