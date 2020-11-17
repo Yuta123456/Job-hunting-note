@@ -16,9 +16,7 @@ const SetObjectivePage = (props) => {
     function setSubmitObjective(){
         props.setVisit(true);
         props.setObj(selected);
-        {/*ここでsetItem出来てない */}
         localStorage.setItem("visited","true");
-        console.log("SetItem");
     };
     return (
         <IonPage>
