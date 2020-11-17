@@ -23,7 +23,6 @@ const Tab1 = (props) => {
       <Header name={"企業一覧"} />
       <IonContent fullscreen>
         {Object.keys(companyData).map(key => {
-          {console.log(key)}
           return (
             <IonCard>
               <IonCardHeader>

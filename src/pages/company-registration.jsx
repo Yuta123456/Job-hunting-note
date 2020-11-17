@@ -23,24 +23,34 @@ import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
 // import "./company-information.css";
 const propose="interview"
-const data = {
-  "contents":[
-      {"item":"企業理念"},
-      {"item":"福利厚生"},
-      {"item":"年収月収"},
-      {"item":"昇給制度"},
-      {"item":"男女比"},
-      {"item":"平均年齢"},
-      {"item":"ジョブローテーション"},
-      {"item":"勤務地"}
-  ]
-}//ここはimportできない
+const data = ["企業理念",
+"福利厚生",
+"年収月収",
+"昇給制度",
+ "男女比",
+"平均年齢",
+"ジョブローテーション",
+"勤務地"
+]//ここはimportできない
 const CompanyRegistration = (props) => {
-  const [inputData, setInputData] = useState({});
+  const dic = {};
+  for(let i = 0;i < data.length;i++){
+    dic[data[i]] = ["", 0];
+  }
+  const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyData] = useState("");
   function setText(itemName, submitText){
     const newData = inputData;
-    newData[itemName] = submitText;
+    const oldData = newData[itemName];
+    oldData[0] = submitText;
+    newData[itemName] = oldData;
+    setInputData(newData);
+  }
+  function setEval(itemName, submitEval){
+    const newData = inputData;
+    const oldData = newData[itemName];
+    oldData[1] = submitEval;
+    newData[itemName] = oldData;
     setInputData(newData);
   }
   function registCompany(){
@@ -54,21 +64,21 @@ const CompanyRegistration = (props) => {
     <Header name="企業登録"/>
       <IonContent fullscreen>
         <IonInput placeholder="企業名を入力" onIonChange={(e) => {setCompanyData(e.detail.value)}}></IonInput>
-        {data.contents.map((data,i) => {
+        {data.map((data) => {
           return (
             <IonCard>
             <IonCardHeader>
               <IonCardTitle>
-                {data.item}
+                {data}
                 <IonItem>
                 <IonIcon icon={star}>aiuro</IonIcon>
-            <IonRange min="1" max="5" step="1" value="1" snaps color="danger">
+            <IonRange min="1" max="5" step="1" value="1" snaps color="danger" onIonChange={(e) =>{setEval(data, e.detail.value)}}>
               {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
               {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
             </IonRange>
           </IonItem>
                 </IonCardTitle>
-                <IonInput placeholder="説明を入力" onIonChange={(e)=>{setText(data.item, e.detail.value)}}></IonInput>
+                <IonInput placeholder="説明を入力" onIonChange={(e)=>{setText(data, e.detail.value)}}></IonInput>
               </IonCardHeader>
               </IonCard>
           );
