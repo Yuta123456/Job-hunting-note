@@ -1,5 +1,5 @@
 
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Header from './Header';
 import Footer from './Footer';
 import {
@@ -12,14 +12,13 @@ import {
   IonIcon,
   useIonViewWillEnter
 } from "@ionic/react";
-import { star } from 'ionicons/icons';
+import { cameraSharp, star } from 'ionicons/icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 const Tab1 = (props) => {
   const companyData = props.data
-  useIonViewWillEnter(()=>{
+  useIonViewWillEnter(() => {
     props.setCompanyData(JSON.parse(localStorage.getItem("companyData")));
   });
-  //const [mean, setMean] = useState([])
   const mean = []
   Object.values(companyData).map(value => {
     let total = 0
@@ -30,25 +29,28 @@ const Tab1 = (props) => {
     })
     mean.push(total / cnt)
   })
-  console.log(mean)
   let i = -1
   return (
     <IonPage>
       <Header name={"企業一覧"} />
       <IonContent fullscreen>
-        {Object.keys(companyData).map(key => {
-          i += 1
-          return (
-            <IonCard button routerLink={"/detail/:"+ key}>
-              <IonCardHeader>
-                <IonCardTitle>{key}</IonCardTitle>
-              </IonCardHeader>
-              <IonCardContent>
-                <IonIcon icon={star} color = "warning">aiuro</IonIcon> {mean[i]}
-              </IonCardContent>
-            </IonCard>
+        {Object.values(companyData).length !== 0 ?(
+          Object.keys(companyData).map(key => {
+            i += 1
+            return (
+              <IonCard button routerLink={"/detail/:" + key}>
+                <IonCardHeader>
+                  <IonCardTitle>{key}</IonCardTitle>
+                </IonCardHeader>
+                <IonCardContent>
+                  <IonIcon icon={star} color="warning">aiuro</IonIcon> {mean[i]}
+                </IonCardContent>
+              </IonCard>
+            )
+          })):(
+            <div>何もないヨ</div>
           )
-        })}
+        }
       </IonContent>
       <Footer />
     </IonPage>
