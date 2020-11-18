@@ -49,7 +49,7 @@ const CompanyEdit = (props) => {
     
     localStorage.setItem("companyData", JSON.stringify(companyData));
     if(name!==companyName){
-        localStorage.removeItem("companyData", JSON.stringify(name));
+        //localStorage.removeItem("companyData", JSON.stringify(name));
     }
   }
   return (

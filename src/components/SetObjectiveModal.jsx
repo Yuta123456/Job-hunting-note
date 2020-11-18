@@ -29,7 +29,7 @@ const SetObjectivePage = (props) => {
                         <IonLabel>面接対策</IonLabel>
                         <IonRadio slot="start" value="面接対策" />
                     </IonItem>
-
+                    
                     <IonItem>
                         <IonLabel>企業比較</IonLabel>
                         <IonRadio slot="start" value="企業比較" />
