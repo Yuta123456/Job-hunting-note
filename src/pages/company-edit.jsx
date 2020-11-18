@@ -50,7 +50,6 @@ const CompanyEdit = (props) => {
     delete companyData[name]
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
-
   }
   return (
     <IonPage>
