@@ -14,7 +14,7 @@ import { Redirect, Route, Link } from 'react-router-dom';
 const SetObjectivePage = (props) => {
     const [selected, setSelected] = useState("");
     function setSubmitObjective(){
-        props.setObj(selected);
+        localStorage.setItem("objective",selected);
         localStorage.setItem("visited","true");
     };
     return (

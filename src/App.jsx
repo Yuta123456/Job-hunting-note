@@ -43,19 +43,16 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import { useState } from 'react';
 const App = () => {
-  const [objective, setObjective] = useState();
   useEffect(() => {localStorageLoading()},[]);
-  const [companyData, setCompanyData] = useState(companyDataList);
+  const [companyData, setCompanyData] = useState({});
   {/*ここでuseIonViewWillEnterを使いたいんだけど、だめっぽい。なぜ？ */}
   function localStorageLoading(){
     if ('visited' in localStorage){
       console.log("visited in localStorage");
       setCompanyData(JSON.parse(localStorage.getItem("companyData")));
-      console.log(companyData);
     }else{
       console.log("No item named visited");
       localStorage.setItem("companyData", JSON.stringify(companyData));
-      console.log(companyData);
     }
   }
     return (
@@ -65,8 +62,8 @@ const App = () => {
             <Route path="/tab1" render={()=>{
               return ('visited' in localStorage)
               ? <Tab1 data={companyData} setCompanyData={setCompanyData}/>
-              : <SetObjectiveModal setObj={setObjective}/>}} exact={true} />
-            <Route path="/tab2" component={Tab2} exact={true} />
+              : <SetObjectiveModal/>}} exact={true} />
+            <Route path="/tab2" component={Tab2} exact={true}/>
             <Route path="/detail/:name" component={Detail}/>
             <Route path="/edit/:name" component={CompanyEdit}/>
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />

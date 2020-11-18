@@ -24,10 +24,17 @@ import {
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
-import questionItem from '../data/questionItem';
+import interviewQuestionItem from '../data/interviewQuestionItem'
+import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
 
 const CompanyEdit = (props) => {
+  const questionItem = [];
+  if (props.obj === "面接対策"){
+    questionItem = interviewQuestionItem;
+  }else if (props.obj === '企業情報'){
+    questionItem = informationQuestionItem;
+  }
   const name = props.match.params.name.substr(1);
   const data = JSON.parse(localStorage.companyData);
   if(data[name] === undefined){
@@ -62,9 +69,7 @@ const CompanyEdit = (props) => {
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
     const dic = {};
-    for (let i = 0; i < questionItem.length; i++) {
-      dic[questionItem[i]] = ["", 1];
-    }
+    questionItem.forEach((key) => {dic[key] = ["", 1]});
     setInputData(dic);
     setCompanyName(null);
   }
