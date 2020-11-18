@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { HashLink } from "react-router-hash-link"
 import {
   IonApp,
   IonIcon,
@@ -63,9 +64,11 @@ const App = () => {
               return ('visited' in localStorage)
               ? <Tab1 data={companyData} setCompanyData={setCompanyData}/>
               : <SetObjectiveModal/>}} exact={true} />
-            <Route path="/tab2" component={Tab2} exact={true}/>
+            {/*<Route path="/tab2" component={Tab2} exact={true}/>*/}
+            <HashLink to = "/tab2#default" component = {Tab2} exact={true}/>
             <Route path="/detail/:name" component={Detail}/>
             <Route path="/edit/:name" component={CompanyEdit}/>
+            {/*<HashLink to = "/edit/:name#default2" component = {CompanyEdit} exact={true}/>*/}
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
           </IonRouterOutlet>
         </IonReactRouter>

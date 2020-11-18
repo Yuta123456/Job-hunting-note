@@ -64,7 +64,7 @@ const CompanyRegistration = (props) => {
   }
   return (
     <IonPage>
-      <Header name="企業登録" />
+      <Header name="企業登録" id = "default"/>
       <IonContent fullscreen>
         <form className="ion-padding">
           <IonInput placeholder="企業名を入力" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonInput>
