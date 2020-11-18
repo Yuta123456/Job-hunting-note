@@ -75,8 +75,10 @@ const CompanyRegistration = (props) => {
                   <IonCardTitle>
                     {data}
                     <IonItem>
-                      <IonIcon icon={star}>aiuro</IonIcon>
-                      <IonRange min="1" max="5" step="1" value="1" snaps color="danger" onIonChange={(e) => { setEval(data, e.detail.value) }}>
+                      <IonIcon icon={star}></IonIcon>
+                      <IonRange min="1" max="5" step="1" value="1" snaps color="danger" 
+                      onIonChange={(e) => { setEval(data, e.detail.value) }
+                      } disabled={companyName===""} >
                       </IonRange>
                     </IonItem>
                   </IonCardTitle>
