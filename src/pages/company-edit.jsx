@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from './Header';
 import Footer from './Footer';
 import {
@@ -17,45 +17,62 @@ import {
   IonInput,
   IonIcon,
   IonText,
-  IonRange
+  IonRange,
+  IonTextarea,
+  useIonViewDidEnter
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
+import questionItem from '../data/questionItem';
 // import "./company-information.css";
+
 const CompanyEdit = (props) => {
-  const name = props.match.params.name.substr(1)
-  const data = JSON.parse(localStorage.companyData)
+  const name = props.match.params.name.substr(1);
+  const data = JSON.parse(localStorage.companyData);
   if(data[name] === undefined){
         data[name] = {}
   }
- 
   const [inputData, setInputData] = useState(data[name]);
-  const [companyName, setCompanyData] = useState(name);
+  const [companyName, setCompanyName] = useState(name);
+  useEffect(() =>{
+    setCompanyName(name);
+  });
+
   function setText(itemName, submitText){
     const newData = inputData;
-    const oldData = newData[itemName];
-    oldData[0] = submitText;
-    newData[itemName] = oldData;
+    if (itemName in newData){
+      newData[itemName][0] = submitText
+    }else{
+      newData[itemName] = [submitText, 1];
+    }
     setInputData(newData);
   }
   function setEval(itemName, submitEval){
     const newData = inputData;
-    const oldData = newData[itemName];
-    oldData[1] = submitEval;
-    newData[itemName] = oldData;
+    if (itemName in newData){
+      newData[itemName][1] = submitEval
+    }else{
+      newData[itemName] = ["", submitEval];
+    }
     setInputData(newData);
   }
-  function editCompany(){
+  function editCompany(){//editCompanyで空になる
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     delete companyData[name]
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
+    const dic = {};
+    for (let i = 0; i < questionItem.length; i++) {
+      dic[questionItem[i]] = ["", 1];
+    }
+    setInputData(dic);
+    setCompanyName("");
   }
   return (
     <IonPage>
-    <Header name="企業編集" flag="false"/>
+    <Header name="企業編集" flag={false}/>
       <IonContent fullscreen>
-        <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyData(e.detail.value)}}></IonInput>
+        <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true}></IonInput>
         {Object.entries(data[name]).map(values => {
           return (
             <IonCard>
@@ -63,14 +80,14 @@ const CompanyEdit = (props) => {
               <IonCardTitle>
                 {values[0]}
                 <IonItem>
-                <IonIcon icon={star}>aiuro</IonIcon>
+                <IonIcon icon={star} color = "warning">aiuro</IonIcon>
             <IonRange min="1" max="5" step="1" value={String(values[1][1])} snaps color="danger" onIonChange={(e) =>{setEval(values[0], e.detail.value)}}>
               {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
               {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
             </IonRange>
           </IonItem>   
                 </IonCardTitle>
-                <IonInput placeholder="説明を入力" value={values[1][0]} onIonChange={(e)=>{setText(values[0], e.detail.value)}}></IonInput>
+                <IonTextarea placeholder="説明を入力" value={values[1][0]} onIonChange={(e)=>{setText(values[0], e.detail.value)}}/>
               </IonCardHeader>
               </IonCard>
           );
