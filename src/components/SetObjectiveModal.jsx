@@ -20,6 +20,12 @@ const SetObjectivePage = (props) => {
     return (
         <IonPage>
             <IonContent fullscreen>
+                <IonHeader>
+                    <IonToolbar>
+                        <IonTitle >就活ノートの目的をお聞かせください</IonTitle>
+                    </IonToolbar>
+                </IonHeader>
+            
                 <IonList>
                 <IonRadioGroup value={selected} onIonChange={e => setSelected(e.detail.value)}>
                     <IonListHeader>
@@ -36,13 +42,11 @@ const SetObjectivePage = (props) => {
                     <IonItem>
                         <IonList>
                             <IonLabel>企業情報</IonLabel>
-                            <IonNote>説明文</IonNote>
+                            <IonNote>企業情報をメモするための項目がピックアップされたノートを作れます</IonNote>
                         </IonList>
                         <IonRadio slot="start" value="企業情報" />
                     </IonItem>
-                </IonRadioGroup>
-                <IonItemDivider>Your Selection</IonItemDivider>
-                <IonItem>{selected ?? '(none selected'}</IonItem>
+                </IonRadioGroup>               
                 </IonList>
                     <IonButton routerLink="./tab1" onClick={()=>{setSubmitObjective()}} disabled={selected==""}>
                         就活ノートを始める

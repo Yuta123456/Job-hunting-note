@@ -13,5 +13,4 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
     </div>
   );
 };
-
 export default ExploreContainer;
