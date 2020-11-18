@@ -19,7 +19,8 @@ import {
   IonText,
   IonRange,
   IonTextarea,
-  useIonViewDidEnter
+  useIonViewDidEnter,
+  useIonViewDidLeave
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
@@ -37,7 +38,6 @@ const CompanyEdit = (props) => {
   useEffect(() =>{
     setCompanyName(name);
   });
-
   function setText(itemName, submitText){
     const newData = inputData;
     if (itemName in newData){
@@ -66,13 +66,18 @@ const CompanyEdit = (props) => {
       dic[questionItem[i]] = ["", 1];
     }
     setInputData(dic);
-    setCompanyName("");
+    setCompanyName(null);
   }
+  useIonViewDidLeave(() =>{
+    setCompanyName(null);
+    console.log("useIonViewDid..");
+    console.log(companyName)
+  })
   return (
     <IonPage>
     <Header name="企業編集" flag={false}/>
       <IonContent fullscreen>
-        <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true}></IonInput>
+        <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true} disabled={true}></IonInput>
         {Object.entries(data[name]).map(values => {
           return (
             <IonCard>
