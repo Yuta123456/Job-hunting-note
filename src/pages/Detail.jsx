@@ -10,6 +10,7 @@ import {
     IonCardContent,
     IonActionSheet,
     IonToolbar,
+    IonText,
     IonAlert
 } from "@ionic/react";
 import Header from '../pages/Header';
@@ -30,8 +31,11 @@ const Detail = (props) => {
         <IonPage>
             <Header name={"企業情報"} click={setShowAction} flag={true} />
             <IonContent fullscreen>
-                <IonTitle class="ion-text-center" color = "primary">{name}</IonTitle>
-                {Object.entries(data[name]).map(value => {
+                <IonCard>
+                    <IonCardHeader>
+                        <IonCardTitle  class="ion-text-center">{name}</IonCardTitle>
+                    </IonCardHeader>
+                    {Object.entries(data[name]).map(value => {
                     return (
                         <IonCard>
                             <IonCardHeader>
@@ -46,6 +50,7 @@ const Detail = (props) => {
                         </IonCard>
                     )
                 })}
+                </IonCard>
                 <IonActionSheet
                     isOpen={showAction}
                     onDidDismiss={() => setShowAction(false)}
