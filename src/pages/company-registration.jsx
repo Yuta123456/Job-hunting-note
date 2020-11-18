@@ -83,7 +83,7 @@ const CompanyRegistration = (props) => {
                   <IonCardTitle>
                     {data}
                     <IonItem>
-                      <IonIcon icon={star}>aiuro</IonIcon>
+                      <IonIcon icon={star} color = "warning">aiuro</IonIcon>
                       <IonRange min="1" max="5" step="1" value="1" snaps color="danger" onIonChange={(e) => { setEval(data, e.detail.value) }}>
                         {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
                         {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
