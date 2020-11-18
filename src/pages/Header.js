@@ -14,7 +14,7 @@ import { Redirect, Route } from "react-router-dom";
 
 const Header = (props) => {
   return (
-    <IonToolbar color="success">
+    <IonToolbar color="primary">
       {props.flag &&
         <IonButtons slot="primary">
           <IonButton
