@@ -25,6 +25,9 @@ import "./Tab3.css";
 const CompanyEdit = (props) => {
   const name = props.match.params.name.substr(1)
   const data = JSON.parse(localStorage.companyData)
+  if(data[name] === undefined){
+        data[name] = {}
+  }
  
   const [inputData, setInputData] = useState(data[name]);
   const [companyName, setCompanyData] = useState(name);
@@ -43,21 +46,17 @@ const CompanyEdit = (props) => {
     setInputData(newData);
   }
   function editCompany(){
-    console.log("registcompany")
     const companyData = JSON.parse(localStorage.getItem("companyData"));
+    delete companyData[name]
     companyData[companyName] = inputData;
-    
     localStorage.setItem("companyData", JSON.stringify(companyData));
-    if(name!==companyName){
-        localStorage.removeItem("companyData", JSON.stringify(name));
-    }
+
   }
   return (
     <IonPage>
     <Header name="企業編集" flag="false"/>
       <IonContent fullscreen>
         <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyData(e.detail.value)}}></IonInput>
-        {console.log(data[name])}
         {Object.entries(data[name]).map(values => {
           return (
             <IonCard>
