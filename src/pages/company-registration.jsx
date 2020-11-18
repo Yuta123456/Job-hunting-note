@@ -34,7 +34,7 @@ const CompanyRegistration = (props) => {
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
   /* ここ付け足した */
-  const text = ""
+  const [text, setData] = useState("")
   const [name, setName] = useState("")
   
   function setText(itemName, submitText) {
