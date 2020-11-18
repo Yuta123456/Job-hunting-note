@@ -66,6 +66,7 @@ const CompanyRegistration = (props) => {
     <IonPage>
       <Header name="企業登録" />
       <IonContent fullscreen>
+
         <form className="ion-padding">
           <IonInput placeholder="企業名を入力" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonInput>
           {questionItem.map((data) => {
@@ -75,7 +76,7 @@ const CompanyRegistration = (props) => {
                   <IonCardTitle>
                     {data}
                     <IonItem>
-
+                      <IonLabel color="dark">評価</IonLabel>
                       <IonIcon icon={star}></IonIcon>
                       <IonRange min="1" max="5" step="1" value="1" snaps color="danger" 
                       onIonChange={(e) => { setEval(data, e.detail.value) }

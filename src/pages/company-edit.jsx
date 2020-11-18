@@ -95,10 +95,9 @@ const CompanyEdit = (props) => {
               <IonCardTitle>
                 {values[0]}
                 <IonItem>
-                <IonIcon icon={star} color = "warning">aiuro</IonIcon>
+                <IonLabel color="dark">評価</IonLabel>
+                <IonIcon icon={star} color = "warning"></IonIcon>
             <IonRange min="1" max="5" step="1" value={String(values[1][1])} snaps color="danger" onIonChange={(e) =>{setEval(values[0], e.detail.value)}}>
-              {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
-              {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
             </IonRange>
           </IonItem>   
                 </IonCardTitle>
