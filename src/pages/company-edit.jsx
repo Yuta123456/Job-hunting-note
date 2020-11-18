@@ -19,14 +19,24 @@ import {
   IonText,
   IonRange,
   IonTextarea,
-  useIonViewDidEnter
+  useIonViewDidEnter,
+  useIonViewDidLeave,
+  useIonViewWillEnter
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
-import questionItem from '../data/questionItem';
+import interviewQuestionItem from '../data/interviewQuestionItem'
+import informationQuestionItem from '../data/informationQuestionItem';
+import { setConstantValue } from "typescript";
 // import "./company-information.css";
 
 const CompanyEdit = (props) => {
+  const questionItem = [];
+  if (props.obj === "面接対策"){
+    questionItem = interviewQuestionItem;
+  }else if (props.obj === '企業情報'){
+    questionItem = informationQuestionItem;
+  }
   const name = props.match.params.name.substr(1);
   const data = JSON.parse(localStorage.companyData);
   if(data[name] === undefined){
@@ -37,7 +47,9 @@ const CompanyEdit = (props) => {
   useEffect(() =>{
     setCompanyName(name);
   });
-
+  useIonViewWillEnter(() =>{
+    setInputData(data[name]);
+  });
   function setText(itemName, submitText){
     const newData = inputData;
     if (itemName in newData){
@@ -62,17 +74,20 @@ const CompanyEdit = (props) => {
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
     const dic = {};
-    for (let i = 0; i < questionItem.length; i++) {
-      dic[questionItem[i]] = ["", 1];
-    }
+    questionItem.forEach((key) => {dic[key] = ["", 1]});
     setInputData(dic);
-    setCompanyName("");
+    setCompanyName(null);
   }
+  useIonViewDidLeave(() =>{
+    setCompanyName(null);
+    console.log("useIonViewDid..");
+    console.log(companyName)
+  })
   return (
     <IonPage>
     <Header name="企業編集" flag={false}/>
       <IonContent fullscreen>
-        <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true}></IonInput>
+        <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true} disabled={true}></IonInput>
         {Object.entries(data[name]).map(values => {
           return (
             <IonCard>
