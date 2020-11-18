@@ -6,7 +6,7 @@ import { IonContent,IonButton,IonButtons,
     　IonLabel, IonItem,
 IonItemGroup,IonItemDivider,
 IonList,IonRadioGroup, IonListHeader,
-IonRadio} from '@ionic/react';
+IonRadio, IonNote} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route, Link } from 'react-router-dom';
 
@@ -26,12 +26,18 @@ const SetObjectivePage = (props) => {
                     <IonLabel>あなたが就活ノートを作る目的は何ですか？</IonLabel>
                     </IonListHeader>
                     <IonItem>
-                        <IonLabel>面接対策</IonLabel>
+                        <IonList>
+                            <IonLabel>面接対策</IonLabel>
+                            <IonNote>面接対策に役立つ項目がピックアップされたノートを作れます</IonNote>
+                        </IonList>
                         <IonRadio slot="start" value="面接対策" />
                     </IonItem>
                     
                     <IonItem>
-                        <IonLabel>企業情報</IonLabel>
+                        <IonList>
+                            <IonLabel>企業情報</IonLabel>
+                            <IonNote>説明文</IonNote>
+                        </IonList>
                         <IonRadio slot="start" value="企業情報" />
                     </IonItem>
                 </IonRadioGroup>
