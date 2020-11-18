@@ -61,7 +61,7 @@ const Detail = (props) => {
                         text: "変更",
                         icon: create,
                         handler: () => {
-                            history.push("edit/:")
+                            history.push("/edit/:" + name)
                         }
                     }, {
                         text: "閉じる",
