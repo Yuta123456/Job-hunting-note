@@ -42,7 +42,7 @@ const CompanyEdit = (props) => {
     newData[itemName] = oldData;
     setInputData(newData);
   }
-  function registCompany(){
+  function editCompany(){
     console.log("registcompany")
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     companyData[companyName] = inputData;
@@ -77,7 +77,7 @@ const CompanyEdit = (props) => {
               </IonCard>
           );
         })}
-        <IonButton expand="block" onClick={()=>{registCompany()}} disabled={companyName===""}>編集を完了する</IonButton>
+        <IonButton expand="block" onClick={()=>{editCompany()}} disabled={companyName===""} routerLink="/tab1">編集を完了する</IonButton>
       </IonContent>
       <Footer />
     </IonPage>

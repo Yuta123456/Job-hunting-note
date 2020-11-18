@@ -82,7 +82,7 @@ const CompanyRegistration = (props) => {
               </IonCard>
           );
         })}
-        <IonButton expand="block" onClick={()=>{registCompany()}} disabled={companyName==""} routerLink="/tab1">企業を登録</IonButton>
+        <IonButton expand="block" onClick={()=>{registCompany()}} disabled={companyName===""} routerLink="/tab1">企業を登録</IonButton>
       </IonContent>
       <Footer />
     </IonPage>
