@@ -14,6 +14,7 @@ import {
 } from "@ionic/react";
 import { cameraSharp, star } from 'ionicons/icons';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import PromoteRegist from '../components/PromoteRegist';
 const Tab1 = (props) => {
   const companyData = props.data
   useIonViewWillEnter(() => {
@@ -48,7 +49,7 @@ const Tab1 = (props) => {
               </IonCard>
             )
           })):(
-            <div>何もないヨ</div>
+            <PromoteRegist/>
           )
         }
       </IonContent>
