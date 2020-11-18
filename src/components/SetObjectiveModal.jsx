@@ -31,8 +31,8 @@ const SetObjectivePage = (props) => {
                     </IonItem>
                     
                     <IonItem>
-                        <IonLabel>企業比較</IonLabel>
-                        <IonRadio slot="start" value="企業比較" />
+                        <IonLabel>企業情報</IonLabel>
+                        <IonRadio slot="start" value="企業情報" />
                     </IonItem>
                 </IonRadioGroup>
                 <IonItemDivider>Your Selection</IonItemDivider>
