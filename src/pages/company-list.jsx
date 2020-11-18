@@ -27,7 +27,7 @@ const Tab1 = (props) => {
       cnt += 1
       total += value[1]
     })
-    mean.push(total / cnt)
+    mean.push((total / cnt).toFixed(1))
   })
   let i = -1
   return (
