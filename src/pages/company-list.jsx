@@ -31,7 +31,7 @@ const Tab1 = (props) => {
                 <IonCardTitle>{key}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <IonIcon icon={star}>aiuro</IonIcon> {}
+                <IonIcon icon={star} color = "warning">aiuro</IonIcon> {}
               </IonCardContent>
             </IonCard>
           )
