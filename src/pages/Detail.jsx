@@ -28,7 +28,7 @@ const Detail = (props) => {
         <IonPage>
             <Header name={"企業情報"} click={setShowAction} flag={true} />
             <IonContent fullscreen>
-                <IonTitle class="ion-text-center" color = "success">{name}</IonTitle>
+                <IonTitle class="ion-text-center" color = "primary">{name}</IonTitle>
                 {Object.entries(data[name]).map(value => {
                     return (
                         <IonCard>
