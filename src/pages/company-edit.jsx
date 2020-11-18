@@ -20,12 +20,14 @@ import {
   IonRange,
   IonTextarea,
   useIonViewDidEnter,
-  useIonViewDidLeave
+  useIonViewDidLeave,
+  useIonViewWillEnter
 } from "@ionic/react";
 import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
+import { setConstantValue } from "typescript";
 // import "./company-information.css";
 
 const CompanyEdit = (props) => {
@@ -44,6 +46,9 @@ const CompanyEdit = (props) => {
   const [companyName, setCompanyName] = useState(name);
   useEffect(() =>{
     setCompanyName(name);
+  });
+  useIonViewWillEnter(() =>{
+    setInputData(data[name]);
   });
   function setText(itemName, submitText){
     const newData = inputData;
