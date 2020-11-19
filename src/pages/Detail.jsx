@@ -12,7 +12,7 @@ import {
 } from "@ionic/react";
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
-import { star, trash, close, create, search, pencil} from "ionicons/icons";
+import { star, trash, close, create, pencil} from "ionicons/icons";
 import { useHistory } from "react-router-dom"
 import "./Detail.css"
 
