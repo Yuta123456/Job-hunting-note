@@ -10,7 +10,6 @@ import {
   IonButton,
   IonItem,
   IonLabel,
-  IonInput,
   IonIcon,
   IonRange,
   IonTextarea
@@ -60,8 +59,15 @@ const CompanyRegistration = (props) => {
       <Header name="企業登録" />
       <IonContent fullscreen>
 
-        <form className="ion-padding">
-          <IonInput placeholder="※最初に企業名を入力" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonInput>
+        {/* <form className="ion-padding" */}
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle  class="ion-text-center">
+                <IonTextarea placeholder="※最初に企業名を
+                入力してください" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonTextarea>
+              </IonCardTitle>
+            </IonCardHeader>
+          
           {questionItem.map((data) => {
             return (
               <IonCard key={data}>
@@ -82,8 +88,9 @@ const CompanyRegistration = (props) => {
               </IonCard>
             );
           })}
+          </IonCard>
           <IonButton expand="block" onClick={() => { registCompany() }} disabled={companyName === ""} routerLink="/tab1">企業を登録</IonButton>
-        </form>
+        {/* </form> */}
       </IonContent>
       <Footer />
     </IonPage>
