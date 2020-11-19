@@ -12,8 +12,9 @@ import {
 } from "@ionic/react";
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
-import { star, trash, close, create } from "ionicons/icons";
+import { star, trash, close, create, search, pencil} from "ionicons/icons";
 import { useHistory } from "react-router-dom"
+import "./Detail.css"
 
 const Detail = (props) => {
     const name = props.match.params.name.substr(1)
@@ -30,18 +31,20 @@ const Detail = (props) => {
             <IonContent fullscreen>
                 <IonCard>
                     <IonCardHeader>
-                        <IonCardTitle  class="ion-text-center">{name}</IonCardTitle>
+                        <IonCardTitle  class="ion-text-center" className = "title">{name}</IonCardTitle>
                     </IonCardHeader>
                     {Object.entries(data[name]).map(value => {
                     return (
                         <IonCard key={value}>
                             <IonCardHeader>
-                                <IonCardTitle>{value[0] + " "}
+                                <IonCardTitle>
+                                    {value[0] + " "}
                                     <IonIcon icon={star} color = "warning">aiuro</IonIcon>
                                     {" " + value[1][1]}
                                 </IonCardTitle>
                             </IonCardHeader>
                             <IonCardContent>
+                                <IonIcon icon={pencil}></IonIcon>
                                 {value[1][0]}
                             </IonCardContent>
                         </IonCard>
