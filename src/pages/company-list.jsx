@@ -14,14 +14,15 @@ import {
 } from "@ionic/react";
 import { star,chevronForwardOutline} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
+import './company-list.css'
+
 const evalTextStyle = {
-  fontSize : "3vw",
+  fontSize : "0.8em",
 }
 const companyNameStyle = {
-  fontSize: "5vw",
+  fontSize: "1.5em",
   color:"black"
 }
-
 const Tab1 = (props) => {
   const companyData = JSON.parse(localStorage.getItem("companyData"))
   const mean = []
@@ -50,10 +51,8 @@ const Tab1 = (props) => {
                   <span style={companyNameStyle}><IonText>{key}</IonText>
                   <IonIcon icon={chevronForwardOutline} class="ion-float-right" size="small"/>
                   </span>
-                  
                 </IonCardHeader>
                 <IonCardContent size="small">
-                  
                  <IonNote style={evalTextStyle}>総合評価:<IonIcon icon={star} color="warning"/> {mean[i]}</IonNote>
                 </IonCardContent>
               </IonCard>
