@@ -3,29 +3,23 @@ import Header from './Header';
 import Footer from './Footer';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle,
   IonButton,
   IonItem,
   IonLabel,
   IonInput,
   IonIcon,
-  IonText,
   IonRange,
-  IonTextarea
+
 } from "@ionic/react";
-import { starOutline, ellipsisHorizontal, star } from "ionicons/icons";
+import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
-const propose = "interview"
 //ここはimportできない
 const CompanyRegistration = (props) => {
   let questionItem = [];
@@ -40,8 +34,7 @@ const CompanyRegistration = (props) => {
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
   /* ここ付け足した */
-  const [text, setData] = useState("")
-  const [name, setName] = useState("")
+  const text = "";
   
   function setText(itemName, submitText) {
     const newData = inputData;
@@ -71,7 +64,7 @@ const CompanyRegistration = (props) => {
           <IonInput placeholder="企業名を入力" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonInput>
           {questionItem.map((data) => {
             return (
-              <IonCard>
+              <IonCard key={data}>
                 <IonCardHeader>
                   <IonCardTitle>
                     {data}

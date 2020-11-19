@@ -1,31 +1,22 @@
-import React, { useState } from "react";
-import Header from './Header';
+import React from "react";
 import Footer from './Footer';
 import {
   IonContent,
-  IonHeader,
   IonPage,
-  IonTitle,
-  IonToolbar,
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle,
-  IonButton,
   IonItem,
-  IonLabel,
-  IonInput,
   IonIcon,
   IonText,
   IonRange
 } from "@ionic/react";
-import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
+import {ellipsisHorizontal,star } from "ionicons/icons";
 import "./Tab3.css";
 // import CompanyData from "../../../companydata.json"
 // import InterviewData from "./../../interview"
 // import "./company-information.css";
 
-const propose="interview"
 const data = [
   { item: "企業理念", memo: "御社の企業理念に！！" ,evalution: "5"},
   { item: "福利厚生", memo: "良き" ,evalution: "0"},

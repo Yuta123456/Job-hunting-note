@@ -3,35 +3,30 @@ import Header from './Header';
 import Footer from './Footer';
 import {
   IonContent,
-  IonHeader,
+
   IonPage,
-  IonTitle,
-  IonToolbar,
+
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle,
   IonButton,
   IonItem,
   IonLabel,
   IonInput,
   IonIcon,
-  IonText,
   IonRange,
   IonTextarea,
-  useIonViewDidEnter,
   useIonViewDidLeave,
   useIonViewWillEnter
 } from "@ionic/react";
-import { starOutline,ellipsisHorizontal,star } from "ionicons/icons";
+import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
-import { setConstantValue } from "typescript";
 // import "./company-information.css";
 
+let questionItem = [];
 const CompanyEdit = (props) => {
-  const questionItem = [];
   if (props.obj === "面接対策"){
     questionItem = interviewQuestionItem;
   }else if (props.obj === '企業情報'){
@@ -80,8 +75,7 @@ const CompanyEdit = (props) => {
   }
   useIonViewDidLeave(() =>{
     setCompanyName(null);
-    console.log("useIonViewDid..");
-    console.log(companyName)
+
   })
   return (
     <IonPage>
@@ -90,7 +84,7 @@ const CompanyEdit = (props) => {
         <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true} disabled={true}></IonInput>
         {Object.entries(data[name]).map(values => {
           return (
-            <IonCard>
+            <IonCard key={values}>
             <IonCardHeader>
               <IonCardTitle>
                 {values[0]}

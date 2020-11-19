@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { IonContent,IonButton,IonButtons,
-     IonMenuButton, IonHeader, IonToolbar,
-      IonTitle, IonModal, IonPage,
-       useIonViewWillEnter,useIonViewDidLeave,
+import React, { useState } from 'react';
+import { IonContent,IonButton,IonHeader, IonToolbar,
+      IonTitle, IonPage,
     　IonLabel, IonItem,
-IonItemGroup,IonItemDivider,
 IonList,IonRadioGroup, IonListHeader,
 IonRadio, IonNote} from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route, Link } from 'react-router-dom';
+
 
 
 const SetObjectivePage = (props) => {
@@ -48,7 +44,7 @@ const SetObjectivePage = (props) => {
                     </IonItem>
                 </IonRadioGroup>               
                 </IonList>
-                    <IonButton routerLink="./tab1" onClick={()=>{setSubmitObjective()}} disabled={selected==""}>
+                    <IonButton routerLink="./tab1" onClick={()=>{setSubmitObjective()}} disabled={selected===""}>
                         就活ノートを始める
                     </IonButton>
             </IonContent>

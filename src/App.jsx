@@ -2,27 +2,14 @@ import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  useIonViewDidEnter,
-  useIonViewWillEnter,
-  useIonViewDidLeave,
-  useIonViewWillLeave
-  
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { list, create } from 'ionicons/icons';
 import SetObjectiveModal from './components/SetObjectiveModal'
 import Tab1 from './pages/company-list.jsx';
 import Tab2 from './pages/company-registration';
-import Tab3 from './pages/Tab3';
 import Detail from './pages/Detail'
 import CompanyEdit from './pages/company-edit'
-import companyDataList from './data/companydata'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 

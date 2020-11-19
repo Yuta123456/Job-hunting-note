@@ -1,8 +1,5 @@
 import React from 'react';
-import { IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { list, create } from 'ionicons/icons';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+
 import './PromoteRegist.css';
 
 const PromoteRegist = () => {

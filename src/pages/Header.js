@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   IonButtons,
-  IonMenuButton,
-  IonHeader,
   IonToolbar,
   IonTitle,
   IonIcon,
   IonButton,
 } from "@ionic/react";
 import { ellipsisHorizontal } from "ionicons/icons";
-import { IonReactRouter } from "@ionic/react-router";
-import { Redirect, Route } from "react-router-dom";
+
 
 const Header = (props) => {
   return (

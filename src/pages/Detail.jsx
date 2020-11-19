@@ -2,20 +2,17 @@ import React, { useState } from "react";
 import {
     IonContent,
     IonPage,
-    IonTitle,
     IonCard,
     IonCardHeader,
     IonCardTitle,
     IonIcon,
     IonCardContent,
     IonActionSheet,
-    IonToolbar,
-    IonText,
     IonAlert
 } from "@ionic/react";
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
-import { star, trash, close, create, navigate } from "ionicons/icons";
+import { star, trash, close, create } from "ionicons/icons";
 import { useHistory } from "react-router-dom"
 
 const Detail = (props) => {
@@ -37,7 +34,7 @@ const Detail = (props) => {
                     </IonCardHeader>
                     {Object.entries(data[name]).map(value => {
                     return (
-                        <IonCard>
+                        <IonCard key={value}>
                             <IonCardHeader>
                                 <IonCardTitle>{value[0] + " "}
                                     <IonIcon icon={star} color = "warning">aiuro</IonIcon>
