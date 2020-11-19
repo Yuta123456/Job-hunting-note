@@ -14,7 +14,6 @@ import Header from '../pages/Header';
 import Footer from '../pages/Footer';
 import { star, trash, close, create, pencil} from "ionicons/icons";
 import { useHistory } from "react-router-dom"
-import "./Detail.css"
 
 const Detail = (props) => {
     const name = props.match.params.name.substr(1)
