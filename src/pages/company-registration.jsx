@@ -13,7 +13,7 @@ import {
   IonInput,
   IonIcon,
   IonRange,
-
+  IonTextarea
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
@@ -61,7 +61,7 @@ const CompanyRegistration = (props) => {
       <IonContent fullscreen>
 
         <form className="ion-padding">
-          <IonInput placeholder="企業名を入力" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonInput>
+          <IonInput placeholder="※最初に企業名を入力" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonInput>
           {questionItem.map((data) => {
             return (
               <IonCard key={data}>
@@ -77,9 +77,8 @@ const CompanyRegistration = (props) => {
                       </IonRange>
                     </IonItem>
                   </IonCardTitle>
-                  <IonInput placeholder="説明を入力" value = {text} onIonChange={(e) => { setText(data, e.detail.value) }}></IonInput>
+                  <IonTextarea placeholder="説明を入力" value = {text} onIonChange={(e) => { setText(data, e.detail.value) }} disabled={companyName === ""}></IonTextarea>
                 </IonCardHeader>
-
               </IonCard>
             );
           })}
