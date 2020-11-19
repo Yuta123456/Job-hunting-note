@@ -41,7 +41,7 @@ const CompanyEdit = (props) => {
   const [companyName, setCompanyName] = useState(name);
   useEffect(() =>{
     setCompanyName(name);
-  });
+  },[name]);
   useIonViewWillEnter(() =>{
     setInputData(data[name]);
   });
