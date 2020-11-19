@@ -8,45 +8,58 @@ import {
     IonIcon,
     IonCardContent,
     IonActionSheet,
-    IonAlert
+    IonAlert, 
+    IonCardSubtitle
 } from "@ionic/react";
 import Header from '../pages/Header';
 import Footer from '../pages/Footer';
-import { star, trash, close, create } from "ionicons/icons";
+import { star, trash, close, create, pencil } from "ionicons/icons";
 import { useHistory } from "react-router-dom"
 
 const Detail = (props) => {
     const name = props.match.params.name.substr(1)
     const data = JSON.parse(localStorage.companyData)
+    const showStar = [1, 2, 3, 4, 5]
     const [showAction, setShowAction] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
     let history = useHistory()
-    if(data[name] === undefined){
+    if (data[name] === undefined) {
         data[name] = {}
     }
+    let color = ""
     return (
         <IonPage>
             <Header name={"企業情報"} click={setShowAction} flag={true} />
             <IonContent fullscreen>
                 <IonCard>
                     <IonCardHeader>
-                        <IonCardTitle  class="ion-text-center">{name}</IonCardTitle>
+                        <IonCardTitle class="ion-text-center" className="title">{name}</IonCardTitle>
                     </IonCardHeader>
                     {Object.entries(data[name]).map(value => {
-                    return (
-                        <IonCard key={value}>
-                            <IonCardHeader>
-                                <IonCardTitle>{value[0] + " "}
-                                    <IonIcon icon={star} color = "warning">aiuro</IonIcon>
+                        return (
+                            <IonCard key={value}>
+                                <IonCardHeader>
+                                    <IonCardTitle>
+                                        {value[0] + " "}
+                                    </IonCardTitle>
+                                    <IonCardSubtitle>
+                                    {showStar.map((data) => {
+                                        data <= value[1][1] ? color = "warning" : color = "medium"
+                                        return (
+                                            <IonIcon icon={star} color={color} key={data}>aiueo</IonIcon>
+                                        )
+
+                                    })}
                                     {" " + value[1][1]}
-                                </IonCardTitle>
-                            </IonCardHeader>
-                            <IonCardContent>
-                                {value[1][0]}
-                            </IonCardContent>
-                        </IonCard>
-                    )
-                })}
+                                    </IonCardSubtitle>
+                                </IonCardHeader>
+                                <IonCardContent>
+                                    <IonIcon icon={pencil}></IonIcon>
+                                    {value[1][0]}
+                                </IonCardContent>
+                            </IonCard>
+                        )
+                    })}
                 </IonCard>
                 <IonActionSheet
                     isOpen={showAction}
@@ -71,21 +84,21 @@ const Detail = (props) => {
                         icon: close
                     }]}
                 />
-                <IonAlert 
-                isOpen = {showAlert}
-                onDidDismiss = {() => setShowAlert(false)}
-                header = "削除してよろしいですか？"
-                buttons = {[{
-                    text:"閉じる",
-                }, {
-                    text: "削除",
-                    handler:(() => {
-                        delete data[name]
-                        localStorage.companyData = JSON.stringify(data)
-                        history.push("/tab1")
+                <IonAlert
+                    isOpen={showAlert}
+                    onDidDismiss={() => setShowAlert(false)}
+                    header="削除してよろしいですか？"
+                    buttons={[{
+                        text: "閉じる",
+                    }, {
+                        text: "削除",
+                        handler: (() => {
+                            delete data[name]
+                            localStorage.companyData = JSON.stringify(data)
+                            history.push("/tab1")
 
-                    })
-                }]}
+                        })
+                    }]}
                 />
             </IonContent>
             <Footer />
