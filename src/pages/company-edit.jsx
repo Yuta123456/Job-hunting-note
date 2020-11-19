@@ -21,6 +21,7 @@ import {
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
+import { useLocation } from "react-router-dom";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
@@ -32,6 +33,7 @@ const CompanyEdit = (props) => {
   }else if (props.obj === '企業情報'){
     questionItem = informationQuestionItem;
   }
+  const { pathname } = useLocation();
   const name = props.match.params.name.substr(1);
   const data = JSON.parse(localStorage.companyData);
   if(data[name] === undefined){
@@ -40,8 +42,10 @@ const CompanyEdit = (props) => {
   const [inputData, setInputData] = useState(data[name]);
   const [companyName, setCompanyName] = useState(name);
   useEffect(() =>{
+    console.log("useEffect");
     setCompanyName(name);
-  },[name]);
+  },[pathname, name]);
+
   useIonViewWillEnter(() =>{
     setInputData(data[name]);
   });

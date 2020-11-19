@@ -17,7 +17,7 @@ const SetObjectivePage = (props) => {
             <IonContent fullscreen>
                 <IonHeader>
                     <IonToolbar>
-                        <IonTitle >就活ノートの目的をお聞かせください</IonTitle>
+                        <IonTitle>就活ノートの目的をお聞かせください</IonTitle>
                     </IonToolbar>
                 </IonHeader>
             
