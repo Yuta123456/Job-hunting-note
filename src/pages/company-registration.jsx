@@ -77,7 +77,7 @@ const CompanyRegistration = (props) => {
                     <IonItem>
                       <IonLabel color="dark">評価</IonLabel>
                       <IonIcon icon={star} color="warning"></IonIcon>
-                      <IonRange min="1" max="5" step="1" value="1" snaps color="danger" 
+                      <IonRange min="1" max="5" step="1" value="1" snaps color="primary" 
                       onIonChange={(e) => { setEval(data, e.detail.value) }
                       } disabled={companyName===""} >
                       </IonRange>

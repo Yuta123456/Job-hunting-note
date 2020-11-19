@@ -7,12 +7,25 @@ import {
   IonPage,
   IonCard,
   IonCardContent,
-  IonCardTitle,
+  IonCardSubtitle,
   IonCardHeader,
+  IonText,
   IonIcon,
+  IonItemDivider,
+  IonNote,
+  IonItem,
+  IonLabel
 } from "@ionic/react";
-import { star } from 'ionicons/icons';
+import { star,chevronForwardOutline} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
+const evalTextStyle = {
+  fontSize : "3vw",
+}
+const companyNameStyle = {
+  fontSize: "5vw",
+  color:"black"
+}
+
 const Tab1 = (props) => {
   const companyData = JSON.parse(localStorage.getItem("companyData"))
   const mean = []
@@ -38,10 +51,14 @@ const Tab1 = (props) => {
             return (
               <IonCard button routerLink={"/detail/:" + key} key={key}>
                 <IonCardHeader>
-                  <IonCardTitle>{key}</IonCardTitle>
+                  <span style={companyNameStyle}><IonText>{key}</IonText>
+                  <IonIcon icon={chevronForwardOutline} class="ion-float-right" size="small"/>
+                  </span>
+                  
                 </IonCardHeader>
-                <IonCardContent>
-                  <IonIcon icon={star} color="warning">aiuro</IonIcon> {mean[i]}
+                <IonCardContent size="small">
+                  
+                 <IonNote style={evalTextStyle}>総合評価:<IonIcon icon={star} color="warning"/> {mean[i]}</IonNote>
                 </IonCardContent>
               </IonCard>
             )
