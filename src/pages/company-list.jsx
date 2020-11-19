@@ -7,14 +7,10 @@ import {
   IonPage,
   IonCard,
   IonCardContent,
-  IonCardSubtitle,
   IonCardHeader,
   IonText,
   IonIcon,
-  IonItemDivider,
-  IonNote,
-  IonItem,
-  IonLabel
+  IonNote
 } from "@ionic/react";
 import { star,chevronForwardOutline} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
