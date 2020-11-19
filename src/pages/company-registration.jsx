@@ -10,10 +10,9 @@ import {
   IonButton,
   IonItem,
   IonLabel,
-  IonInput,
   IonIcon,
   IonRange,
-
+  IonTextarea
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
@@ -59,8 +58,16 @@ const CompanyRegistration = (props) => {
     <IonPage>
       <Header name="企業登録" />
       <IonContent fullscreen>
-        <form className="ion-padding">
-          <IonInput placeholder="企業名を入力" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonInput>
+
+
+        {/* <form className="ion-padding" */}
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle  class="ion-text-center">
+                <IonTextarea placeholder="※最初に企業名を
+                入力してください" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonTextarea>
+              </IonCardTitle>
+            </IonCardHeader>
           {questionItem.map((data) => {
             return (
               <IonCard key={data}>
@@ -76,14 +83,14 @@ const CompanyRegistration = (props) => {
                       </IonRange>
                     </IonItem>
                   </IonCardTitle>
-                  <IonInput placeholder="説明を入力" value = {text} onIonChange={(e) => { setText(data, e.detail.value) }}></IonInput>
+                  <IonTextarea placeholder="説明を入力" value = {text} onIonChange={(e) => { setText(data, e.detail.value) }} disabled={companyName === ""}></IonTextarea>
                 </IonCardHeader>
-
               </IonCard>
             );
           })}
+          </IonCard>
           <IonButton expand="block" onClick={() => { registCompany() }} disabled={companyName === ""} routerLink="/tab1">企業を登録</IonButton>
-        </form>
+        {/* </form> */}
       </IonContent>
       <Footer />
     </IonPage>
