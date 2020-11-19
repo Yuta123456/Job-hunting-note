@@ -18,8 +18,14 @@ import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
-// import "./company-information.css";
-//ここはimportできない
+const companyNameStyle = {
+  fontSize:"2em",
+  textAlign:"center"
+}
+const companyItemStyle = {
+  fontSize:"0.7em",
+}
+
 const CompanyRegistration = (props) => {
   let questionItem = [];
   const objective = localStorage.getItem("objective");
@@ -49,7 +55,7 @@ const CompanyRegistration = (props) => {
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
-    //initializeData
+
     questionItem.forEach((key) => {dic[key] = ["", 1]});
     setInputData(dic);
     setCompanyName("");
@@ -58,14 +64,16 @@ const CompanyRegistration = (props) => {
     <IonPage>
       <Header name="企業登録" />
       <IonContent fullscreen>
-
-
-        {/* <form className="ion-padding" */}
           <IonCard>
             <IonCardHeader>
-              <IonCardTitle  class="ion-text-center">
-                <IonTextarea placeholder="※最初に企業名を
-                入力してください" value = {companyName} onIonChange={(e) => { setCompanyName(e.detail.value) }} clearInput={true}></IonTextarea>
+              <IonCardTitle  style={companyNameStyle}>
+                <IonTextarea 
+                placeholder="※最初に企業名を入力" 
+                value = {companyName}
+                onIonChange={(e) => { setCompanyName(e.detail.value) }}
+                size="small"
+                clearInput={true}
+                ></IonTextarea>
               </IonCardTitle>
             </IonCardHeader>
           {questionItem.map((data) => {
@@ -73,13 +81,13 @@ const CompanyRegistration = (props) => {
               <IonCard key={data}>
                 <IonCardHeader>
                   <IonCardTitle>
-                    {data}
+                    <span style={companyItemStyle}>{data}</span>
                     <IonItem>
                       <IonLabel color="dark">評価</IonLabel>
                       <IonIcon icon={star} color="warning"></IonIcon>
                       <IonRange min="1" max="5" step="1" value="1" snaps color="primary" 
                       onIonChange={(e) => { setEval(data, e.detail.value) }
-                      } disabled={companyName===""} >
+                      } disabled={companyName===""}>
                       </IonRange>
                     </IonItem>
                   </IonCardTitle>

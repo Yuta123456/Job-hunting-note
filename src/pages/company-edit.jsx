@@ -3,16 +3,13 @@ import Header from './Header';
 import Footer from './Footer';
 import {
   IonContent,
-
   IonPage,
-
   IonCard,
   IonCardHeader,
   IonCardTitle,
   IonButton,
   IonItem,
   IonLabel,
-  IonInput,
   IonIcon,
   IonRange,
   IonTextarea,
@@ -25,7 +22,13 @@ import { useLocation } from "react-router-dom";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
-
+const companyNameStyle = {
+  fontSize:"2em",
+  textAlign:"center"
+}
+const companyItemStyle = {
+  fontSize:"0.7em",
+}
 let questionItem = [];
 const CompanyEdit = (props) => {
   if (props.obj === "面接対策"){
@@ -85,13 +88,28 @@ const CompanyEdit = (props) => {
     <IonPage>
     <Header name="企業編集" flag={false}/>
       <IonContent fullscreen>
-        <IonInput placeholder="企業名を入力" value={companyName} onIonChange={(e) => {setCompanyName(e.detail.value)}} clearInput={true} disabled={true}></IonInput>
+        <IonCard>
+            <IonCardHeader>
+              <IonCardTitle  style={companyNameStyle}>
+                <IonTextarea 
+                placeholder="※最初に企業名を入力" 
+                value = {companyName}
+                onIonChange={(e) => { setCompanyName(e.detail.value) }}
+                size="small"
+                clearInput={true}
+                disabled={true}
+                ></IonTextarea>
+              </IonCardTitle>
+            </IonCardHeader>
         {Object.entries(data[name]).map(values => {
           return (
             <IonCard key={values}>
             <IonCardHeader>
               <IonCardTitle>
+                <span style={companyItemStyle}>
+
                 {values[0]}
+                </span>
                 <IonItem>
                 <IonLabel color="dark">評価</IonLabel>
                 <IonIcon icon={star} color = "warning"></IonIcon>
@@ -105,6 +123,7 @@ const CompanyEdit = (props) => {
           );
         })}
         <IonButton expand="block" onClick={()=>{editCompany()}} disabled={companyName===""} routerLink="/tab1">編集を完了する</IonButton>
+        </IonCard>
       </IonContent>
       <Footer />
     </IonPage>
