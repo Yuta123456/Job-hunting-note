@@ -5,13 +5,12 @@ import { IonContent,IonButton,IonHeader, IonToolbar,
 IonList,IonRadioGroup, IonListHeader,
 IonRadio, IonNote} from '@ionic/react';
 
-
-
 const SetObjectivePage = (props) => {
     const [selected, setSelected] = useState("");
     function setSubmitObjective(){
         localStorage.setItem("objective",selected);
         localStorage.setItem("visited","true");
+        localStorage.setItem("companyData",JSON.stringify({}));
     };
     return (
         <IonPage>

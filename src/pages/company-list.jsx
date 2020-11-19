@@ -10,15 +10,11 @@ import {
   IonCardTitle,
   IonCardHeader,
   IonIcon,
-  useIonViewWillEnter
 } from "@ionic/react";
 import { star } from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
 const Tab1 = (props) => {
-  const companyData = props.data
-  useIonViewWillEnter(() => {
-    props.setCompanyData(JSON.parse(localStorage.getItem("companyData")));
-  });
+  const companyData = JSON.parse(localStorage.getItem("companyData"))
   const mean = []
   Object.values(companyData).map((value) => {
       let total = 0

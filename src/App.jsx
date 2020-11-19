@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -28,27 +28,14 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { useState } from 'react';
 const App = () => {
-  useEffect(() => {localStorageLoading()},[]);
-  const [companyData, setCompanyData] = useState({});
-  {/*ここでuseIonViewWillEnterを使いたいんだけど、だめっぽい。なぜ？ */}
-  function localStorageLoading(){
-    if ('visited' in localStorage){
-      console.log("visited in localStorage");
-      setCompanyData(JSON.parse(localStorage.getItem("companyData")));
-    }else{
-      console.log("No item named visited");
-      localStorage.setItem("companyData", JSON.stringify(companyData));
-    }
-  }
     return (
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
             <Route path="/tab1" render={()=>{
               return ('visited' in localStorage)
-              ? <Tab1 data={companyData} setCompanyData={setCompanyData}/>
+              ? <Tab1 data={localStorage.getItem("companyData")}/>
               : <SetObjectiveModal/>}} exact={true} />
             <Route path="/tab2" component={Tab2} exact={true}/>
             <Route path="/detail/:name" component={Detail}/>
