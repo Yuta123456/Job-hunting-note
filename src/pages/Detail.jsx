@@ -9,11 +9,14 @@ import {
     IonCardContent,
     IonActionSheet,
     IonAlert, 
-    IonCardSubtitle
+    IonCardSubtitle,
+    IonToolbar,
+    IonTitle,
+    IonBackButton,
+    IonButtons,
+    IonButton,
 } from "@ionic/react";
-import Header from '../pages/Header';
-import Footer from '../pages/Footer';
-import { star, trash, close, create, pencil } from "ionicons/icons";
+import { star, trash, close, create, pencil,ellipsisHorizontal} from "ionicons/icons";
 import { useHistory } from "react-router-dom"
 
 const Detail = (props) => {
@@ -29,7 +32,20 @@ const Detail = (props) => {
     let color = ""
     return (
         <IonPage>
-            <Header name={"企業情報"} click={setShowAction} flag={true} />
+            <IonToolbar color="primary">
+                <IonButtons slot="start">
+                    <IonBackButton defaultHref="/tab1" />
+                </IonButtons>
+                <IonButtons slot="end">
+                    <IonButton slot="end" onClick={()=>{setShowAction(true)}}><IonIcon
+                        slot="icon-only"
+                        color="dark"
+                        icon={ellipsisHorizontal}
+                        ></IonIcon>
+                    </IonButton>
+                </IonButtons>
+                <IonTitle>企業情報</IonTitle>
+            </IonToolbar>
             <IonContent fullscreen>
                 <IonCard>
                     <IonCardHeader>
@@ -101,7 +117,6 @@ const Detail = (props) => {
                     }]}
                 />
             </IonContent>
-            <Footer />
         </IonPage>
     );
 }

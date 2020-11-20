@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from './Header';
 import {
   IonContent,
   IonPage,
@@ -12,8 +11,11 @@ import {
   IonIcon,
   IonRange,
   IonTextarea,
-  useIonViewDidLeave,
-  useIonViewWillEnter
+  useIonViewWillEnter,
+  IonToolbar,
+  IonButtons,
+  IonBackButton,
+  IonTitle
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
@@ -78,13 +80,14 @@ const CompanyEdit = (props) => {
     setInputData(dic);
     setCompanyName(null);
   }
-  useIonViewDidLeave(() =>{
-    setCompanyName(null);
-
-  })
   return (
     <IonPage>
-    <Header name="企業編集" flag={false}/>
+      <IonToolbar color="primary">
+        <IonButtons slot="start">
+            <IonBackButton defaultHref="/tab1" />
+        </IonButtons>
+        <IonTitle>企業編集</IonTitle>
+      </IonToolbar>
       <IonContent fullscreen>
         <IonCard>
             <IonCardHeader>
