@@ -10,9 +10,9 @@ const Footer = (props) => {
                 <IonIcon icon={list} />
                 <IonLabel>企業一覧</IonLabel>
               </IonTabButton>
-              <IonTabButton tab="tab2" href="/tab2">
+              <IonTabButton tab="tab2" href="/tab3">
                 <IonIcon icon={create} />
-                <IonLabel>企業登録</IonLabel>
+                <IonLabel>分析</IonLabel>
             </IonTabButton>
         </IonTabBar>
     )
