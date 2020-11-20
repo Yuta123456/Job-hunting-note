@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Header from './Header';
-import Footer from './Footer';
 import {
   IonContent,
   IonPage,
@@ -30,6 +29,8 @@ const companyItemStyle = {
 
 const CompanyRegistration = (props) => {
   let questionItem = [];
+  const messageFlag = [1, 2, 3, 4, 5]
+  const [message, setMessage] = useState("")
   const objective = localStorage.getItem("objective");
   if (objective === "面接対策"){
     questionItem = interviewQuestionItem;
@@ -68,6 +69,11 @@ const CompanyRegistration = (props) => {
     console.log(registCompanyNum)
     setRegistCompanyNum(newRegistCompanyNum);
     localStorage.setItem("count", newRegistCompanyNum)
+    setMessage(localStorage.count + "社目登録完了！")
+    if(localStorage.count in messageFlag){
+      setMessage(message + registMessage[localStorage.count])
+    }
+    console.log(message)
     setShowToast(true);
 
   }
@@ -113,12 +119,11 @@ const CompanyRegistration = (props) => {
         <IonToast
         isOpen={showToast}
         onDidDismiss={() => setShowToast(false)}
-        message={registCompanyNum + "社目登録完了！" + registMessage[registCompanyNum]}
+        message={message}
         position="top"
         duration={1000}
       />
       </IonContent>
-      <Footer />
     </IonPage>
   );
 };

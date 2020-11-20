@@ -1,7 +1,5 @@
-
 import React from "react";
 import Header from './Header';
-import Footer from './Footer';
 import {
   IonContent,
   IonPage,
@@ -67,7 +65,6 @@ const Tab1 = (props) => {
           <IonFabButton href = "/tab2">＋</IonFabButton>
         </IonFab>
       </IonContent>
-      <Footer />
     </IonPage>
   );
 };
