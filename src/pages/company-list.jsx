@@ -31,8 +31,10 @@ const Tab1 = (props) => {
       let total = 0
       let cnt = 0
       Object.values(value).map(value => {
-        cnt += 1
-        total += value[1]
+        if (value[1] !== 0){
+          cnt += 1
+          total += value[1]
+        }
         return null;
       })
       mean.push((total / cnt).toFixed(1))
