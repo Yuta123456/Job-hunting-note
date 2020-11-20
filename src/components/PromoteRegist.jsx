@@ -5,7 +5,7 @@ import './PromoteRegist.css';
 const PromoteRegist = () => {
   return (
     <div className="container">
-      <p>右下から企業を登録してみましょう！</p>
+      <p>右下のボタンから企業を登録してみよう！</p>
     </div>
   );
 };
