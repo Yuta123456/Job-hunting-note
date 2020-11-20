@@ -44,7 +44,6 @@ const CompanyEdit = (props) => {
   const [inputData, setInputData] = useState(data[name]);
   const [companyName, setCompanyName] = useState(name);
   useEffect(() =>{
-    console.log("useEffect");
     setCompanyName(name);
   },[pathname, name]);
 
