@@ -108,7 +108,6 @@ const CompanyEdit = (props) => {
             <IonCardHeader>
               <IonCardTitle>
                 <span style={companyItemStyle}>
-
                 {values[0]}
                 </span>
                 <IonItem>

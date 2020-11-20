@@ -40,7 +40,7 @@ const CompanyRegistration = (props) => {
     questionItem = informationQuestionItem;
   }
   const dic = {};
-  questionItem.forEach((key) => {dic[key] = ["", 1]});
+  questionItem.forEach((key) => {dic[key[0]] = ["", 0]});
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
   const [showToast, setShowToast] = useState(false);
@@ -61,7 +61,7 @@ const CompanyRegistration = (props) => {
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
-    questionItem.forEach((key) => {dic[key] = ["", 1]});
+    questionItem.forEach((key) => {dic[key[0]] = ["", 0]});
     setInputData(dic);
     setCompanyName("");
     if (!("count" in localStorage)){
@@ -101,20 +101,19 @@ const CompanyRegistration = (props) => {
             </IonCardHeader>
           {questionItem.map((data) => {
             return (
-              <IonCard key={data}>
+              <IonCard key={data[0]}>
                 <IonCardHeader>
                   <IonCardTitle>
-                    <span style={companyItemStyle}>{data}</span>
+                    <span style={companyItemStyle}>{data[0]}</span>
                     <IonItem>
-                      <IonLabel color="dark">評価</IonLabel>
-                      <IonIcon icon={star} color="warning"></IonIcon>
-                      <IonRange min="1" max="5" step="1" value="1" snaps color="primary" 
-                      onIonChange={(e) => { setEval(data, e.detail.value) }
-                      } disabled={companyName===""}>
-                      </IonRange>
+                      { data[1] && <IonLabel color="dark">評価</IonLabel>}
+                      { data[1] && <IonIcon icon={star} color="warning"/>}
+                      { data[1] && <IonRange min="1" max="5" step="1" value="1" snaps color="primary" 
+                      onIonChange={(e) => { setEval(data[0], e.detail.value) }
+                      } disabled={companyName===""}></IonRange>}
                     </IonItem>
                   </IonCardTitle>
-                  <IonTextarea placeholder="説明を入力" value = {text} onIonChange={(e) => { setText(data, e.detail.value) }} disabled={companyName === ""}></IonTextarea>
+                  <IonTextarea placeholder="説明を入力" value = {text} onIonChange={(e) => { setText(data[0], e.detail.value) }} disabled={companyName === ""}></IonTextarea>
                 </IonCardHeader>
               </IonCard>
             );
