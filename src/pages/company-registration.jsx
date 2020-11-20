@@ -12,12 +12,14 @@ import {
   IonLabel,
   IonIcon,
   IonRange,
-  IonTextarea
+  IonTextarea,
+  IonToast
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
+import registMessage from '../data/registMessage';
 const companyNameStyle = {
   fontSize:"2em",
   textAlign:"center"
@@ -38,9 +40,10 @@ const CompanyRegistration = (props) => {
   questionItem.forEach((key) => {dic[key] = ["", 1]});
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
+  const [showToast, setShowToast] = useState(false);
+  const [registCompanyNum, setRegistCompanyNum] = useState(0);
   /* ここ付け足した */
   const text = "";
-  
   function setText(itemName, submitText) {
     const newData = inputData;
     newData[itemName][0] = submitText
@@ -55,10 +58,18 @@ const CompanyRegistration = (props) => {
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
-
     questionItem.forEach((key) => {dic[key] = ["", 1]});
     setInputData(dic);
     setCompanyName("");
+    if (!("count" in localStorage)){
+      localStorage.setItem("count",0)
+    }
+    const newRegistCompanyNum = parseInt(localStorage.getItem("count")) + 1
+    console.log(registCompanyNum)
+    setRegistCompanyNum(newRegistCompanyNum);
+    localStorage.setItem("count", newRegistCompanyNum)
+    setShowToast(true);
+
   }
   return (
     <IonPage>
@@ -99,6 +110,13 @@ const CompanyRegistration = (props) => {
           </IonCard>
           <IonButton expand="block" onClick={() => { registCompany() }} disabled={companyName === ""} routerLink="/tab1">企業を登録</IonButton>
         {/* </form> */}
+        <IonToast
+        isOpen={showToast}
+        onDidDismiss={() => setShowToast(false)}
+        message={registCompanyNum + "社目登録完了！" + registMessage[registCompanyNum]}
+        position="top"
+        duration={1000}
+      />
       </IonContent>
       <Footer />
     </IonPage>

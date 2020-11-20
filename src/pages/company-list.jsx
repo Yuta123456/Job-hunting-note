@@ -63,7 +63,7 @@ const Tab1 = (props) => {
             <PromoteRegist/>
           )
         }
-        <IonFab horizontal = "end">
+        <IonFab horizontal = "end" slot="fixed" vertical="bottom">
           <IonFabButton href = "/tab2">＋</IonFabButton>
         </IonFab>
       </IonContent>
