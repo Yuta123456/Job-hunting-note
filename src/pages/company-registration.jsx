@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from './Header';
 import {
   IonContent,
   IonPage,
@@ -12,7 +11,10 @@ import {
   IonIcon,
   IonRange,
   IonTextarea,
-  IonToast
+  IonToast,IonToolbar,
+  IonButtons,
+  IonBackButton,
+  IonTitle
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
@@ -79,7 +81,12 @@ const CompanyRegistration = (props) => {
   }
   return (
     <IonPage>
-      <Header name="企業登録" />
+      <IonToolbar color="primary">
+        <IonButtons slot="start">
+            <IonBackButton defaultHref="/tab1" />
+        </IonButtons>
+        <IonTitle>企業登録</IonTitle>
+      </IonToolbar>
       <IonContent fullscreen>
           <IonCard>
             <IonCardHeader>
