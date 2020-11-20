@@ -3,6 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonRouterOutlet,
+  useIonViewWillEnter
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import SetObjectiveModal from './components/SetObjectiveModal'
@@ -10,6 +11,8 @@ import Tab1 from './pages/company-list.jsx';
 import Tab2 from './pages/company-registration';
 import Detail from './pages/Detail'
 import CompanyEdit from './pages/company-edit'
+
+import { Plugins } from '@capacitor/core';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -29,6 +32,10 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 const App = () => {
+  const { SplashScreen } = Plugins;
+  useIonViewWillEnter(() => {
+    SplashScreen.hide()
+  })
     return (
       <IonApp>
         <IonReactRouter>

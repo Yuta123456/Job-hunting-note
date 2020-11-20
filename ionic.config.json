@@ -1,5 +1,7 @@
 {
   "name": "job-hunting-note",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
