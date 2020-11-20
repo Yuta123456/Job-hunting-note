@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from './Header';
-import Footer from './Footer';
 import {
   IonContent,
   IonPage,
@@ -124,7 +123,6 @@ const CompanyEdit = (props) => {
         <IonButton expand="block" onClick={()=>{editCompany()}} disabled={companyName===""} routerLink="/tab1">編集を完了する</IonButton>
         </IonCard>
       </IonContent>
-      <Footer />
     </IonPage>
   );
 };
