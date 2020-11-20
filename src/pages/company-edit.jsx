@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   IonContent,
   IonPage,
@@ -11,15 +11,15 @@ import {
   IonIcon,
   IonRange,
   IonTextarea,
-  useIonViewWillEnter,
   IonToolbar,
   IonButtons,
   IonBackButton,
-  IonTitle
+  IonTitle,
+  useIonViewDidEnter
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
@@ -37,20 +37,24 @@ const CompanyEdit = (props) => {
   }else if (localStorage.getItem("objective") === '企業情報'){
     questionItem = informationQuestionItem;
   }
+  let history = useHistory();
   const { pathname } = useLocation();
-  const name = props.match.params.name.substr(1);
+  let name = props.match.params.name;
   const data = JSON.parse(localStorage.companyData);
   if(data[name] === undefined){
         data[name] = {}
   }
   const [inputData, setInputData] = useState(data[name]);
   const [companyName, setCompanyName] = useState(name);
-  useEffect(() =>{
-    setCompanyName(name);
-  },[pathname, name]);
-
-  useIonViewWillEnter(() =>{
-    setInputData(data[name]);
+  useIonViewDidEnter(() => {
+    const newName = props.match.params.name;
+    console.log(name);
+    console.log(pathname)
+    setCompanyName(newName);
+    if (companyName !== null){
+      const newData = Object.assign({}, data[companyName]);
+      setInputData(newData);
+    }
   });
   function setText(itemName, submitText){
     const newData = inputData;
@@ -76,9 +80,10 @@ const CompanyEdit = (props) => {
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
     const dic = {};
-    questionItem.forEach((key) => {dic[key[0]] = ["", 1]});
+    questionItem.forEach((key) => {dic[key[0]] = (key[1]) ? ["", 1] : ["", 0]});
     setInputData(dic);
     setCompanyName(null);
+    history.goBack();
   }
   return (
     <IonPage>
@@ -122,7 +127,7 @@ const CompanyEdit = (props) => {
               </IonCard>
           );
         })}
-        <IonButton expand="block" onClick={()=>{editCompany()}} disabled={companyName===""} routerLink="/tab1">編集を完了する</IonButton>
+        <IonButton expand="block" onClick={()=>{editCompany()}} disabled={companyName===""}>編集を完了する</IonButton>
         </IonCard>
       </IonContent>
     </IonPage>

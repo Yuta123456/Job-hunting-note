@@ -20,12 +20,13 @@ import { star, trash, close, create, pencil,ellipsisHorizontal} from "ionicons/i
 import { useHistory } from "react-router-dom"
 
 const Detail = (props) => {
-    const name = props.match.params.name.substr(1)
+    const name = props.match.params.name
     const data = JSON.parse(localStorage.companyData)
     const showStar = [1, 2, 3, 4, 5]
     const [showAction, setShowAction] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
     let history = useHistory()
+
     if (data[name] === undefined) {
         data[name] = {}
     }
@@ -34,7 +35,7 @@ const Detail = (props) => {
         <IonPage>
             <IonToolbar color="primary">
                 <IonButtons slot="start">
-                    <IonBackButton defaultHref="/tab1" />
+                    <IonBackButton defaultHref="/tab1"/>
                 </IonButtons>
                 <IonButtons slot="end">
                     <IonButton slot="end" onClick={()=>{setShowAction(true)}}><IonIcon
@@ -93,7 +94,7 @@ const Detail = (props) => {
                         text: "変更",
                         icon: create,
                         handler: () => {
-                            history.push("/edit/:" + name)
+                            history.push("/edit/" + name)
                         }
                     }, {
                         text: "閉じる",

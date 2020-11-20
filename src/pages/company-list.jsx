@@ -16,6 +16,7 @@ import {
 import { star,chevronForwardOutline,add} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
 import './company-list.css'
+import { useHistory } from "react-router";
 
 const evalTextStyle = {
   fontSize : "0.8em",
@@ -27,6 +28,7 @@ const companyNameStyle = {
 const Tab1 = (props) => {
   const companyData = JSON.parse(localStorage.getItem("companyData"))
   const mean = []
+  let history = useHistory();
   Object.values(companyData).map((value) => {
       let total = 0
       let cnt = 0
@@ -49,7 +51,7 @@ const Tab1 = (props) => {
           Object.keys(companyData).map((key) => {
             i += 1
             return (
-              <IonCard button routerLink={"/detail/:" + key} key={key}>
+              <IonCard button routerLink={"/detail/" + key} key={key}>
                 <IonCardHeader>
                   <span style={companyNameStyle}><IonText>{key}</IonText>
                   <IonIcon icon={chevronForwardOutline} class="ion-float-right" size="small"/>
@@ -65,7 +67,7 @@ const Tab1 = (props) => {
           )
         }
         <IonFab horizontal = "end" slot="fixed" vertical="bottom">
-          <IonFabButton routerLink = "/tab2">
+          <IonFabButton onClick={() =>{history.push('/tab2')}}>
               <IonIcon icon={add}/>
           </IonFabButton>
         </IonFab>
