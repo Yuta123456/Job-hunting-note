@@ -6,7 +6,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import CompanyInformation from "./CompanyInformation";
+import Footer from "./Footer"
 import "./Tab3.css";
 
 const Tab3 = () => {
@@ -18,8 +18,8 @@ const Tab3 = () => {
             <IonTitle size="large">Tab 3</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <CompanyInformation />
       </IonContent>
+      <Footer />
     </IonPage>
   );
 };

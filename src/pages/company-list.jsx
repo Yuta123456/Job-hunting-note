@@ -10,7 +10,9 @@ import {
   IonCardHeader,
   IonText,
   IonIcon,
-  IonNote
+  IonNote,
+  IonFabButton,
+  IonFab
 } from "@ionic/react";
 import { star,chevronForwardOutline} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
@@ -61,6 +63,9 @@ const Tab1 = (props) => {
             <PromoteRegist/>
           )
         }
+        <IonFab horizontal = "end">
+          <IonFabButton href = "/tab2">＋</IonFabButton>
+        </IonFab>
       </IonContent>
       <Footer />
     </IonPage>
