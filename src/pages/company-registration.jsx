@@ -28,7 +28,6 @@ const companyNameStyle = {
 const companyItemStyle = {
   fontSize:"0.7em",
 }
-
 const CompanyRegistration = (props) => {
   let questionItem = [];
   /* これがメッセージあるかどうかのフラグ */
@@ -40,7 +39,7 @@ const CompanyRegistration = (props) => {
     questionItem = informationQuestionItem;
   }
   const dic = {};
-  questionItem.forEach((key) => {dic[key[0]] = ["", 0]});
+  questionItem.forEach((key) => {dic[key[0]] = (key[1]) ? ["", 1] : ["", 0]});
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
   const [showToast, setShowToast] = useState(false);
@@ -61,7 +60,7 @@ const CompanyRegistration = (props) => {
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
-    questionItem.forEach((key) => {dic[key[0]] = ["", 0]});
+    questionItem.forEach((key) => {dic[key[0]] = (key[1]) ? ["", 1] : ["", 0]});
     setInputData(dic);
     setCompanyName("");
     if (!("count" in localStorage)){

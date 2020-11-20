@@ -76,7 +76,7 @@ const CompanyEdit = (props) => {
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
     const dic = {};
-    questionItem.forEach((key) => {dic[key[0]] = ["", 1]});
+    questionItem.forEach((key) => {dic[key[0]] = (key[1]) ? ["", 1] : ["", 0]});
     setInputData(dic);
     setCompanyName(null);
   }

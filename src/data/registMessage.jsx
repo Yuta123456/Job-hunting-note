@@ -8,6 +8,7 @@ const registMessage = {
     7:"ラッキーセブン！",
     8:"ドラクエもⅧが一番面白いもんね！",
     9:"もう野球ができるよ！",
-    10:"一流の就活生になったね"
+    10:"一流の就活生になったね",
+    
 }
 export default registMessage;
