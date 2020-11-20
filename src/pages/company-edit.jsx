@@ -116,7 +116,7 @@ const CompanyEdit = (props) => {
                 {values[0]}
                 </span>
                 <IonItem>
-                  {values[1] && <IonLabel color="dark">評価</IonLabel>}
+                  {values[1] && <IonLabel color="dark">適合度</IonLabel>}
                   {values[1] && <IonIcon icon={star} color = "warning"></IonIcon>}
                   {values[1] && <IonRange min="1" max="5" step="1" value={(inputData[values[0]] !== null) && String(inputData[values[0]][1])} snaps color="primary" onIonChange={(e) =>{setEval(values[0], e.detail.value)}}>
                   </IonRange>}

@@ -58,7 +58,7 @@ const Tab1 = (props) => {
                   </span>
                 </IonCardHeader>
                 <IonCardContent size="small">
-                 <IonNote style={evalTextStyle}>総合評価:<IonIcon icon={star} color="warning"/> {mean[i]}</IonNote>
+                 <IonNote style={evalTextStyle}>平均適合度:<IonIcon icon={star} color="warning"/> {mean[i]}</IonNote>
                 </IonCardContent>
               </IonCard>
             )

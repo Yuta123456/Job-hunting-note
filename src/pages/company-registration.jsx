@@ -108,7 +108,7 @@ const CompanyRegistration = (props) => {
                   <IonCardTitle>
                     <span style={companyItemStyle}>{data[0]}</span>
                     <IonItem>
-                      { data[1] && <IonLabel color="dark">評価</IonLabel>}
+                      { data[1] && <IonLabel color="dark">適合度</IonLabel>}
                       { data[1] && <IonIcon icon={star} color="warning"/>}
                       { data[1] && <IonRange min="1" max="5" step="1" value="1" snaps color="primary" 
                       onIonChange={(e) => { setEval(data[0], e.detail.value) }
