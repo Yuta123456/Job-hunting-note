@@ -32,9 +32,9 @@ const companyItemStyle = {
 }
 let questionItem = [];
 const CompanyEdit = (props) => {
-  if (props.obj === "面接対策"){
+  if (localStorage.getItem("objective") === "面接対策"){
     questionItem = interviewQuestionItem;
-  }else if (props.obj === '企業情報'){
+  }else if (localStorage.getItem("objective") === '企業情報'){
     questionItem = informationQuestionItem;
   }
   const { pathname } = useLocation();
@@ -76,7 +76,7 @@ const CompanyEdit = (props) => {
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
     const dic = {};
-    questionItem.forEach((key) => {dic[key] = ["", 1]});
+    questionItem.forEach((key) => {dic[key[0]] = ["", 1]});
     setInputData(dic);
     setCompanyName(null);
   }
@@ -102,23 +102,22 @@ const CompanyEdit = (props) => {
                 ></IonTextarea>
               </IonCardTitle>
             </IonCardHeader>
-        {Object.entries(data[name]).map(values => {
+        {questionItem.map((values) => {
           return (
-            <IonCard key={values}>
+            <IonCard key={values[0]}>
             <IonCardHeader>
               <IonCardTitle>
                 <span style={companyItemStyle}>
-
                 {values[0]}
                 </span>
                 <IonItem>
-                <IonLabel color="dark">評価</IonLabel>
-                <IonIcon icon={star} color = "warning"></IonIcon>
-            <IonRange min="1" max="5" step="1" value={String(values[1][1])} snaps color="primary" onIonChange={(e) =>{setEval(values[0], e.detail.value)}}>
-            </IonRange>
-          </IonItem>   
+                  {values[1] && <IonLabel color="dark">評価</IonLabel>}
+                  {values[1] && <IonIcon icon={star} color = "warning"></IonIcon>}
+                  {values[1] && <IonRange min="1" max="5" step="1" value={(inputData[values[0]] !== null) && String(inputData[values[0]][1])} snaps color="primary" onIonChange={(e) =>{setEval(values[0], e.detail.value)}}>
+                  </IonRange>}
+                </IonItem>
                 </IonCardTitle>
-                <IonTextarea placeholder="説明を入力" value={values[1][0]} onIonChange={(e)=>{setText(values[0], e.detail.value)}}/>
+                <IonTextarea placeholder="説明を入力" value={inputData[values[0]][0]} onIonChange={(e)=>{setText(values[0], e.detail.value)}}/>
               </IonCardHeader>
               </IonCard>
           );

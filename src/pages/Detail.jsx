@@ -60,13 +60,14 @@ const Detail = (props) => {
                                     </IonCardTitle>
                                     <IonCardSubtitle>
                                     {showStar.map((data) => {
-                                        data <= value[1][1] ? color = "warning" : color = "medium"
+                                        
+                                        (data <= value[1][1]) ? color = "warning" : color = "medium"
                                         return (
-                                            <IonIcon icon={star} color={color} key={data}>aiueo</IonIcon>
+                                            (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
                                         )
 
                                     })}
-                                    {" " + value[1][1]}
+                                    {(value[1][1] !== 0) && " " + value[1][1]}
                                     </IonCardSubtitle>
                                 </IonCardHeader>
                                 <IonCardContent>

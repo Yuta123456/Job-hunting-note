@@ -1,11 +1,11 @@
 const informationQuestionItem = [
-    "基本給",
-    "福利厚生",
-    "勤務形態",
-    "事業内容",
-    "経営理念",
-    "連絡先",
-    "面接等スケジュール",
-    "自分が感じたこと"
+    ["基本給",true],
+    ["福利厚生", true],
+    ["勤務形態", true],
+    ["事業内容", true],
+    ["経営理念",true],
+    ["連絡先",false],
+    ["面接等スケジュール",false],
+    ["自分が感じたこと",false]
 ]
 export default informationQuestionItem;
