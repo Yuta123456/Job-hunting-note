@@ -42,7 +42,7 @@ const CompanyRegistration = (props) => {
   questionItem.forEach((key) => {dic[key[0]] = (key[1]) ? ["", 1] : ["", 0]});
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
-  const [showToast, setShowToast] = useState(false);
+  //const [showToast, setShowToast] = useState(false);
   const [registCompanyNum, setRegistCompanyNum] = useState(0);
   let history = useHistory();
   /* ここ付け足した */
@@ -76,7 +76,6 @@ const CompanyRegistration = (props) => {
     }else{
       setMessage(localStorage.count + "社目登録完了！")
     }
-    setShowToast(true);
     //history.push('/tab1');
     history.goBack();
   }
@@ -125,7 +124,6 @@ const CompanyRegistration = (props) => {
         {/* </form> */}
         <IonToast
         isOpen={false}
-        onDidDismiss={() => setShowToast(false)}
         message={message}
         position="top"
         duration={1000}
