@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   IonContent,
   IonPage,
@@ -11,7 +11,6 @@ import {
   IonIcon,
   IonRange,
   IonTextarea,
-  useIonViewWillEnter,
   IonToolbar,
   IonButtons,
   IonBackButton,
@@ -46,12 +45,17 @@ const CompanyEdit = (props) => {
   const [inputData, setInputData] = useState(data[name]);
   const [companyName, setCompanyName] = useState(name);
   useEffect(() =>{
-    setCompanyName(name);
+    const newName = props.match.params.name.substr(1);
+    //console.log("NewName : " + props.match.params.name.substr(1));
+    //console.log("companyName : " + companyName);
+    //console.log(newName === companyName);
+    setCompanyName(newName);
+    if (companyName !== null){
+      const newData = Object.assign({}, data[companyName]);
+      setInputData(newData);
+    }
   },[pathname, name]);
-
-  useIonViewWillEnter(() =>{
-    setInputData(data[name]);
-  });
+  
   function setText(itemName, submitText){
     const newData = inputData;
     if (itemName in newData){
