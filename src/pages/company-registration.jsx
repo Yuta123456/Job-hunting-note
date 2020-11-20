@@ -21,6 +21,7 @@ import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 import registMessage from '../data/registMessage';
+import { useHistory } from "react-router";
 const companyNameStyle = {
   fontSize:"2em",
   textAlign:"center"
@@ -30,7 +31,6 @@ const companyItemStyle = {
 }
 const CompanyRegistration = (props) => {
   let questionItem = [];
-  /* これがメッセージあるかどうかのフラグ */
   const [message, setMessage] = useState("")
   const objective = localStorage.getItem("objective");
   if (objective === "面接対策"){
@@ -44,6 +44,7 @@ const CompanyRegistration = (props) => {
   const [companyName, setCompanyName] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [registCompanyNum, setRegistCompanyNum] = useState(0);
+  let history = useHistory();
   /* ここ付け足した */
   const text = "";
   function setText(itemName, submitText) {
@@ -76,6 +77,8 @@ const CompanyRegistration = (props) => {
       setMessage(localStorage.count + "社目登録完了！")
     }
     setShowToast(true);
+    //history.push('/tab1');
+    history.goBack();
   }
   return (
     <IonPage>
@@ -118,15 +121,15 @@ const CompanyRegistration = (props) => {
             );
           })}
           </IonCard>
-          <IonButton expand="block" onClick={() => { registCompany() }} disabled={companyName === ""} routerLink="/tab1">企業を登録</IonButton>
+          <IonButton expand="block" onClick={() => { registCompany() }} disabled={companyName === ""}>企業を登録</IonButton>
         {/* </form> */}
         <IonToast
-        isOpen={showToast}
+        isOpen={false}
         onDidDismiss={() => setShowToast(false)}
         message={message}
         position="top"
         duration={1000}
-      />
+        />
       </IonContent>
     </IonPage>
   );
