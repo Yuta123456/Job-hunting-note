@@ -32,7 +32,6 @@ const companyItemStyle = {
 const CompanyRegistration = (props) => {
   let questionItem = [];
   /* これがメッセージあるかどうかのフラグ */
-  const messageFlag = [1, 2, 3, 4, 5]
   const [message, setMessage] = useState("")
   const objective = localStorage.getItem("objective");
   if (objective === "面接対策"){
@@ -72,7 +71,7 @@ const CompanyRegistration = (props) => {
     console.log(registCompanyNum)
     setRegistCompanyNum(newRegistCompanyNum);
     localStorage.setItem("count", newRegistCompanyNum)
-    if(localStorage.count in messageFlag){
+    if(localStorage.count in registMessage){
       setMessage(localStorage.count + "社目登録完了！" + registMessage[localStorage.count])
     }else{
       setMessage(localStorage.count + "社目登録完了！")
