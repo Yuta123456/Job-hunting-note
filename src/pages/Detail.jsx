@@ -8,7 +8,7 @@ import {
     IonIcon,
     IonCardContent,
     IonActionSheet,
-    IonAlert, 
+    IonAlert,
     IonCardSubtitle,
     IonToolbar,
     IonTitle,
@@ -16,9 +16,17 @@ import {
     IonButtons,
     IonButton,
 } from "@ionic/react";
-import { star, trash, close, create, pencil,ellipsisHorizontal} from "ionicons/icons";
+import { star, trash, close, create, pencil, ellipsisHorizontal } from "ionicons/icons";
 import { useHistory } from "react-router-dom"
 
+const createHtml = text => {
+    return { __html: text.replace(/(\r\n|\n|\r)/gm, '<br />') };
+}
+
+const memoColor = {
+    color:"black"
+
+}
 const Detail = (props) => {
     const name = props.match.params.name
     const data = JSON.parse(localStorage.companyData)
@@ -38,11 +46,11 @@ const Detail = (props) => {
                     <IonBackButton defaultHref="/tab1"/>
                 </IonButtons>
                 <IonButtons slot="end">
-                    <IonButton slot="end" onClick={()=>{setShowAction(true)}}><IonIcon
+                    <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
                         slot="icon-only"
                         color="dark"
                         icon={ellipsisHorizontal}
-                        ></IonIcon>
+                    ></IonIcon>
                     </IonButton>
                 </IonButtons>
                 <IonTitle>企業情報</IonTitle>
@@ -60,20 +68,22 @@ const Detail = (props) => {
                                         {value[0] + " "}
                                     </IonCardTitle>
                                     <IonCardSubtitle>
-                                    {showStar.map((data) => {
-                                        
-                                        (data <= value[1][1]) ? color = "warning" : color = "medium"
-                                        return (
-                                            (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
-                                        )
+                                        {showStar.map((data) => {
 
-                                    })}
-                                    {(value[1][1] !== 0) && " " + value[1][1]}
+                                            (data <= value[1][1]) ? color = "warning" : color = "medium"
+                                            return (
+                                                (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
+                                            )
+
+                                        })}
+                                        {(value[1][1] !== 0) && " " + value[1][1]}
                                     </IonCardSubtitle>
                                 </IonCardHeader>
                                 <IonCardContent>
-                                    <IonIcon icon={pencil}></IonIcon>
-                                    {value[1][0]}
+                                    <IonIcon icon = {pencil}></IonIcon>
+                                    <span style = {memoColor}>{"メモ"}</span>
+                                    <div dangerouslySetInnerHTML={createHtml(value[1][0])} />
+                                
                                 </IonCardContent>
                             </IonCard>
                         )
