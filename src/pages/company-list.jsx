@@ -1,5 +1,5 @@
 
-import React from "react";
+import React  from "react";
 import Header from './Header';
 import Footer from './Footer';
 import {
@@ -14,7 +14,7 @@ import {
   IonFabButton,
   IonFab
 } from "@ionic/react";
-import { star,chevronForwardOutline} from 'ionicons/icons';
+import { star,chevronForwardOutline,add} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
 import './company-list.css'
 
@@ -63,8 +63,11 @@ const Tab1 = (props) => {
             <PromoteRegist/>
           )
         }
+
         <IonFab horizontal = "end" slot="fixed" vertical="bottom">
-          <IonFabButton href = "/tab2">＋</IonFabButton>
+          <IonFabButton href = "/tab2">
+              <IonIcon icon={add}/>
+          </IonFabButton>
         </IonFab>
       </IonContent>
       <Footer />
