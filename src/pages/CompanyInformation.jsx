@@ -1,8 +1,6 @@
 import React from "react";
-import Footer from './Footer';
 import {
   IonContent,
-  IonPage,
   IonCard,
   IonCardHeader,
   IonCardTitle,
@@ -11,26 +9,25 @@ import {
   IonText,
   IonRange
 } from "@ionic/react";
-import {ellipsisHorizontal,star } from "ionicons/icons";
+import { ellipsisHorizontal, star } from "ionicons/icons";
 import "./Tab3.css";
 // import CompanyData from "../../../companydata.json"
 // import InterviewData from "./../../interview"
 // import "./company-information.css";
 
 const data = [
-  { item: "企業理念", memo: "御社の企業理念に！！" ,evalution: "5"},
-  { item: "福利厚生", memo: "良き" ,evalution: "0"},
-  { item: "年収月収", memo: "" ,evalution: "0"},
-  { item: "昇給制度", memo: "" ,evalution: "0"},
+  { item: "企業理念", memo: "御社の企業理念に！！", evalution: "5" },
+  { item: "福利厚生", memo: "良き", evalution: "0" },
+  { item: "年収月収", memo: "", evalution: "0" },
+  { item: "昇給制度", memo: "", evalution: "0" },
 ];
 
 const CompanyInformation = () => {
   const stars = [1, 1, 1, 1, 1];
   // const evalution
   return (
-    <IonPage>
     <IonContent fullscreen>
-      <ion-toolbar  color="success">
+      <ion-toolbar color="success">
         <ion-buttons slot="primary">
           <ion-button>
             <ion-icon slot="icon-only" color="dark" icon={ellipsisHorizontal}></ion-icon>
@@ -41,26 +38,23 @@ const CompanyInformation = () => {
       {data.map((data) => {
         return (
           <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>
-              {data.item}
-              <IonItem>
-              <IonIcon icon={star}>aiuro</IonIcon>
-          <IonRange min="1" max="5" step="1" value="1" snaps color="danger">
-            {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
-            {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
-          </IonRange>
-        </IonItem>
+            <IonCardHeader>
+              <IonCardTitle>
+                {data.item}
+                <IonItem>
+                  <IonIcon icon={star}>aiuro</IonIcon>
+                  <IonRange min="1" max="5" step="1" value="1" snaps color="danger">
+                    {/* <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon> */}
+                    {/* <ion-icon slot="end" color="danger" name="thermometer"></ion-icon> */}
+                  </IonRange>
+                </IonItem>
               </IonCardTitle>
-            <IonText>{data.memo}</IonText>
-            
+              <IonText>{data.memo}</IonText>
             </IonCardHeader>
-            </IonCard>
+          </IonCard>
         );
       })}
     </IonContent>
-    <Footer />
-    </IonPage>
   );
 };
 
@@ -121,7 +115,7 @@ export default CompanyInformation;
 //   );
 // };
 // export default CompanyInformation;
-                {/* <ion-toolbar>
+{/* <ion-toolbar>
               {stars.map(() => {
                 return (
                   <ion-buttons slot="start"  size="small">
