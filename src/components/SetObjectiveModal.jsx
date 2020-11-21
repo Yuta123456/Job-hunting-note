@@ -1,12 +1,15 @@
 import React from 'react';
-import { IonContent,IonPage,IonSlides, IonSlide} from '@ionic/react';
+import { IonContent,IonPage,IonSlides, IonSlide,IonButton} from '@ionic/react';
 import './SetObjectiveModal.css'
 import Slide1 from '../slides/slide1'
 import Slide2 from '../slides/slide2'
 import Slide3 from '../slides/slide3'
 
 export const SetObjectivePage = (props) => {  
-    
+    function setSubmitObjective(){
+        localStorage.setItem("visited","true");
+        localStorage.setItem("companyData",JSON.stringify({}));
+    };
     return (
         <IonPage>
             <IonContent fullscreen class="ion-padding" scroll-y="false">
@@ -22,6 +25,9 @@ export const SetObjectivePage = (props) => {
                     </IonSlide>
                     <IonSlide>
                         <Slide3/>
+                        <IonButton routerLink="./tab1" onClick={()=>{setSubmitObjective()}}>
+                            就活ノートを始める
+                        </IonButton>
                     </IonSlide>
                     {/* ここのSlideタブを増やせばSlideが増える */}
                 </IonSlides>    
