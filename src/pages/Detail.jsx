@@ -60,9 +60,7 @@ const Detail = (props) => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
-                <IonToolbar>
-                    <IonTitle style={{ textAlign: "center" }}>{name}</IonTitle>
-                </IonToolbar>
+                <div className="ion-text-center ion-padding" style={{fontSize:"30px"}}>{name}</div>
                 {Object.entries(data[name]).map(value => {
                     return (
                         <IonCard key={value}>
