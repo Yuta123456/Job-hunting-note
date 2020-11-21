@@ -84,16 +84,14 @@ const CompanyEdit = (props) => {
       <IonToolbar color="primary">
         <IonTitle>企業編集</IonTitle>
       </IonToolbar>
-      <IonTitle style={companyNameStyle}>
-        <IonTextarea
-          placeholder="※最初に企業名を入力"
-          value={companyName}
-          onIonChange={(e) => { setCompanyName(e.detail.value) }}
-          size="small"
-          clearInput={true}
-          disabled={true}
-        ></IonTextarea>
-      </IonTitle>
+      <IonTextarea
+        placeholder="※最初に企業名を入力"
+        value={companyName}
+        onIonChange={(e) => { setCompanyName(e.detail.value) }}
+        size="small"
+        clearInput={true}
+        disabled={true}
+      ></IonTextarea>
       {questionItem.map((values) => {
         return (
           <IonCard key={values[0]}>

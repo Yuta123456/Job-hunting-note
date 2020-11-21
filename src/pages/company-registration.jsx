@@ -77,7 +77,6 @@ const CompanyRegistration = (props) => {
       <IonToolbar color="primary">
         <IonTitle onclick={() => props.setShowModal(false)} style={{ textAlign: "center" }}>閉じる</IonTitle>
       </IonToolbar>
-      <IonTitle style={companyNameStyle}>
         <IonTextarea
           placeholder="※最初に企業名を入力"
           value={companyName}
@@ -85,7 +84,6 @@ const CompanyRegistration = (props) => {
           size="small"
           clearInput={true}
         ></IonTextarea>
-      </IonTitle>
       {questionItem.map((data) => {
         return (
           <IonCard key={data[0]}>
