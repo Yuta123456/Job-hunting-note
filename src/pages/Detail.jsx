@@ -61,7 +61,7 @@ const Detail = (props) => {
             </IonHeader>
             <IonContent fullscreen>
                 <IonToolbar>
-                    <IonTitle size="large" style={{ textAlign: "center" }}>{name}</IonTitle>
+                    <IonTitle style={{ textAlign: "center" }}>{name}</IonTitle>
                 </IonToolbar>
                 {Object.entries(data[name]).map(value => {
                     return (
