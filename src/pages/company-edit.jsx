@@ -12,7 +12,9 @@ import {
   IonTextarea,
   IonToolbar,
   IonTitle,
-  useIonViewDidEnter
+  useIonViewDidEnter,
+  IonPage,
+  IonButtons
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
@@ -80,10 +82,18 @@ const CompanyEdit = (props) => {
 
   }
   return (
+    <IonPage>
+    <IonToolbar color="primary">
+      <IonButtons slot="start">
+        <IonButton onClick={() => props.setShowModal(false)} color="light" >　　×　　</IonButton>
+      </IonButtons>
+      <IonButtons slot="end">
+        <IonButton onClick={() => { editCompany() }} disabled={companyName === ""} color="light" >編集を保存</IonButton>
+      </IonButtons>
+      <IonTitle style={{ textAlign: "center" }} >企業登録</IonTitle>
+    </IonToolbar>
+
     <IonContent fullscreen>
-      <IonToolbar color="primary">
-        <IonTitle>企業編集</IonTitle>
-      </IonToolbar>
       <IonTextarea
         placeholder="※最初に企業名を入力"
         value={companyName}
@@ -114,6 +124,7 @@ const CompanyEdit = (props) => {
       })}
       <IonButton expand="block" onClick={() => { editCompany() }} disabled={companyName === ""}>編集を完了する</IonButton>
     </IonContent>
+    </IonPage>
   );
 };
 export default CompanyEdit;
