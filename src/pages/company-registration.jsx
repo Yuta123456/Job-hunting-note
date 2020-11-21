@@ -75,7 +75,7 @@ const CompanyRegistration = (props) => {
     props.setShowToast(true)
   }
   return (
-    <div>
+    <IonPage>
       <IonToolbar color="primary">
         <IonButtons slot="start">
           <IonButton onClick={() => props.setShowModal(false)} color="light" >　　×　　</IonButton>
@@ -113,7 +113,7 @@ const CompanyRegistration = (props) => {
           );
         })}
       </IonContent>
-    </div>
+    </IonPage>
   );
 };
 export default CompanyRegistration;
