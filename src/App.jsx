@@ -40,6 +40,7 @@ const App = () => {
             <Route path="/tab2" component={Tab2} exact={true}/>
             <Route path="/detail/:name" component={Detail}/>
             <Route path="/edit/:name" component={CompanyEdit}/>
+            <Route path="/help" component={SetObjectiveModal}/>
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
           </IonRouterOutlet>
         </IonReactRouter>

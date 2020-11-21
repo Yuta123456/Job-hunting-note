@@ -2,16 +2,21 @@ import React from "react";
 import { IonSlide, IonButton } from "@ionic/react";
 import Image from "./image/slide5.png";
 import "./slide.css";
+import { useHistory } from "react-router";
 
 const imagecss = {
   margin: "53px 0 0px",
 };
 
 const Slide5 = (props) => {
+  const history = useHistory();
   function setSubmitObjective() {
     localStorage.setItem("objective", "面接対策");
-    localStorage.setItem("visited", "true");
-    localStorage.setItem("companyData", JSON.stringify({}));
+    if (!('visited' in localStorage)){
+      localStorage.setItem("companyData", JSON.stringify({}));
+      localStorage.setItem("visited","true");
+    }
+    history.push('./tab1')
   }
   return (
     <IonSlide>
@@ -27,7 +32,6 @@ const Slide5 = (props) => {
         あなたが良い就活ノートを作れるようになることを願っています。
       </p>
       <IonButton
-        routerLink="./tab1"
         onClick={() => {
           setSubmitObjective();
         }}

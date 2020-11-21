@@ -7,7 +7,7 @@ ion-slides {
 }
 
 .swiper-slide h2 {
-  font-size: 20px;
+  font-size: 24px;
   margin-top: 1.25rem;
 }
 
@@ -27,7 +27,7 @@ b {
 
 p {
   padding: 0 30px;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--ion-color-step-600, #60646b);
 }
