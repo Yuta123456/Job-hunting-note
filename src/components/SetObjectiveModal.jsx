@@ -4,7 +4,7 @@ import { IonContent,IonButton,IonHeader, IonToolbar,
 
 const SetObjectivePage = (props) => {
     function setSubmitObjective(){
-        localStorage.setItem("objective","面接対策");
+        localStorage.setItem("objective","企業情報");
         localStorage.setItem("visited","true");
         localStorage.setItem("companyData",JSON.stringify({}));
     };
