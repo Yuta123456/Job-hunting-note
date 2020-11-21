@@ -57,36 +57,32 @@ const Detail = (props) => {
                 <IonTitle>企業情報</IonTitle>
             </IonToolbar>
             <IonContent fullscreen>
-                <IonCard>
-                    <IonCardHeader>
-                        <IonCardTitle class="ion-text-center" className="title">{name}</IonCardTitle>
-                    </IonCardHeader>
-                    {Object.entries(data[name]).map(value => {
-                        return (
-                            <IonCard key={value}>
-                                <IonCardHeader>
-                                    <IonCardTitle>
-                                        {value[0] + " "}
-                                    </IonCardTitle>
-                                    <IonCardSubtitle>
-                                        {showStar.map((data) => {
-                                            (data <= value[1][1]) ? color = "warning" : color = "medium"
-                                            return (
-                                                (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
-                                            )
-                                        })}
-                                        {(value[1][1] !== 0) && " " + value[1][1]}
-                                    </IonCardSubtitle>
-                                </IonCardHeader>
-                                <IonCardContent>
-                                    <IonIcon icon={pencil}></IonIcon>
-                                    <span style={memoColor}>{"メモ"}</span>
-                                    <div dangerouslySetInnerHTML={createHtml(value[1][0])} />
-                                </IonCardContent>
-                            </IonCard>
-                        )
-                    })}
-                </IonCard>
+                <IonTitle size = "large" className = "ion-padding-top" style = {{textAlign:"center"}}>{name}</IonTitle>
+                {Object.entries(data[name]).map(value => {
+                    return (
+                        <IonCard key={value}>
+                            <IonCardHeader>
+                                <IonCardTitle>
+                                    {value[0] + " "}
+                                </IonCardTitle>
+                                <IonCardSubtitle>
+                                    {showStar.map((data) => {
+                                        (data <= value[1][1]) ? color = "warning" : color = "medium"
+                                        return (
+                                            (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
+                                        )
+                                    })}
+                                    {(value[1][1] !== 0) && " " + value[1][1]}
+                                </IonCardSubtitle>
+                            </IonCardHeader>
+                            <IonCardContent>
+                                <IonIcon icon={pencil}></IonIcon>
+                                <span style={memoColor}>{"メモ"}</span>
+                                <div dangerouslySetInnerHTML={createHtml(value[1][0])} />
+                            </IonCardContent>
+                        </IonCard>
+                    )
+                })}
                 <IonActionSheet
                     isOpen={showAction}
                     onDidDismiss={() => setShowAction(false)}

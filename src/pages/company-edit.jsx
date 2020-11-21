@@ -21,10 +21,10 @@ import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
-// const companyNameStyle = {
-//   fontSize: "2em",
-//   textAlign: "center"
-// }
+const companyNameStyle = {
+   fontSize: "2em",
+   textAlign: "center"
+ }
 const companyItemStyle = {
   fontSize: "0.7em",
 }
@@ -85,16 +85,17 @@ const CompanyEdit = (props) => {
     <IonPage>
     <IonToolbar color="primary">
       <IonButtons slot="start">
-        <IonButton onClick={() => props.setShowModal(false)} color="light" >キャンセル</IonButton>
+        <IonButton onClick={() => props.setShowModal(false)} >キャンセル</IonButton>
       </IonButtons>
       <IonButtons slot="end">
-        <IonButton onClick={() => { editCompany() }} disabled={companyName === ""} color="light" >編集を保存</IonButton>
+        <IonButton onClick={() => { editCompany() }} disabled={companyName === ""} >編集を保存</IonButton>
       </IonButtons>
       <IonTitle style={{ textAlign: "center" }} >企業編集</IonTitle>
     </IonToolbar>
 
     <IonContent fullscreen>
       <IonTextarea
+        style = {companyNameStyle}
         placeholder="※最初に企業名を入力"
         value={companyName}
         onIonChange={(e) => { setCompanyName(e.detail.value) }}

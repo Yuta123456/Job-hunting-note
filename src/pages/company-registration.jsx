@@ -20,10 +20,10 @@ import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 import registMessage from '../data/registMessage';
-// const companyNameStyle = {
-//   fontSize: "2em",
-//   textAlign: "center"
-// }
+ const companyNameStyle = {
+   fontSize: "2em",
+   textAlign: "center"
+ }
 const companyItemStyle = {
   fontSize: "0.7em",
 }
@@ -75,10 +75,10 @@ const CompanyRegistration = (props) => {
     props.setShowToast(true)
   }
   return (
-    <div>
+    <IonPage>
       <IonToolbar color="primary">
         <IonButtons slot="start">
-          <IonButton onClick={() => props.setShowModal(false)} color="light" >　　×　　</IonButton>
+          <IonButton onClick={() => props.setShowModal(false)} color="light" >キャンセル</IonButton>
         </IonButtons>
         <IonButtons slot="end">
           <IonButton onClick={() => { registCompany() }} disabled={companyName === ""} color="light" >企業を登録</IonButton>
@@ -87,6 +87,7 @@ const CompanyRegistration = (props) => {
       </IonToolbar>
       <IonContent fullscreen>
         <IonTextarea
+          style = {companyNameStyle}
           placeholder="※最初に企業名を入力"
           value={companyName}
           onIonChange={(e) => { setCompanyName(e.detail.value) }}
@@ -113,7 +114,7 @@ const CompanyRegistration = (props) => {
           );
         })}
       </IonContent>
-    </div>
+    </IonPage>
   );
 };
 export default CompanyRegistration;
