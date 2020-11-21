@@ -11,9 +11,7 @@ import {
   IonIcon,
   IonRange,
   IonTextarea,
-  IonToast,IonToolbar,
-  IonButtons,
-  IonBackButton,
+  IonToolbar,
   IonTitle
 } from "@ionic/react";
 import { star } from "ionicons/icons";
@@ -21,7 +19,6 @@ import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 import registMessage from '../data/registMessage';
-import { useHistory } from "react-router";
 const companyNameStyle = {
   fontSize:"2em",
   textAlign:"center"
@@ -31,7 +28,6 @@ const companyItemStyle = {
 }
 const CompanyRegistration = (props) => {
   let questionItem = [];
-  const [message, setMessage] = useState("")
   const objective = localStorage.getItem("objective");
   if (objective === "面接対策"){
     questionItem = interviewQuestionItem;
@@ -42,21 +38,22 @@ const CompanyRegistration = (props) => {
   questionItem.forEach((key) => {dic[key[0]] = (key[1]) ? ["", 1] : ["", 0]});
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
-  const [showToast, setShowToast] = useState(false);
   const [registCompanyNum, setRegistCompanyNum] = useState(0);
-  let history = useHistory();
   /* ここ付け足した */
   const text = "";
+
   function setText(itemName, submitText) {
     const newData = inputData;
     newData[itemName][0] = submitText
     setInputData(newData);
   }
+
   function setEval(itemName, submitEval) {
     const newData = inputData;
     newData[itemName][1] = submitEval
     setInputData(newData);
   }
+
   function registCompany() {
     const companyData = JSON.parse(localStorage.getItem("companyData"));
     companyData[companyName] = inputData;
@@ -67,31 +64,27 @@ const CompanyRegistration = (props) => {
     if (!("count" in localStorage)){
       localStorage.setItem("count",0)
     }
+
     const newRegistCompanyNum = parseInt(localStorage.getItem("count")) + 1
-    console.log(registCompanyNum)
     setRegistCompanyNum(newRegistCompanyNum);
     localStorage.setItem("count", newRegistCompanyNum)
+    console.log(registCompanyNum)
     if(localStorage.count in registMessage){
-      setMessage(localStorage.count + "社目登録完了！" + registMessage[localStorage.count])
+      props.setMessage(localStorage.count + "社目登録完了！" + registMessage[localStorage.count])
     }else{
-      setMessage(localStorage.count + "社目登録完了！")
+      props.setMessage(localStorage.count + "社目登録完了！")
     }
-    setShowToast(true);
     //history.push('/tab1');
-    history.goBack();
+    props.setShowModal(false)
+    props.setShowToast(true)
   }
   return (
     <IonPage>
       <IonToolbar color="primary">
-        <IonButtons slot="start">
-            <IonBackButton defaultHref="/tab1" />
-        </IonButtons>
-        <IonTitle>企業登録</IonTitle>
+        <IonTitle onclick = {() => props.setShowModal(false)}　style = {{textAlign:"center"}}>閉じる</IonTitle>
       </IonToolbar>
       <IonContent fullscreen>
-          <IonCard>
-            <IonCardHeader>
-              <IonCardTitle  style={companyNameStyle}>
+              <IonTitle  style={companyNameStyle}>
                 <IonTextarea 
                 placeholder="※最初に企業名を入力" 
                 value = {companyName}
@@ -99,8 +92,7 @@ const CompanyRegistration = (props) => {
                 size="small"
                 clearInput={true}
                 ></IonTextarea>
-              </IonCardTitle>
-            </IonCardHeader>
+              </IonTitle>
           {questionItem.map((data) => {
             return (
               <IonCard key={data[0]}>
@@ -120,15 +112,8 @@ const CompanyRegistration = (props) => {
               </IonCard>
             );
           })}
-          </IonCard>
           <IonButton expand="block" onClick={() => { registCompany() }} disabled={companyName === ""}>企業を登録</IonButton>
         {/* </form> */}
-        <IonToast
-        isOpen={showToast}
-        message={message}
-        position="top"
-        duration={1000}
-        />
       </IonContent>
     </IonPage>
   );

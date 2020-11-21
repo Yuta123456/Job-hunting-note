@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, {useState} from "react";
 import Header from './Header';
 import {
   IonContent,
@@ -11,12 +11,14 @@ import {
   IonIcon,
   IonNote,
   IonFabButton,
-  IonFab
+  IonFab,
+  IonModal,
+  IonToast
 } from "@ionic/react";
 import { star,chevronForwardOutline,add} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
 import './company-list.css'
-import { useHistory } from "react-router";
+import Registration from "./company-registration"
 
 const evalTextStyle = {
   fontSize : "0.8em",
@@ -28,7 +30,9 @@ const companyNameStyle = {
 const Tab1 = (props) => {
   const companyData = JSON.parse(localStorage.getItem("companyData"))
   const mean = []
-  let history = useHistory();
+  const [showToast, setShowToast] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [message, setMessage] = useState("")
   Object.values(companyData).map((value) => {
       let total = 0
       let cnt = 0
@@ -66,11 +70,25 @@ const Tab1 = (props) => {
             <PromoteRegist/>
           )
         }
-        <IonFab horizontal = "end" slot="fixed" vertical="bottom">
-          <IonFabButton onClick={() =>{history.push('/tab2')}}>
+        <IonFab horizontal = "end" slot="fixed" vertical="bottom" >
+          <IonFabButton onClick = {() => setShowModal(true)}>
               <IonIcon icon={add}/>
           </IonFabButton>
         </IonFab>
+        <IonModal 
+          isOpen = {showModal}
+          swipeToClose = {true}
+          onDidDismiss = {() => setShowModal(false)}>
+            <Registration  setShowModal = {setShowModal} setShowToast = {setShowToast} setMessage = {setMessage}/>
+          </IonModal>
+        <IonToast
+        isOpen={showToast}
+        onDidDismiss = {() => setShowToast(false)}
+        message={message}
+        position="top"
+        duration={2000}
+        />
+          
       </IonContent>
     </IonPage>
   );
