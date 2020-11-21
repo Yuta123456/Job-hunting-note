@@ -57,7 +57,7 @@ const Tab1 = (props) => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle style={{textAlign :"center", marginLeft:"50px"}}>企業一覧</IonTitle>
+          <IonTitle style={{textAlign :"center"}}>企業一覧</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={() => history.push('./help') } color="light"><IonIcon 
             slot="icon-only"
