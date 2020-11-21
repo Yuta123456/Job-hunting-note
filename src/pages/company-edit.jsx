@@ -85,12 +85,12 @@ const CompanyEdit = (props) => {
     <IonPage>
     <IonToolbar color="primary">
       <IonButtons slot="start">
-        <IonButton onClick={() => props.setShowModal(false)} color="light" >　　×　　</IonButton>
+        <IonButton onClick={() => props.setShowModal(false)} color="light" >キャンセル</IonButton>
       </IonButtons>
       <IonButtons slot="end">
         <IonButton onClick={() => { editCompany() }} disabled={companyName === ""} color="light" >編集を保存</IonButton>
       </IonButtons>
-      <IonTitle style={{ textAlign: "center" }} >企業登録</IonTitle>
+      <IonTitle style={{ textAlign: "center" }} >企業編集</IonTitle>
     </IonToolbar>
 
     <IonContent fullscreen>
@@ -122,7 +122,6 @@ const CompanyEdit = (props) => {
           </IonCard>
         );
       })}
-      <IonButton expand="block" onClick={() => { editCompany() }} disabled={companyName === ""}>編集を完了する</IonButton>
     </IonContent>
     </IonPage>
   );
