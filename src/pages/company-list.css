@@ -1,10 +1,10 @@
 IonIcon {
-    color: blue;
+  color: blue;
 }
 IonNote {
-    font-size:"30vw";
-    --color:"black";
+  font-size: "30vw";
+  --color: "black";
 }
 .conpany-name-style {
-    font-size:"50vw";
+  font-size: "50vw";
 }
