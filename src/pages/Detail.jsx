@@ -40,7 +40,6 @@ const Detail = (props) => {
         data[name] = {}
     }
     let color = ""
-    console.log(showModal)
     return (
         <IonPage>
             <IonToolbar color="primary">

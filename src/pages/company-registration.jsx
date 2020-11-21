@@ -38,7 +38,6 @@ const CompanyRegistration = (props) => {
   questionItem.forEach((key) => {dic[key[0]] = (key[1]) ? ["", 1] : ["", 0]});
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
-  const [registCompanyNum, setRegistCompanyNum] = useState(0);
   /* ここ付け足した */
   const text = "";
 
@@ -64,11 +63,7 @@ const CompanyRegistration = (props) => {
     if (!("count" in localStorage)){
       localStorage.setItem("count",0)
     }
-
-    const newRegistCompanyNum = parseInt(localStorage.getItem("count")) + 1
-    setRegistCompanyNum(newRegistCompanyNum);
-    localStorage.setItem("count", newRegistCompanyNum)
-    console.log(registCompanyNum)
+    localStorage.setItem("count", parseInt(localStorage.getItem("count")) + 1)
     if(localStorage.count in registMessage){
       props.setMessage(localStorage.count + "社目登録完了！" + registMessage[localStorage.count])
     }else{
