@@ -57,7 +57,9 @@ const Detail = (props) => {
                 <IonTitle>企業情報</IonTitle>
             </IonToolbar>
             <IonContent fullscreen>
-                <IonTitle size = "large" className = "ion-padding-top" style = {{textAlign:"center"}}>{name}</IonTitle>
+                <IonToolbar>
+                    <IonTitle size="large" className="ion-padding-top" style={{ textAlign: "center" }}>{name}</IonTitle>
+                </IonToolbar>
                 {Object.entries(data[name]).map(value => {
                     return (
                         <IonCard key={value}>
@@ -125,8 +127,8 @@ const Detail = (props) => {
                     isOpen={showModal}
                     swipeToClose={true}
                     onDidDismiss={() => setShowModal(false)}
-                    >
-                    <Edit name = {name} setShowModal={setShowModal} />
+                >
+                    <Edit name={name} setShowModal={setShowModal} />
                 </IonModal>
             </IonContent>
         </IonPage>
