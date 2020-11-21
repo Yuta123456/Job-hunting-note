@@ -22,10 +22,6 @@ import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
-const companyNameStyle = {
-  fontSize: "2em",
-  textAlign: "center"
-}
 const companyItemStyle = {
   fontSize: "0.7em",
 }
@@ -96,15 +92,7 @@ const CompanyEdit = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonTextarea
-          style={companyNameStyle}
-          placeholder="最初に企業名を入力"
-          value={companyName}
-          onIonChange={(e) => { setCompanyName(e.detail.value) }}
-          size="small"
-          clearInput={true}
-          disabled={true}
-        ></IonTextarea>
+      <div className="ion-text-center ion-padding" style={{fontSize:"30px"}}>{companyName}</div>
         {questionItem.map((values) => {
           return (
             <IonCard key={values[0]}>

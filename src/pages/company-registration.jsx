@@ -91,7 +91,7 @@ const CompanyRegistration = (props) => {
       <IonContent fullscreen>
         <IonTextarea
           style={companyNameStyle}
-          placeholder="※最初に企業名を入力"
+          placeholder="最初に企業名を入力"
           value={companyName}
           onIonChange={(e) => { setCompanyName(e.detail.value) }}
           size="small"
