@@ -15,7 +15,8 @@ import {
     IonBackButton,
     IonButtons,
     IonButton,
-    IonModal
+    IonModal,
+    IonHeader
 } from "@ionic/react";
 import { star, trash, close, create, pencil, ellipsisHorizontal } from "ionicons/icons";
 import { useHistory } from "react-router-dom"
@@ -42,24 +43,26 @@ const Detail = (props) => {
     let color = ""
     return (
         <IonPage>
-            <IonToolbar color="primary">
-                <IonButtons slot="start">
-                    <IonBackButton defaultHref="/tab1" />
-                </IonButtons>
-                <IonButtons slot="end">
-                    <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
-                        slot="icon-only"
-                        color="dark"
-                        icon={ellipsisHorizontal}
-                    ></IonIcon>
-                    </IonButton>
-                </IonButtons>
-                <IonTitle>企業情報</IonTitle>
-            </IonToolbar>
-            <IonToolbar>
-                <IonTitle size="large" style={{ textAlign: "center" }}>{name}</IonTitle>
-            </IonToolbar>
+            <IonHeader>
+                <IonToolbar color="primary">
+                    <IonButtons slot="start">
+                        <IonBackButton defaultHref="/tab1" />
+                    </IonButtons>
+                    <IonButtons slot="end">
+                        <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
+                            slot="icon-only"
+                            color="dark"
+                            icon={ellipsisHorizontal}
+                        ></IonIcon>
+                        </IonButton>
+                    </IonButtons>
+                    <IonTitle style={{ textAlign: "center" }}>企業情報</IonTitle>
+                </IonToolbar>
+            </IonHeader>
             <IonContent fullscreen>
+                <IonToolbar>
+                    <IonTitle size="large" style={{ textAlign: "center" }}>{name}</IonTitle>
+                </IonToolbar>
                 {Object.entries(data[name]).map(value => {
                     return (
                         <IonCard key={value}>

@@ -13,17 +13,18 @@ import {
   IonToolbar,
   IonTitle,
   IonPage,
-  IonButtons
+  IonButtons,
+  IonHeader
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 import registMessage from '../data/registMessage';
- const companyNameStyle = {
-   fontSize: "2em",
-   textAlign: "center"
- }
+const companyNameStyle = {
+  fontSize: "2em",
+  textAlign: "center"
+}
 const companyItemStyle = {
   fontSize: "0.7em",
 }
@@ -76,18 +77,20 @@ const CompanyRegistration = (props) => {
   }
   return (
     <IonPage>
-      <IonToolbar color="primary">
-        <IonButtons slot="start">
-          <IonButton onClick={() => props.setShowModal(false)} color="light" >キャンセル</IonButton>
-        </IonButtons>
-        <IonButtons slot="end">
-          <IonButton onClick={() => { registCompany() }} disabled={companyName === ""} color="light" >企業を登録</IonButton>
-        </IonButtons>
-        <IonTitle style={{ textAlign: "center" }} >企業登録</IonTitle>
-      </IonToolbar>
+      <IonHeader>
+        <IonToolbar color="primary">
+          <IonButtons slot="start">
+            <IonButton onClick={() => props.setShowModal(false)} color="light" >キャンセル</IonButton>
+          </IonButtons>
+          <IonButtons slot="end">
+            <IonButton onClick={() => { registCompany() }} disabled={companyName === ""} color="light" >企業を登録</IonButton>
+          </IonButtons>
+          <IonTitle style={{ textAlign: "center" }} >企業登録</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent fullscreen>
         <IonTextarea
-          style = {companyNameStyle}
+          style={companyNameStyle}
           placeholder="※最初に企業名を入力"
           value={companyName}
           onIonChange={(e) => { setCompanyName(e.detail.value) }}

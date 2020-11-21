@@ -13,7 +13,10 @@ import {
   IonFabButton,
   IonFab,
   IonModal,
-  IonToast
+  IonToast,
+  IonHeader,
+  IonToolbar,
+  IonTitle
 } from "@ionic/react";
 import { star,chevronForwardOutline,add} from 'ionicons/icons';
 import PromoteRegist from '../components/PromoteRegist';
@@ -49,7 +52,11 @@ const Tab1 = (props) => {
   let i = -1
   return (
     <IonPage>
-      <Header name={"企業一覧"} />
+      <IonHeader color="primary">
+        <IonToolbar color="primary">
+          <IonTitle style={{ textAlign: "center" }}>企業一覧</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent fullscreen>
         {Object.values(companyData).length !== 0 ?(
           Object.keys(companyData).map((key) => {
