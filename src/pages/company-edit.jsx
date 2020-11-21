@@ -19,10 +19,10 @@ import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
-const companyNameStyle = {
-  fontSize: "2em",
-  textAlign: "center"
-}
+// const companyNameStyle = {
+//   fontSize: "2em",
+//   textAlign: "center"
+// }
 const companyItemStyle = {
   fontSize: "0.7em",
 }
