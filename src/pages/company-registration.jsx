@@ -11,7 +11,9 @@ import {
   IonRange,
   IonTextarea,
   IonToolbar,
-  IonTitle
+  IonTitle,
+  IonPage,
+  IonButtons
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
@@ -73,10 +75,17 @@ const CompanyRegistration = (props) => {
     props.setShowToast(true)
   }
   return (
-    <IonContent fullscreen>
+    <div>
       <IonToolbar color="primary">
-        <IonTitle onclick={() => props.setShowModal(false)} style={{ textAlign: "center" }}>閉じる</IonTitle>
+        <IonButtons slot="start">
+          <IonButton onClick={() => props.setShowModal(false)} color="light" >　　×　　</IonButton>
+        </IonButtons>
+        <IonButtons slot="end">
+          <IonButton onClick={() => { registCompany() }} disabled={companyName === ""} color="light" >企業を登録</IonButton>
+        </IonButtons>
+        <IonTitle style={{ textAlign: "center" }} >企業登録</IonTitle>
       </IonToolbar>
+      <IonContent fullscreen>
         <IonTextarea
           placeholder="※最初に企業名を入力"
           value={companyName}
@@ -84,28 +93,27 @@ const CompanyRegistration = (props) => {
           size="small"
           clearInput={true}
         ></IonTextarea>
-      {questionItem.map((data) => {
-        return (
-          <IonCard key={data[0]}>
-            <IonCardHeader>
-              <IonCardTitle>
-                <span style={companyItemStyle}>{data[0]}</span>
-                <IonItem>
-                  {data[1] && <IonLabel color="dark">適合度</IonLabel>}
-                  {data[1] && <IonIcon icon={star} color="warning" />}
-                  {data[1] && <IonRange min="1" max="5" step="1" value="1" snaps color="primary"
-                    onIonChange={(e) => { setEval(data[0], e.detail.value) }
-                    } disabled={companyName === ""}></IonRange>}
-                </IonItem>
-              </IonCardTitle>
-              <IonTextarea placeholder="説明を入力" value={text} onIonChange={(e) => { setText(data[0], e.detail.value) }} disabled={companyName === ""}></IonTextarea>
-            </IonCardHeader>
-          </IonCard>
-        );
-      })}
-      <IonButton expand="block" onClick={() => { registCompany() }} disabled={companyName === ""}>企業を登録</IonButton>
-      {/* </form> */}
-    </IonContent>
+        {questionItem.map((data) => {
+          return (
+            <IonCard key={data[0]}>
+              <IonCardHeader>
+                <IonCardTitle>
+                  <span style={companyItemStyle}>{data[0]}</span>
+                  <IonItem>
+                    {data[1] && <IonLabel color="dark">適合度</IonLabel>}
+                    {data[1] && <IonIcon icon={star} color="warning" />}
+                    {data[1] && <IonRange min="1" max="5" step="1" value="1" snaps color="primary"
+                      onIonChange={(e) => { setEval(data[0], e.detail.value) }
+                      } disabled={companyName === ""}></IonRange>}
+                  </IonItem>
+                </IonCardTitle>
+                <IonTextarea placeholder="説明を入力" value={text} onIonChange={(e) => { setText(data[0], e.detail.value) }} disabled={companyName === ""}></IonTextarea>
+              </IonCardHeader>
+            </IonCard>
+          );
+        })}
+      </IonContent>
+    </div>
   );
 };
 export default CompanyRegistration;
