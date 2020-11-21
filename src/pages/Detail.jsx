@@ -15,7 +15,8 @@ import {
     IonBackButton,
     IonButtons,
     IonButton,
-    IonModal
+    IonModal,
+    IonHeader
 } from "@ionic/react";
 import { star, trash, close, create, pencil, ellipsisHorizontal } from "ionicons/icons";
 import { useHistory } from "react-router-dom"
@@ -42,51 +43,49 @@ const Detail = (props) => {
     let color = ""
     return (
         <IonPage>
-            <IonToolbar color="primary">
-                <IonButtons slot="start">
-                    <IonBackButton defaultHref="/tab1" />
-                </IonButtons>
-                <IonButtons slot="end">
-                    <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
-                        slot="icon-only"
-                        color="dark"
-                        icon={ellipsisHorizontal}
-                    ></IonIcon>
-                    </IonButton>
-                </IonButtons>
-                <IonTitle>企業情報</IonTitle>
-            </IonToolbar>
+            <IonHeader>
+                <IonToolbar color="primary">
+                    <IonButtons slot="start">
+                        <IonBackButton defaultHref="/tab1" />
+                    </IonButtons>
+                    <IonButtons slot="end">
+                        <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
+                            slot="icon-only"
+                            color="dark"
+                            icon={ellipsisHorizontal}
+                        ></IonIcon>
+                        </IonButton>
+                    </IonButtons>
+                    <IonTitle style={{ textAlign: "center" }}>企業情報</IonTitle>
+                </IonToolbar>
+            </IonHeader>
             <IonContent fullscreen>
-                <IonCard>
-                    <IonCardHeader>
-                        <IonCardTitle class="ion-text-center" className="title">{name}</IonCardTitle>
-                    </IonCardHeader>
-                    {Object.entries(data[name]).map(value => {
-                        return (
-                            <IonCard key={value}>
-                                <IonCardHeader>
-                                    <IonCardTitle>
-                                        {value[0] + " "}
-                                    </IonCardTitle>
-                                    <IonCardSubtitle>
-                                        {showStar.map((data) => {
-                                            (data <= value[1][1]) ? color = "warning" : color = "medium"
-                                            return (
-                                                (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
-                                            )
-                                        })}
-                                        {(value[1][1] !== 0) && " " + value[1][1]}
-                                    </IonCardSubtitle>
-                                </IonCardHeader>
-                                <IonCardContent>
-                                    <IonIcon icon={pencil}></IonIcon>
-                                    <span style={memoColor}>{"メモ"}</span>
-                                    <div dangerouslySetInnerHTML={createHtml(value[1][0])} />
-                                </IonCardContent>
-                            </IonCard>
-                        )
-                    })}
-                </IonCard>
+                <div className="ion-text-center ion-padding" style={{fontSize:"30px"}}>{name}</div>
+                {Object.entries(data[name]).map(value => {
+                    return (
+                        <IonCard key={value}>
+                            <IonCardHeader>
+                                <IonCardTitle>
+                                    {value[0] + " "}
+                                </IonCardTitle>
+                                <IonCardSubtitle>
+                                    {showStar.map((data) => {
+                                        (data <= value[1][1]) ? color = "warning" : color = "medium"
+                                        return (
+                                            (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
+                                        )
+                                    })}
+                                    {(value[1][1] !== 0) && " " + value[1][1]}
+                                </IonCardSubtitle>
+                            </IonCardHeader>
+                            <IonCardContent>
+                                <IonIcon icon={pencil}></IonIcon>
+                                <span style={memoColor}>{"メモ"}</span>
+                                <div dangerouslySetInnerHTML={createHtml(value[1][0])} />
+                            </IonCardContent>
+                        </IonCard>
+                    )
+                })}
                 <IonActionSheet
                     isOpen={showAction}
                     onDidDismiss={() => setShowAction(false)}
@@ -129,8 +128,8 @@ const Detail = (props) => {
                     isOpen={showModal}
                     swipeToClose={true}
                     onDidDismiss={() => setShowModal(false)}
-                    >
-                    <Edit name = {name} setShowModal={setShowModal} />
+                >
+                    <Edit name={name} setShowModal={setShowModal} />
                 </IonModal>
             </IonContent>
         </IonPage>

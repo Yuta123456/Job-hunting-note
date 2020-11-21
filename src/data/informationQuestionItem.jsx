@@ -4,8 +4,6 @@ const informationQuestionItem = [
     ["勤務形態", true],
     ["事業内容", true],
     ["経営理念",true],
-    ["連絡先",false],
-    ["面接等スケジュール",false],
-    ["自分が感じたこと",false]
+    ["自分にあっていると思う点",false]
 ]
 export default informationQuestionItem;
