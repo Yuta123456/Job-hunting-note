@@ -15,17 +15,18 @@ import {
     IonBackButton,
     IonButtons,
     IonButton,
+    IonModal
 } from "@ionic/react";
 import { star, trash, close, create, pencil, ellipsisHorizontal } from "ionicons/icons";
 import { useHistory } from "react-router-dom"
+import Edit from "./company-edit"
 
 const createHtml = text => {
     return { __html: text.replace(/(\r\n|\n|\r)/gm, '<br />') };
 }
 
 const memoColor = {
-    color:"black"
-
+    color: "black"
 }
 const Detail = (props) => {
     const name = props.match.params.name
@@ -34,16 +35,17 @@ const Detail = (props) => {
     const [showAction, setShowAction] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
     let history = useHistory()
-
+    const [showModal, setShowModal] = useState(false)
     if (data[name] === undefined) {
         data[name] = {}
     }
     let color = ""
+    console.log(showModal)
     return (
         <IonPage>
             <IonToolbar color="primary">
                 <IonButtons slot="start">
-                    <IonBackButton defaultHref="/tab1"/>
+                    <IonBackButton defaultHref="/tab1" />
                 </IonButtons>
                 <IonButtons slot="end">
                     <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
@@ -69,21 +71,18 @@ const Detail = (props) => {
                                     </IonCardTitle>
                                     <IonCardSubtitle>
                                         {showStar.map((data) => {
-
                                             (data <= value[1][1]) ? color = "warning" : color = "medium"
                                             return (
                                                 (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
                                             )
-
                                         })}
                                         {(value[1][1] !== 0) && " " + value[1][1]}
                                     </IonCardSubtitle>
                                 </IonCardHeader>
                                 <IonCardContent>
-                                    <IonIcon icon = {pencil}></IonIcon>
-                                    <span style = {memoColor}>{"メモ"}</span>
+                                    <IonIcon icon={pencil}></IonIcon>
+                                    <span style={memoColor}>{"メモ"}</span>
                                     <div dangerouslySetInnerHTML={createHtml(value[1][0])} />
-                                
                                 </IonCardContent>
                             </IonCard>
                         )
@@ -104,7 +103,7 @@ const Detail = (props) => {
                         text: "変更",
                         icon: create,
                         handler: () => {
-                            history.push("/edit/" + name)
+                            setShowModal(true)
                         }
                     }, {
                         text: "閉じる",
@@ -124,10 +123,16 @@ const Detail = (props) => {
                             delete data[name]
                             localStorage.companyData = JSON.stringify(data)
                             history.push("/tab1")
-
                         })
                     }]}
                 />
+                <IonModal
+                    isOpen={showModal}
+                    swipeToClose={true}
+                    onDidDismiss={() => setShowModal(false)}
+                    >
+                    <Edit name = {name} setShowModal={setShowModal} />
+                </IonModal>
             </IonContent>
         </IonPage>
     );
