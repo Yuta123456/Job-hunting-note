@@ -95,6 +95,7 @@ const CompanyEdit = (props) => {
 
     <IonContent fullscreen>
       <IonTextarea
+        style = {{textAlign: "center"}}
         placeholder="※最初に企業名を入力"
         value={companyName}
         onIonChange={(e) => { setCompanyName(e.detail.value) }}
