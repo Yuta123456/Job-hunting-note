@@ -20,10 +20,10 @@ import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import informationQuestionItem from '../data/informationQuestionItem';
 import registMessage from '../data/registMessage';
-// const companyNameStyle = {
-//   fontSize: "2em",
-//   textAlign: "center"
-// }
+ const companyNameStyle = {
+   fontSize: "2em",
+   textAlign: "center"
+ }
 const companyItemStyle = {
   fontSize: "0.7em",
 }
@@ -87,7 +87,7 @@ const CompanyRegistration = (props) => {
       </IonToolbar>
       <IonContent fullscreen>
         <IonTextarea
-          style = {{textAlign: "center"}}
+          style = {companyNameStyle}
           placeholder="※最初に企業名を入力"
           value={companyName}
           onIonChange={(e) => { setCompanyName(e.detail.value) }}
