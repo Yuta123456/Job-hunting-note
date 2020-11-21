@@ -56,10 +56,10 @@ const Detail = (props) => {
                 </IonButtons>
                 <IonTitle>企業情報</IonTitle>
             </IonToolbar>
+            <IonToolbar>
+                <IonTitle size="large" style={{ textAlign: "center" }}>{name}</IonTitle>
+            </IonToolbar>
             <IonContent fullscreen>
-                <IonToolbar>
-                    <IonTitle size="large" style={{ textAlign: "center" }}>{name}</IonTitle>
-                </IonToolbar>
                 {Object.entries(data[name]).map(value => {
                     return (
                         <IonCard key={value}>
