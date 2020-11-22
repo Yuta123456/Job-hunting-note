@@ -11,7 +11,7 @@ const imagecss = {
 const Slide5 = (props) => {
   const history = useHistory();
   function setSubmitObjective() {
-    localStorage.setItem("objective", "面接対策");
+    localStorage.setItem("objective", "企業情報");
     if (!('visited' in localStorage)){
       localStorage.setItem("companyData", JSON.stringify({}));
       localStorage.setItem("visited","true");
