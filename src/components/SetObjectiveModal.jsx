@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent,IonPage,IonSlides} from '@ionic/react';
+import { IonContent,IonPage,IonSlides, IonSlide} from '@ionic/react';
 import './SetObjectiveModal.css'
 import Slide1 from '../slides/slide1'
 import Slide2 from '../slides/slide2'
@@ -8,11 +8,10 @@ import Slide4 from '../slides/slide4'
 import Slide5 from '../slides/slide5'
 
 export const SetObjectivePage = (props) => {  
-    
     return (
         <IonPage>
-            <IonContent fullscreen class="ion-padding" scroll-y="false">
-                <IonSlides>
+            <IonContent fullscreen class="ion-padding" scroll-y="false" >
+                <IonSlides pager = {true} options = {{initialSlide:0}}>
                     <Slide1/>
                     <Slide2/>
                     <Slide3/>
