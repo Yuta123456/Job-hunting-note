@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent,IonPage,IonSlides, IonSlide} from '@ionic/react';
+import { IonContent,IonPage,IonSlides} from '@ionic/react';
 import './SetObjectiveModal.css'
 import Slide1 from '../slides/slide1'
 import Slide2 from '../slides/slide2'
