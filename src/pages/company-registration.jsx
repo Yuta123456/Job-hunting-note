@@ -19,7 +19,6 @@ import {
 import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
-import informationQuestionItem from '../data/informationQuestionItem';
 import registMessage from '../data/registMessage';
 const companyNameStyle = {
   fontSize: "2em",
@@ -29,20 +28,19 @@ const companyItemStyle = {
   fontSize: "0.7em",
 }
 const CompanyRegistration = (props) => {
-  let questionItem = [];
-  const objective = localStorage.getItem("objective");
+  let questionItem = interviewQuestionItem;
+  const text = "";
+  const dic = {};
+  const [inputData, setInputData] = useState(dic);
+  const [companyName, setCompanyName] = useState("");
+  questionItem.forEach((key) => { dic[key[0]] = (key[1]) ? ["", 1] : ["", 0] });
+  /*
   if (objective === "面接対策") {
     questionItem = interviewQuestionItem;
   } else if (objective === "企業情報") {
     questionItem = informationQuestionItem;
   }
-  const dic = {};
-  questionItem.forEach((key) => { dic[key[0]] = (key[1]) ? ["", 1] : ["", 0] });
-  const [inputData, setInputData] = useState(dic);
-  const [companyName, setCompanyName] = useState("");
-  /* ここ付け足した */
-  const text = "";
-
+  */
   function setText(itemName, submitText) {
     const newData = inputData;
     newData[itemName][0] = submitText
@@ -71,7 +69,6 @@ const CompanyRegistration = (props) => {
     } else {
       props.setMessage(localStorage.count + "社目登録完了！")
     }
-    //history.push('/tab1');
     props.setShowModal(false)
     props.setShowToast(true)
   }

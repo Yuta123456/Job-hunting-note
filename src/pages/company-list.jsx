@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   IonContent,
@@ -32,16 +31,19 @@ const companyNameStyle = {
   fontSize: "1.5em",
   color: "black"
 }
-const Tab1 = (props) => {
+const Tab1 = () => {
   const history = useHistory()
   const companyData = JSON.parse(localStorage.getItem("companyData"))
   const mean = []
   const [showToast, setShowToast] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [message, setMessage] = useState("")
+  let i = -1
+  let cnt = 0
+  let total = 0
   Object.values(companyData).map((value) => {
-    let total = 0
-    let cnt = 0
+    total = 0
+    cnt = 0
     Object.values(value).map(value => {
       if (value[1] !== 0) {
         cnt += 1
@@ -52,16 +54,15 @@ const Tab1 = (props) => {
     mean.push((total / cnt).toFixed(1))
     return null;
   })
-  let i = -1
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle style={{textAlign :"center"}}>企業一覧</IonTitle>
+          <IonTitle style={{ textAlign: "center" }}>企業一覧</IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={() => history.push('./help') } color="light"><IonIcon 
-            slot="icon-only"
-            icon={helpCircleOutline}/>
+            <IonButton onClick={() => history.push('./help')} color="light"><IonIcon
+              slot="icon-only"
+              icon={helpCircleOutline} />
             </IonButton>
           </IonButtons>
         </IonToolbar>
