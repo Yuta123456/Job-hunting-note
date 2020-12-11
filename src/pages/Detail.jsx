@@ -16,7 +16,7 @@ import {
     IonButtons,
     IonButton,
     IonModal,
-    IonHeader
+    IonHeader,
 } from "@ionic/react";
 import { star, trash, close, create, pencil, ellipsisHorizontal } from "ionicons/icons";
 import { useHistory } from "react-router-dom"
@@ -30,23 +30,23 @@ const memoColor = {
     color: "black"
 }
 const Detail = (props) => {
-    const name = props.match.params.name
     const data = JSON.parse(localStorage.companyData)
     const showStar = [1, 2, 3, 4, 5]
     const [showAction, setShowAction] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
-    let history = useHistory()
     const [showModal, setShowModal] = useState(false)
-    let color = ""
-    if (data[name] === undefined) {
-        data[name] = {}
+    const [companyName, setCompanyName] = useState(props.match.params.name);
+    let history = useHistory();
+    let color = "";
+    if (data[companyName] === undefined) {
+        data[companyName] = {}
     }
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar color="primary">
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref="/tab1" />
+                        <IonBackButton defaultHref="/list" />
                     </IonButtons>
                     <IonButtons slot="end">
                         <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
@@ -60,8 +60,8 @@ const Detail = (props) => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
-                <div className="ion-text-center ion-padding" style={{ fontSize: "30px" }}>{name}</div>
-                {Object.entries(data[name]).map(value => {
+                <div className="ion-text-center ion-padding" style={{ fontSize: "30px" }}>{companyName}</div>
+                {Object.entries(data[companyName]).map(value => {
                     return (
                         <IonCard key={value}>
                             <IonCardHeader>
@@ -118,9 +118,9 @@ const Detail = (props) => {
                     }, {
                         text: "削除",
                         handler: (() => {
-                            delete data[name]
+                            delete data[companyName]
                             localStorage.companyData = JSON.stringify(data)
-                            history.push("/tab1")
+                            history.push("/list")
                         })
                     }]}
                 />
@@ -129,7 +129,7 @@ const Detail = (props) => {
                     swipeToClose={true}
                     onDidDismiss={() => setShowModal(false)}
                 >
-                    <Edit name={name} setShowModal={setShowModal} />
+                    <Edit name={companyName} setShowModal={setShowModal} setCompanyName={setCompanyName}/>
                 </IonModal>
             </IonContent>
         </IonPage>

@@ -15,11 +15,13 @@ import {
   useIonViewDidEnter,
   IonPage,
   IonButtons,
-  IonHeader
+  IonHeader,
+  IonInput
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
+import { useHistory } from "react-router";
 // import "./company-information.css";
 const companyItemStyle = {
   fontSize: "0.7em",
@@ -27,6 +29,7 @@ const companyItemStyle = {
 
 const CompanyEdit = (props) => {
   let name = props.name;
+  let history = useHistory();
   const data = JSON.parse(localStorage.companyData);
   const [inputData, setInputData] = useState(data[name]);
   const [companyName, setCompanyName] = useState(name);
@@ -65,16 +68,17 @@ const CompanyEdit = (props) => {
     const dic = {};
     questionItem.forEach((key) => { dic[key[0]] = (key[1]) ? ["", 1] : ["", 0] });
     setInputData(dic);
+    history.replace("/detail/"+companyName)
+    props.setCompanyName(companyName);
     setCompanyName(null);
-    props.setShowModal(false)
-
+    props.setShowModal(false);
   }
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
           <IonButtons slot="start">
-            <IonButton onClick={() => props.setShowModal(false)} >キャンセル</IonButton>
+            <IonButton onClick={() => props.setShowModal(false)}>キャンセル</IonButton>
           </IonButtons>
           <IonButtons slot="end">
             <IonButton onClick={() => { editCompany() }} disabled={companyName === ""} >編集を保存</IonButton>
@@ -83,7 +87,11 @@ const CompanyEdit = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <div className="ion-text-center ion-padding" style={{ fontSize: "30px" }}>{companyName}</div>
+          <IonInput value={companyName}
+           className="ion-text-center ion-padding" 
+           required={true}
+           onIonChange={(e) => setCompanyName(e.detail.value)}
+           style={{ fontSize: "30px" }}/>
         {questionItem.map((values) => {
           return (
             <IonCard key={values[0]}>

@@ -14,16 +14,13 @@ import {
   IonTitle,
   IonPage,
   IonButtons,
-  IonHeader
+  IonHeader,
+  IonInput
 } from "@ionic/react";
 import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import registMessage from '../data/registMessage';
-const companyNameStyle = {
-  fontSize: "2em",
-  textAlign: "center"
-}
 const companyItemStyle = {
   fontSize: "0.7em",
 }
@@ -34,13 +31,6 @@ const CompanyRegistration = (props) => {
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
   questionItem.forEach((key) => { dic[key[0]] = (key[1]) ? ["", 1] : ["", 0] });
-  /*
-  if (objective === "面接対策") {
-    questionItem = interviewQuestionItem;
-  } else if (objective === "企業情報") {
-    questionItem = informationQuestionItem;
-  }
-  */
   function setText(itemName, submitText) {
     const newData = inputData;
     newData[itemName][0] = submitText
@@ -86,14 +76,12 @@ const CompanyRegistration = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonTextarea
-          style={companyNameStyle}
-          placeholder="最初に企業名を入力"
-          value={companyName}
-          onIonChange={(e) => { setCompanyName(e.detail.value) }}
-          size="small"
-          clearInput={true}
-        ></IonTextarea>
+        <IonInput value={companyName}
+           placeholder="最初に企業名を入力"
+           className="ion-text-center ion-padding"
+           required={true} 
+           onIonChange={(e) => setCompanyName(e.detail.value)}
+           style={{ fontSize: "30px" }}/>
         {questionItem.map((data) => {
           return (
             <IonCard key={data[0]}>
