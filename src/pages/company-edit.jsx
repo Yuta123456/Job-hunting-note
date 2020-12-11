@@ -20,26 +20,17 @@ import {
 import { star } from "ionicons/icons";
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
-import informationQuestionItem from '../data/informationQuestionItem';
 // import "./company-information.css";
 const companyItemStyle = {
   fontSize: "0.7em",
 }
-let questionItem = [];
 
 const CompanyEdit = (props) => {
-  if (localStorage.getItem("objective") === "面接対策") {
-    questionItem = interviewQuestionItem;
-  } else if (localStorage.getItem("objective") === '企業情報') {
-    questionItem = informationQuestionItem;
-  }
   let name = props.name;
   const data = JSON.parse(localStorage.companyData);
-  if (data[name] === undefined) {
-    data[name] = {}
-  }
   const [inputData, setInputData] = useState(data[name]);
   const [companyName, setCompanyName] = useState(name);
+  const questionItem = interviewQuestionItem;
   useIonViewDidEnter(() => {
     const newName = props.name;
     setCompanyName(newName);
@@ -92,7 +83,7 @@ const CompanyEdit = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-      <div className="ion-text-center ion-padding" style={{fontSize:"30px"}}>{companyName}</div>
+        <div className="ion-text-center ion-padding" style={{ fontSize: "30px" }}>{companyName}</div>
         {questionItem.map((values) => {
           return (
             <IonCard key={values[0]}>

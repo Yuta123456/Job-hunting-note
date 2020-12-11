@@ -6,8 +6,7 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import SetObjectiveModal from './components/SetObjectiveModal'
-import Tab1 from './pages/company-list.jsx';
-import Tab2 from './pages/company-registration';
+import List from './pages/company-list.jsx';
 import Detail from './pages/Detail'
 import CompanyEdit from './pages/company-edit'
 /* Core CSS required for Ionic components to work properly */
@@ -33,15 +32,14 @@ const App = () => {
       <IonApp>
         <IonReactRouter>
           <IonRouterOutlet>
-            <Route path="/tab1" render={()=>{
+            <Route path="/list" render={()=>{
               return ('visited' in localStorage)
-              ? <Tab1 data={localStorage.getItem("companyData")}/>
+              ? <List />
               : <SetObjectiveModal/>}} exact={true} />
-            <Route path="/tab2" component={Tab2} exact={true}/>
             <Route path="/detail/:name" component={Detail}/>
             <Route path="/edit/:name" component={CompanyEdit}/>
             <Route path="/help" component={SetObjectiveModal}/>
-            <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+            <Route path="/" render={() => <Redirect to="/list" />} exact={true} />
           </IonRouterOutlet>
         </IonReactRouter>
       </IonApp>
