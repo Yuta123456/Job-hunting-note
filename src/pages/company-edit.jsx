@@ -5,19 +5,15 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonButton,
-  IonItem,
-  IonLabel,
-  IonIcon,
-  IonRange,
   IonTextarea,
   IonToolbar,
   IonTitle,
   useIonViewDidEnter,
   IonPage,
   IonButtons,
-  IonHeader
+  IonHeader,
 } from "@ionic/react";
-import { star } from "ionicons/icons";
+import StarDrawing from "../components/star_drawing"
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 // import "./company-information.css";
@@ -35,12 +31,15 @@ const CompanyEdit = (props) => {
     const newName = props.name;
     setCompanyName(newName);
     if (companyName !== null) {
-      const newData = Object.assign({}, data[companyName]);
-      setInputData(newData);
+      const newData = Object.assign({}, data);
+      setInputData(newData[companyName]);
     }
   });
   function setText(itemName, submitText) {
-    const newData = inputData;
+    const newData = data[companyName];
+    Object.entries(inputData, newData).map(values => 
+        newData[values[0]] = values[1]
+    )
     if (itemName in newData) {
       newData[itemName][0] = submitText
     } else {
@@ -48,8 +47,12 @@ const CompanyEdit = (props) => {
     }
     setInputData(newData);
   }
-  function setEval(itemName, submitEval) {
-    const newData = inputData;
+  const setEval = (itemName, submitEval) => {
+    /*　レンダリングするためには参照元同じだとダメだから新しく作って値格納する */
+    const newData = data[companyName];
+    Object.entries(inputData, newData).map(values => 
+      newData[values[0]] = values[1]
+    )
     if (itemName in newData) {
       newData[itemName][1] = submitEval
     } else {
@@ -58,8 +61,7 @@ const CompanyEdit = (props) => {
     setInputData(newData);
   }
   function editCompany() {//editCompanyで空になる
-    const companyData = JSON.parse(localStorage.getItem("companyData"));
-    delete companyData[name]
+    const companyData = data;
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
     const dic = {};
@@ -67,7 +69,6 @@ const CompanyEdit = (props) => {
     setInputData(dic);
     setCompanyName(null);
     props.setShowModal(false)
-
   }
   return (
     <IonPage>
@@ -92,12 +93,7 @@ const CompanyEdit = (props) => {
                   <span style={companyItemStyle}>
                     {values[0]}
                   </span>
-                  <IonItem>
-                    {values[1] && <IonLabel color="dark">適合度</IonLabel>}
-                    {values[1] && <IonIcon icon={star} color="warning"></IonIcon>}
-                    {values[1] && <IonRange min="1" max="5" step="1" value={(inputData[values[0]] !== null) && String(inputData[values[0]][1])} snaps color="primary" onIonChange={(e) => { setEval(values[0], e.detail.value) }}>
-                    </IonRange>}
-                  </IonItem>
+                  {values[1] && <StarDrawing inputData = {inputData} values = {values} setEval ={setEval} />}
                 </IonCardTitle>
                 <IonTextarea placeholder="説明を入力" value={inputData[values[0]][0]} onIonChange={(e) => { setText(values[0], e.detail.value) }} />
               </IonCardHeader>
@@ -109,4 +105,3 @@ const CompanyEdit = (props) => {
   );
 };
 export default CompanyEdit;
-

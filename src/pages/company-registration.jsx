@@ -6,9 +6,6 @@ import {
   IonCardTitle,
   IonButton,
   IonItem,
-  IonLabel,
-  IonIcon,
-  IonRange,
   IonTextarea,
   IonToolbar,
   IonTitle,
@@ -16,7 +13,7 @@ import {
   IonButtons,
   IonHeader
 } from "@ionic/react";
-import { star } from "ionicons/icons";
+import StarDrawing from "../components/star_drawing"
 import "./Tab3.css";
 import interviewQuestionItem from '../data/interviewQuestionItem'
 import registMessage from '../data/registMessage';
@@ -29,18 +26,10 @@ const companyItemStyle = {
 }
 const CompanyRegistration = (props) => {
   let questionItem = interviewQuestionItem;
-  const text = "";
   const dic = {};
   const [inputData, setInputData] = useState(dic);
   const [companyName, setCompanyName] = useState("");
   questionItem.forEach((key) => { dic[key[0]] = (key[1]) ? ["", 1] : ["", 0] });
-  /*
-  if (objective === "面接対策") {
-    questionItem = interviewQuestionItem;
-  } else if (objective === "企業情報") {
-    questionItem = informationQuestionItem;
-  }
-  */
   function setText(itemName, submitText) {
     const newData = inputData;
     newData[itemName][0] = submitText
@@ -48,7 +37,10 @@ const CompanyRegistration = (props) => {
   }
 
   function setEval(itemName, submitEval) {
-    const newData = inputData;
+    const newData = dic;
+    Object.entries(inputData).map(values => 
+      newData[values[0]] = values[1]
+    )
     newData[itemName][1] = submitEval
     setInputData(newData);
   }
@@ -101,14 +93,10 @@ const CompanyRegistration = (props) => {
                 <IonCardTitle>
                   <span style={companyItemStyle}>{data[0]}</span>
                   <IonItem>
-                    {data[1] && <IonLabel color="dark">適合度</IonLabel>}
-                    {data[1] && <IonIcon icon={star} color="warning" />}
-                    {data[1] && <IonRange min="1" max="5" step="1" value="1" snaps color="primary"
-                      onIonChange={(e) => { setEval(data[0], e.detail.value) }
-                      } disabled={companyName === ""}></IonRange>}
+                    {data[1] && <StarDrawing inputData = {inputData} values = {data} setEval = {setEval} />}
                   </IonItem>
                 </IonCardTitle>
-                <IonTextarea placeholder="説明を入力" value={text} onIonChange={(e) => { setText(data[0], e.detail.value) }} disabled={companyName === ""}></IonTextarea>
+                <IonTextarea placeholder="説明を入力" value={inputData[data[0]][0]} onIonChange={(e) => { setText(data[0], e.detail.value) }} disabled={companyName === ""}></IonTextarea>
               </IonCardHeader>
             </IonCard>
           );

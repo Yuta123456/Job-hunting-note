@@ -46,7 +46,7 @@ const Detail = (props) => {
             <IonHeader>
                 <IonToolbar color="primary">
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref="/tab1" />
+                        <IonBackButton defaultHref="/list" />
                     </IonButtons>
                     <IonButtons slot="end">
                         <IonButton slot="end" onClick={() => { setShowAction(true) }}><IonIcon
@@ -72,7 +72,7 @@ const Detail = (props) => {
                                     {showStar.map((data) => {
                                         (data <= value[1][1]) ? color = "warning" : color = "medium"
                                         return (
-                                            (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
+                                            (value[1][1] !== 0) && <IonIcon icon = {star} color = {color} key = {data}></IonIcon>
                                         )
                                     })}
                                     {(value[1][1] !== 0) && " " + value[1][1]}
