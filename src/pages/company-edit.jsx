@@ -11,7 +11,8 @@ import {
   useIonViewDidEnter,
   IonPage,
   IonButtons,
-  IonHeader
+  IonHeader,
+  IonInput
 } from "@ionic/react";
 import StarDrawing from "../components/star_drawing"
 import "./Tab3.css";
@@ -49,7 +50,7 @@ const CompanyEdit = (props) => {
   }
   function setEval(itemName, submitEval) {
     /*　レンダリングするためには参照元同じだとダメだから新しく作って値格納する */
-    const newData = data[companyName];
+    const newData = data[name];
     Object.entries(inputData, newData).map(values => 
       newData[values[0]] = values[1]
     )
@@ -62,6 +63,7 @@ const CompanyEdit = (props) => {
   }
   function editCompany() {//editCompanyで空になる
     const companyData = data;
+    delete companyData[name]
     companyData[companyName] = inputData;
     localStorage.setItem("companyData", JSON.stringify(companyData));
     const dic = {};
@@ -84,7 +86,11 @@ const CompanyEdit = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <div className="ion-text-center ion-padding" style={{ fontSize: "30px" }}>{companyName}</div>
+          <IonInput value={companyName}
+           className="ion-text-center ion-padding" 
+           required={true}
+           onIonChange={(e) => setCompanyName(e.detail.value)}
+           style={{ fontSize: "30px" }}/>
         {questionItem.map((values) => {
           return (
             <IonCard key={values[0]}>
