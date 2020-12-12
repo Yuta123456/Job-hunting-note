@@ -11,7 +11,7 @@ import {
   useIonViewDidEnter,
   IonPage,
   IonButtons,
-  IonHeader,
+  IonHeader
 } from "@ionic/react";
 import StarDrawing from "../components/star_drawing"
 import "./Tab3.css";
@@ -31,8 +31,8 @@ const CompanyEdit = (props) => {
     const newName = props.name;
     setCompanyName(newName);
     if (companyName !== null) {
-      const newData = Object.assign({}, data);
-      setInputData(newData[companyName]);
+      const newData = Object.assign({}, data[companyName]);
+      setInputData(newData);
     }
   });
   function setText(itemName, submitText) {
@@ -47,7 +47,7 @@ const CompanyEdit = (props) => {
     }
     setInputData(newData);
   }
-  const setEval = (itemName, submitEval) => {
+  function setEval(itemName, submitEval) {
     /*　レンダリングするためには参照元同じだとダメだから新しく作って値格納する */
     const newData = data[companyName];
     Object.entries(inputData, newData).map(values => 
