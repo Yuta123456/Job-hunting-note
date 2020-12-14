@@ -72,7 +72,7 @@ const Detail = (props) => {
                                     {showStar.map((data) => {
                                         (data <= value[1][1]) ? color = "warning" : color = "medium"
                                         return (
-                                            (value[1][1] !== 0) && <IonIcon icon={star} color={color} key={data}></IonIcon>
+                                            (value[1][1] !== 0) && <IonIcon icon = {star} color = {color} key = {data}></IonIcon>
                                         )
                                     })}
                                     {(value[1][1] !== 0) && " " + value[1][1]}
