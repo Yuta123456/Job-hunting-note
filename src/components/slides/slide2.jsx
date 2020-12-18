@@ -3,15 +3,15 @@ import { IonSlide } from "@ionic/react";
 import Image from "./image/slide2.png";
 import "./slide.css";
 
-const imagecss = {
-  maxHeight: "40%",
-  margin: "10px 0 0px",
-};
+// const imagecss = {
+//   maxHeight: "40%",
+//   margin: "10px 0 0px",
+// };
 
 const Slide2 = (props) => {
   return (
     <IonSlide>
-      <img src={Image} alt="会社系" style={imagecss} />
+      <img src={Image} alt="会社系" />
       <h2>事業内容</h2>
       <p>
         事業内容とは会社が取り組んでいる仕事内容。

@@ -1,0 +1,19 @@
+{
+  "folders": [
+	{
+		"name": "vscode",
+		"path": "..\\..\\..\\.."
+	}
+],
+  "settings": {
+    "files.associations": {
+      "ostream": "cpp",
+      "string_view": "cpp",
+      "regex": "cpp",
+      "functional": "c",
+      "system_error": "c",
+      "type_traits": "c",
+      "xtr1common": "c"
+    }
+  }
+}
