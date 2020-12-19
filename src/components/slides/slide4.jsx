@@ -1,20 +1,18 @@
 import React from "react";
 import { IonSlide } from "@ionic/react";
-import Image from "./image/slide4.png";
+import Image from "./image/slide4.1.png";
 import "./slide.css";
 
-const imagecss = {
-  margin: "70px 0 0px",
-};
-const pstyle = {
-  marginTop: "2.8rem",
-};
+// const imagecss = {};
+// const pstyle = {
+//   // marginTop: "2.8r
+// };
 
 const Slide4 = (props) => {
   return (
     <IonSlide>
-      <img src={Image} alt="給料" style={imagecss} />
-      <h2 style={pstyle}>基本給</h2>
+      <img src={Image} alt="給料" />
+      <h2>基本給</h2>
       <p>
         基本給とは、あなたの労働に対して支払われるお金です。
         <br />

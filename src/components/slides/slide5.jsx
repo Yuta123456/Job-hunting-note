@@ -4,22 +4,22 @@ import Image from "./image/slide5.png";
 import "./slide.css";
 import { useHistory } from "react-router";
 
-const imagecss = {
-  margin: "53px 0 0px",
-};
+// const imagecss = {
+//   margin: "53px 0 0px",
+// };
 
 const Slide5 = (props) => {
   const history = useHistory();
   function setSubmitObjective() {
-    if (!('visited' in localStorage)){
+    if (!("visited" in localStorage)) {
       localStorage.setItem("companyData", JSON.stringify({}));
-      localStorage.setItem("visited","true");
+      localStorage.setItem("visited", "true");
     }
-    history.push('./list')
+    history.push("./list");
   }
   return (
     <IonSlide>
-      <img src={Image} alt="まとめ" style={imagecss} />
+      <img src={Image} alt="まとめ" />
       <h2>最後に</h2>
       <p>
         このアプリでは、メモ以外にも項目別で自分への適合度の登録が出来ます。

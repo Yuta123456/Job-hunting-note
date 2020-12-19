@@ -12,9 +12,9 @@ ion-slides {
 }
 
 .swiper-slide img {
-  max-height: 53%;
+  max-height: 40%;
   max-width: 80%;
-  margin: 15px 0 0px;
+  margin-top: 2%;
   pointer-events: none;
 }
 :root {

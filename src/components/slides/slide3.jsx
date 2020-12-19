@@ -3,15 +3,10 @@ import { IonSlide } from "@ionic/react";
 import Image from "./image/slide3.png";
 import "./slide.css";
 
-const imagecss = {
-  maxHeight: "45%",
-  margin: "20px 0 0px",
-};
-
 const Slide3 = (props) => {
   return (
     <IonSlide>
-      <img src={Image} alt="フィット系" style={imagecss} />
+      <img src={Image} alt="フィット系" />
       <h2>勤務体系</h2>
       <p>
         勤務体系には会社にどのように、どんな時間帯で勤めるかをメモしましょう。
