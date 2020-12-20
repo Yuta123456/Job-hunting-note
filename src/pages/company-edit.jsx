@@ -39,7 +39,7 @@ const CompanyEdit = (props) => {
     }
   });
   function setText(itemName, submitText) {
-    const newData = data[companyName];
+    const newData = data[name];
     Object.entries(inputData, newData).map(values => 
         newData[values[0]] = values[1]
     )
@@ -52,7 +52,7 @@ const CompanyEdit = (props) => {
   }
   const setEval = (itemName, submitEval) => {
     /*　レンダリングするためには参照元同じだとダメだから新しく作って値格納する */
-    const newData = data[companyName];
+    const newData = data[name];
     Object.entries(inputData, newData).map(values => 
       newData[values[0]] = values[1]
     )
